@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: rgb(37, 18, 23);
+  background: radial-gradient(
+    circle,
+    rgba(37, 18, 23, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23251217' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+}
