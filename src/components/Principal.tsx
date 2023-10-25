@@ -1,6 +1,6 @@
 export default function Principal() {
   return (
-    <section className="About-me">
+    <section className="about container">
       <p>About me</p>
     </section>
   );

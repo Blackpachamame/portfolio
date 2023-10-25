@@ -4,12 +4,13 @@ import Principal from "./components/Principal.tsx"
 function App() {
 
   return (
-    <main className="container">
+    <main className="main">
       <Principal></Principal>
       <Header></Header>
-      <div className="Redes">Redes</div>
-      <div className="Skills">Skills</div>
-      <div className="Proyectos">Proyectos</div>
+      <div className="redes container">R</div>
+      <div className="skills container">Skills</div>
+      <div className="social container">Social</div>
+      <div className="proyectos container">Proyectos</div>
     </main>
   )
 }

@@ -1,6 +1,6 @@
 export default function Header() {
     return (
-        <section className="Header">
+        <section className="header container">
             <h2>Header</h2>
         </section>
     );
