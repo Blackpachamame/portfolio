@@ -4,13 +4,10 @@ import Principal from "./components/Principal.tsx"
 function App() {
 
   return (
-    <main className="main">
-      <Principal></Principal>
+    <main className="min-h-screen flex flex-col p-4 md:p-6">
+      <div className="fixed inset-0 bg-[#881337]"></div>
       <Header></Header>
-      <div className="redes container">R</div>
-      <div className="skills container">Skills</div>
-      <div className="social container">Social</div>
-      <div className="proyectos container">Proyectos</div>
+      <Principal></Principal>
     </main>
   )
 }
