@@ -1,26 +1,11 @@
-import { useState, useEffect } from "react";
 import { BsGithub, BsLinkedin, BsFillSunFill, BsFillMoonStarsFill } from "react-icons/bs";
 
-function Redes() {
-    const [theme, setTheme] = useState(() => {
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            return "dark";
-        }
-        return "light";
-    });
+type ChangeTheme = {
+    theme: string,
+    handleChangeTheme: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
 
-    useEffect(() => {
-        if (theme === "dark") {
-            document.querySelector("html")!.classList.add("dark");
-        } else {
-            document.querySelector("html")!.classList.remove("dark");
-        }
-    }, [theme]);
-
-    const handleChangeTheme = () => {
-        setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-    };
-
+function Redes({ theme, handleChangeTheme }: ChangeTheme) {
     return (
         <div className="flex items-center gap-5">
             <a href="https://github.com/Blackpachamame" target="_blank" rel="noopener noreferrer" aria-label="Ver Github"><BsGithub style={{ fontSize: "24px" }} /></a>
