@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Redes from "./Redes"
 import logoWhite from "./../../assets/logo-white.png"
 import logoBlack from "./../../assets/logo-black.png"
+import { NavLink } from "react-router-dom";
 
 function Brand() {
     const [theme, setTheme] = useState(() => {
@@ -26,13 +27,13 @@ function Brand() {
     return (
         <div className="relative lg:absolute lg:inset-x-10 w-full lg:w-auto flex items-center justify-between">
             <div className="flex items-center">
-                <a href="/" className="text-2xl md:text-3xl font-medium text-primary-clamped">
+                <NavLink to="/" className="text-2xl md:text-3xl font-medium text-primary-clamped">
                     {theme === "light" ? (
                         <img src={logoBlack} alt="logo" width="32" />
                     ) : (
                         <img src={logoWhite} alt="logo" width="32" />
                     )}
-                </a>
+                </NavLink>
             </div>
             <Redes theme={theme} handleChangeTheme={handleChangeTheme} />
         </div>
