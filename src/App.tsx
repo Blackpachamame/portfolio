@@ -9,9 +9,9 @@ function App() {
   return (
     <BrowserRouter>
       <main className="min-h-screen flex flex-col p-4 md:p-6">
-        <div className="fixed inset-0 bg-gradient-radial from-[#8e243a] to-[#000000]"></div>
+        <div className="fixed inset-0 bg-gradient-radial from-[#637790] to-[#e5e7eb] dark:from-[#8e243a] dark:to-[#000000]"></div>
         <Header></Header>
-        <div className="flex-1 flex flex-col justify-center relative z-10 dark:bg-gray-900 dark:text-[#f1eeee] bg-white text-gray-900 rounded-2xl shadow-lg p-6 md:p-10 pb-8 md:pb-12 transition duration-300">
+        <div className="flex-1 flex flex-col justify-center relative z-10 dark:bg-gray-900 dark:text-[#f5f1e7] bg-white text-gray-900 rounded-2xl shadow-lg p-6 md:p-10 pb-8 md:pb-12 transition duration-300">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sobremi" element={<SobreMi />} />
