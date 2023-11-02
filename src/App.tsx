@@ -9,7 +9,7 @@ function App() {
         <Header></Header>
         <div className="flex-1 flex flex-col justify-center relative z-10 
         bg-gradient-to-tr from-[rgba(138,60,60,.2)] to-transparent text-gray-900 
-        dark:from-[rgba(78,89,192,.2)] dark:text-[#f5f1e7] 
+        dark:from-[rgba(78,89,192,.2)] dark:text-slate-100
         border border-solid border-[#e2d9df] dark:border-[#242636] rounded-2xl 
         shadow-lg p-6 md:p-10 pb-8 md:pb-12 transition duration-300">
           <Routes>
