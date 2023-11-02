@@ -29,9 +29,9 @@ function Brand() {
             <div className="flex items-center">
                 <NavLink to="/" className="text-2xl md:text-3xl font-medium text-primary-clamped">
                     {theme === "light" ? (
-                        <img src={logoBlack} alt="logo" width="32" />
+                        <img src={logoBlack} alt="logo" width="32" height="32" />
                     ) : (
-                        <img src={logoWhite} alt="logo" width="32" />
+                        <img src={logoWhite} alt="logo" width="32" height="32" />
                     )}
                 </NavLink>
             </div>

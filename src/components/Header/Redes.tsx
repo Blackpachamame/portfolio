@@ -10,7 +10,7 @@ function Redes({ theme, handleChangeTheme }: ChangeTheme) {
         <div className="flex items-center gap-5">
             <a href="https://github.com/Blackpachamame" target="_blank" rel="noopener noreferrer" aria-label="Ver Github"><BsGithub style={{ fontSize: "24px" }} /></a>
             <a href="https://www.linkedin.com/in/marcos-travaglini/" target="_blank" rel="noopener noreferrer" aria-label="Ver Linkedin"><BsLinkedin style={{ fontSize: "24px" }} /></a>
-            <button onClick={handleChangeTheme}>
+            <button onClick={handleChangeTheme} aria-label="Toggle theme">
                 {theme === "light" ? (
                     <BsFillMoonStarsFill style={{ fontSize: "24px" }} />
                 ) : (
