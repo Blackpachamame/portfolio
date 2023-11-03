@@ -27,12 +27,12 @@ function Brand() {
     return (
         <div className="relative lg:absolute lg:inset-x-10 w-full lg:w-auto flex items-center justify-between">
             <div className="flex items-center">
-                <NavLink to="/" className="text-2xl md:text-3xl font-medium text-primary-clamped">
+                <NavLink to="/" id="brand" className="flex items-center gap-2 text-2xl font-medium uppercase text-primary-clamped">
                     {theme === "light" ? (
                         <img src={logoBlack} alt="logo" width="32" height="32" />
                     ) : (
                         <img src={logoWhite} alt="logo" width="32" height="32" />
-                    )}
+                    )}Blackpachamame
                 </NavLink>
             </div>
             <Redes theme={theme} handleChangeTheme={handleChangeTheme} />
