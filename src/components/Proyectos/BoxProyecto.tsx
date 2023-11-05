@@ -7,8 +7,8 @@ function BoxProyecto() {
                     src="https://blackpachamame.github.io/desafíos-frontendmentor/testimonials-grid-section/design/desktop-preview.jpg"
                     alt="newsletter preview" />
             </figure>
-            <div className="text-center p-3">
-                <h3>Testimonials grid section</h3>
+            <div className="text-center font-semibold p-3">
+                <h3 className="text-xl">Testimonials grid section</h3>
                 <h4>
                     <a
                         href="https://blackpachamame.github.io/desafíos-frontendmentor/newsletter-sign-up-with-success-message/">Sitio
