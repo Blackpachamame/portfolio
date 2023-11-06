@@ -1,3 +1,5 @@
+import { TbBrandGithub, TbEye } from "react-icons/tb";
+
 function BoxProyecto() {
     return (
         <div className="flex flex-col items-center border border-solid border-[#d9dae2] dark:border-[#292b3d] rounded-2xl
@@ -11,9 +13,11 @@ function BoxProyecto() {
                 <h3 className="text-xl">Testimonials grid section</h3>
                 <h4>
                     <a
-                        href="https://blackpachamame.github.io/desafíos-frontendmentor/newsletter-sign-up-with-success-message/">Sitio
+                        href="https://blackpachamame.github.io/desafíos-frontendmentor/newsletter-sign-up-with-success-message/"><TbEye /> Sitio
                         en Vivo
                     </a>
+
+                    <TbBrandGithub />
                 </h4>
             </div>
         </div>
