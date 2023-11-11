@@ -1,6 +1,5 @@
 import { FaArrowUpRightFromSquare } from "react-icons/fa6"; FiGithub
 import { FiGithub } from "react-icons/fi";
-import { SiReact, SiReactrouter, SiStyledcomponents } from "react-icons/si";
 
 function BoxProyecto() {
     return (
@@ -17,24 +16,7 @@ function BoxProyecto() {
             <div className="w-full flex flex-wrap gap-2 text-center font-semibold px-4 py-2">
                 <span className="flex gap-2 items-center justify-center 
                 bg-[rgba(60,62,138,.2)] dark:bg-gray-900 text-md text-gray-900 dark:text-slate-100 
-                px-3 py-1 rounded-2xl shadow-md">
-                    <SiReact style={{ fontSize: "20px" }} /> React
-                </span>
-                <span className="flex gap-2 items-center justify-center 
-                bg-[rgba(60,62,138,.2)] dark:bg-gray-900 text-md text-gray-900 dark:text-slate-100 
-                px-3 py-1 rounded-2xl shadow-md">
-                    <SiReactrouter style={{ fontSize: "20px" }} /> React Router
-                </span>
-                <span className="flex gap-2 items-center justify-center 
-                bg-[rgba(60,62,138,.2)] dark:bg-gray-900 text-md text-gray-900 dark:text-slate-100 
-                px-3 py-1 rounded-2xl shadow-md">
-                    <SiReact style={{ fontSize: "20px" }} /> React
-                </span>
-                <span className="flex gap-2 items-center justify-center 
-                bg-[rgba(60,62,138,.2)] dark:bg-gray-900 text-md text-gray-900 dark:text-slate-100 
-                px-3 py-1 rounded-2xl shadow-md">
-                    <SiStyledcomponents style={{ fontSize: "20px" }} /> Styled Components
-                </span>
+                px-3 py-1 rounded-2xl shadow-md">React</span>
             </div>
             <div className="w-full flex justify-center gap-4 p-4 pt-2">
                 <a className="flex items-center gap-2"
