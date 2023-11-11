@@ -1,22 +1,33 @@
 import { FaArrowUpRightFromSquare } from "react-icons/fa6"; FiGithub
 import { FiGithub } from "react-icons/fi";
 
-function BoxProyecto() {
+interface EmployeeProps {
+    data: {
+        id: string,
+        imgProyecto: string,
+        nombre: string,
+        tecnologias: string[],
+    };
+}
+
+function BoxProyecto({ data }: EmployeeProps) {
     return (
         <div className="flex flex-col justify-between items-center border border-solid border-[#d9dae2] dark:border-[#292b3d] rounded-2xl
         bg-gradient-to-t from-[rgba(124,130,177,.12)] to-[rgba(17,18,27,0)] overflow-hidden">
             <figure className="overflow-hidden">
                 <img className="w-full scale-100 hover:scale-125 transition duration-300 ease-in-out"
-                    src="https://blackpachamame.github.io/desafíos-frontendmentor/testimonials-grid-section/design/desktop-preview.jpg"
+                    src={data.imgProyecto}
                     alt="newsletter preview" />
             </figure>
             <div className="w-full text-center font-semibold p-4 pb-2">
-                <h3 className="text-xl">Testimonials grid section</h3>
+                <h3 className="text-xl">{data.nombre}</h3>
             </div>
             <div className="w-full flex flex-wrap gap-2 text-center font-semibold px-4 py-2">
-                <span className="flex gap-2 items-center justify-center 
+                {data.tecnologias.map((tecnologia) => (
+                    <span key={tecnologia} className="flex gap-2 items-center justify-center 
                 bg-[rgba(60,62,138,.2)] dark:bg-gray-900 text-md text-gray-900 dark:text-slate-100 
-                px-3 py-1 rounded-2xl shadow-md">React</span>
+                px-3 py-1 rounded-2xl shadow-md">{tecnologia}</span>
+                ))}
             </div>
             <div className="w-full flex justify-center gap-4 p-4 pt-2">
                 <a className="flex items-center gap-2"
