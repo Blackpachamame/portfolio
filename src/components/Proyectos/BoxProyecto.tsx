@@ -19,23 +19,25 @@ function BoxProyecto({ data }: EmployeeProps) {
                     src={data.imgProyecto}
                     alt="newsletter preview" />
             </figure>
-            <div className="w-full text-center font-semibold p-4 pb-2">
+            <div className="w-full text-center font-semibold px-4 pt-4">
                 <h3 className="text-xl">{data.nombre}</h3>
             </div>
-            <div className="w-full flex flex-wrap gap-2 text-center font-semibold px-4 py-2">
-                {data.tecnologias.map((tecnologia) => (
-                    <span key={tecnologia} className="flex gap-2 items-center justify-center 
+            <div className="p-4">
+                <div className="w-full flex flex-wrap gap-2 text-center font-semibold px-4 py-2">
+                    {data.tecnologias.map((tecnologia) => (
+                        <span key={tecnologia} className="flex gap-2 items-center justify-center 
                 bg-[rgba(60,62,138,.2)] dark:bg-gray-900 text-md text-gray-900 dark:text-slate-100 
                 px-3 py-1 rounded-2xl shadow-md">{tecnologia}</span>
-                ))}
-            </div>
-            <div className="w-full flex justify-center gap-4 p-4 pt-2">
-                <a className="flex items-center gap-2"
-                    href="https://blackpachamame.github.io/desafíos-frontendmentor/newsletter-sign-up-with-success-message/"><FaArrowUpRightFromSquare style={{ fontSize: "16px" }} />Online
-                </a>
-                <a className="flex items-center gap-2"
-                    href="https://blackpachamame.github.io/desafíos-frontendmentor/newsletter-sign-up-with-success-message/"><FiGithub style={{ fontSize: "16px" }} />Código
-                </a>
+                    ))}
+                </div>
+                <div className="w-full flex justify-center gap-4">
+                    <a className="flex items-center gap-2"
+                        href="https://blackpachamame.github.io/desafíos-frontendmentor/newsletter-sign-up-with-success-message/"><FaArrowUpRightFromSquare style={{ fontSize: "16px" }} />Online
+                    </a>
+                    <a className="flex items-center gap-2"
+                        href="https://blackpachamame.github.io/desafíos-frontendmentor/newsletter-sign-up-with-success-message/"><FiGithub style={{ fontSize: "16px" }} />Código
+                    </a>
+                </div>
             </div>
         </div>
     )
