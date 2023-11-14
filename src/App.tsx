@@ -4,7 +4,7 @@ import { Educacion, Header, Home, Proyectos, SobreMi } from "./components";
 function App() {
   return (
     <BrowserRouter>
-      <main className="min-h-screen flex flex-col p-4 md:p-6">
+      <main className="max-w-screen-xl min-h-screen flex flex-col my-0 mx-auto p-4 md:p-6">
         <div className="fixed inset-0 bg-[rgba(60,62,138,.1)] dark:bg-[#11121b]"></div>
         <Header></Header>
         <div className="flex-1 flex flex-col justify-center relative z-10 
