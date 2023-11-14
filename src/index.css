@@ -14,9 +14,10 @@ body {
   text-wrap: balance;
 }
 
-/* #brand {
-  font-family: "Patrick Hand SC", cursive;
-} */
+.activo {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 50%), 0 4px 6px -4px rgb(0 0 0 / 50%);
+}
 
 .proyecto__container {
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));

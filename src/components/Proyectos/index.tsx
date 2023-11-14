@@ -59,9 +59,11 @@ function Proyectos() {
     <div className="flex flex-col items-center gap-12">
       <Skills obtenerSkill={obtenerSkill} />
       <div className="grid justify-center items-stretch gap-4 proyecto__container">
-        {projects.map((proyecto) => (
-          <BoxProyecto key={proyecto.id} data={proyecto} />
-        ))}
+        {(projects.length > 0)
+          ? projects.map((proyecto) => (
+            <BoxProyecto key={proyecto.id} data={proyecto} />
+          ))
+          : <h3 className="text-xl">No se encontraron proyectos</h3>}
       </div>
     </div>
   );
