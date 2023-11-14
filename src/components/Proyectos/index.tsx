@@ -6,8 +6,30 @@ import { proyectos } from "../../assets/data";
 const arraySkills: string[] = [];
 
 function Proyectos() {
-  const [projects, setProjects] = useState(proyectos);
   const [tecnologias, setTecnologias] = useState(arraySkills);
+  let projects;
+
+  if (tecnologias.length > 0) {
+    projects = verProyectos();
+  } else {
+    projects = proyectos;
+  }
+
+  function verProyectos() {
+    const arrayProjects = proyectos.filter((proyecto) => existeSkill(proyecto.tecnologias, tecnologias));
+    return arrayProjects;
+  }
+
+  function existeSkill(tecnoProyecto: string[], tecnoSkills: string[]) {
+    let existe = false;
+    for (let i = 0; i < tecnoSkills.length; i = i + 1) {
+      existe = tecnoProyecto.includes(tecnoSkills[i]);
+      if (!existe) {
+        i = tecnoSkills.length;
+      }
+    }
+    return existe;
+  }
 
   function obtenerSkill(skill: string) {
     editarTecnologia(skill);
