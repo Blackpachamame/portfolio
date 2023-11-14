@@ -1,13 +1,17 @@
-import { skills } from "../../assets/data"
+import { skills } from "../../assets/data";
 
-function Skills() {
+type HandleSkill = {
+    obtenerSkill: (event: string) => void;
+}
+
+function Skills({ obtenerSkill }: HandleSkill) {
+
     return (
         <div className="flex flex-wrap gap-5">
             {skills.map((skill) => (
                 <div key={skill.id} className="group relative inline-block">
-                    <button className="w-16 h-16 flex justify-center items-center
-                bg-[rgba(60,62,138,.2)] dark:bg-[#11121b] border border-solid border-[#d9dae2] dark:border-[#242636]
-                rounded-2xl shadow-lg">
+                    <button onClick={() => obtenerSkill(skill.nombre)} aria-label="Mandar nombre skill"
+                        className="w-16 h-16 flex justify-center items-center bg-[rgba(60,62,138,.2)] dark:bg-[#11121b] border border-solid border-[#d9dae2] dark:border-[#242636] rounded-2xl shadow-lg">
                         <img src={skill.imgSkill} width="32px" height="32px" />
                     </button>
                     <div className="bg-[#BFBFD9] dark:bg-[#11121b] absolute top-full left-1/2 z-20 mt-3 

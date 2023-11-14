@@ -30,7 +30,7 @@ function BoxProyecto({ data }: EmployeeProps) {
                 px-3 py-1 rounded-2xl shadow-md">{tecnologia}</span>
                     ))}
                 </div>
-                <div className="w-full flex justify-center gap-4">
+                <div className="w-full flex justify-center gap-4 pt-2">
                     <a className="flex items-center gap-2"
                         href="https://blackpachamame.github.io/desafíos-frontendmentor/newsletter-sign-up-with-success-message/"><FaArrowUpRightFromSquare style={{ fontSize: "16px" }} />Online
                     </a>
