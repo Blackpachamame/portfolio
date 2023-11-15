@@ -1,4 +1,5 @@
 import { MouseEvent } from "react";
+// import DynamicIcon from "./DynamicIcon";
 import { skills } from "../../assets/data";
 
 type HandleSkill = {
@@ -18,6 +19,7 @@ function Skills({ obtenerSkill }: HandleSkill) {
                     <button onClick={(e) => handleClick(e, skill.nombre)} aria-label="Mandar nombre skill"
                         className="w-16 h-16 flex justify-center items-center bg-[rgba(60,62,138,.2)] dark:bg-[#11121b] border border-solid border-[#d9dae2] dark:border-[#242636] rounded-2xl shadow-lg">
                         <img src={skill.imgSkill} width="32px" height="32px" />
+                        {/* <DynamicIcon icon={skill.icon} style={{ fontSize: "32px" }} /> */}
                     </button>
                     <div className="bg-[#BFBFD9] dark:bg-[#11121b] absolute top-full left-1/2 z-20 mt-3 
                 -translate-x-1/2 rounded-[5px] py-1.5 px-3.5 text-center text-sm leading-4 font-semibold 

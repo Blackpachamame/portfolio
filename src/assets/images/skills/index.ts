@@ -4,6 +4,7 @@ import react from "../skills/react.svg";
 import css from "../skills/css.svg";
 import html from "../skills/html.svg";
 import styledComponents from "../skills/styledcomponets.png";
+import php from "../skills/php.svg";
 
 export {
     javascript,
@@ -12,4 +13,5 @@ export {
     css,
     html,
     styledComponents,
+    php,
 };
