@@ -12,7 +12,7 @@ function Skills({ obtenerSkill }: HandleSkill) {
     };
 
     return (
-        <div className="flex flex-wrap gap-5">
+        <div className="flex justify-center flex-wrap gap-5">
             {skills.map((skill) => (
                 <div key={skill.id} className="group relative inline-block">
                     <button onClick={(e) => handleClick(e, skill.nombre)} aria-label="Mandar nombre skill"
