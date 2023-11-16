@@ -12,6 +12,9 @@ export default {
       },
       borderWidth: {
         DEFAULT: '.75px',
+      },
+      gridTemplateColumns: {
+        '16': 'repeat(auto-fill, minmax(270px, 1fr))',
       }
     },
   },

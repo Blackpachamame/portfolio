@@ -1,5 +1,4 @@
-import { FaArrowUpRightFromSquare } from "react-icons/fa6"; FiGithub
-import { FiGithub } from "react-icons/fi";
+import { FiCode, FiGlobe } from "react-icons/fi";
 
 interface EmployeeProps {
     data: {
@@ -27,15 +26,15 @@ function BoxProyecto({ data }: EmployeeProps) {
                     {data.tecnologias.map((tecnologia) => (
                         <span key={tecnologia} className="flex gap-2 items-center justify-center 
                 bg-[rgba(60,62,138,.2)] dark:bg-gray-900 text-md text-gray-900 dark:text-slate-100 
-                px-3 py-1 rounded-2xl shadow-md">{tecnologia}</span>
+                px-3 py-1 rounded-2xl shadow-md text-sm">{tecnologia}</span>
                     ))}
                 </div>
                 <div className="w-full flex justify-center gap-4 pt-2">
                     <a className="flex items-center gap-2"
-                        href="https://blackpachamame.github.io/desafíos-frontendmentor/newsletter-sign-up-with-success-message/"><FaArrowUpRightFromSquare style={{ fontSize: "16px" }} />Online
+                        href="https://blackpachamame.github.io/desafíos-frontendmentor/newsletter-sign-up-with-success-message/"><FiGlobe style={{ fontSize: "16px" }} />Online
                     </a>
                     <a className="flex items-center gap-2"
-                        href="https://blackpachamame.github.io/desafíos-frontendmentor/newsletter-sign-up-with-success-message/"><FiGithub style={{ fontSize: "16px" }} />Código
+                        href="https://blackpachamame.github.io/desafíos-frontendmentor/newsletter-sign-up-with-success-message/"><FiCode style={{ fontSize: "16px" }} />Código
                     </a>
                 </div>
             </div>

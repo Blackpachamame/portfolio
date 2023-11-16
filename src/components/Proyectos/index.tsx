@@ -58,7 +58,7 @@ function Proyectos() {
   return (
     <div className="flex flex-col items-center gap-12">
       <Skills obtenerSkill={obtenerSkill} />
-      <div className="grid justify-center items-stretch gap-4 proyecto__container">
+      <div className="grid justify-center items-stretch gap-4 grid-cols-16">
         {(projects.length > 0)
           ? projects.map((proyecto) => (
             <BoxProyecto key={proyecto.id} data={proyecto} />

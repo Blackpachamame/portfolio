@@ -13,25 +13,25 @@ export const skills = [
     {
         id: uuid(),
         imgSkill: html,
-        nombre: "Html",
+        nombre: "HTML",
         icon: "SiHtml5",
     },
     {
         id: uuid(),
         imgSkill: css,
-        nombre: "Css",
+        nombre: "CSS",
         icon: "SiCss3",
     },
     {
         id: uuid(),
         imgSkill: javascript,
-        nombre: "Javascript",
+        nombre: "JavaScript",
         icon: "SiJavascript",
     },
     {
         id: uuid(),
         imgSkill: typescript,
-        nombre: "Typescript",
+        nombre: "TypeScript",
         icon: "SiTypescript",
     },
     {
@@ -49,7 +49,7 @@ export const skills = [
     {
         id: uuid(),
         imgSkill: php,
-        nombre: "Php",
+        nombre: "PHP",
         icon: "SiPhp",
     },
 ];
