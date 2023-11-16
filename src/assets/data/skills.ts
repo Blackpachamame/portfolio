@@ -1,15 +1,27 @@
 import { v4 as uuid } from 'uuid';
 import {
+    html,
+    css,
     javascript,
     typescript,
     react,
-    css,
-    html,
     styledComponents,
     php,
 } from "../images/skills"
 
 export const skills = [
+    {
+        id: uuid(),
+        imgSkill: html,
+        nombre: "Html",
+        icon: "SiHtml5",
+    },
+    {
+        id: uuid(),
+        imgSkill: css,
+        nombre: "Css",
+        icon: "SiCss3",
+    },
     {
         id: uuid(),
         imgSkill: javascript,
@@ -27,18 +39,6 @@ export const skills = [
         imgSkill: react,
         nombre: "React",
         icon: "SiReact",
-    },
-    {
-        id: uuid(),
-        imgSkill: css,
-        nombre: "Css",
-        icon: "SiCss3",
-    },
-    {
-        id: uuid(),
-        imgSkill: html,
-        nombre: "Html",
-        icon: "SiHtml5",
     },
     {
         id: uuid(),

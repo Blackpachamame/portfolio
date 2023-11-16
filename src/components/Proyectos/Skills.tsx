@@ -17,7 +17,7 @@ function Skills({ obtenerSkill }: HandleSkill) {
             {skills.map((skill) => (
                 <div key={skill.id} className="group relative inline-block">
                     <button onClick={(e) => handleClick(e, skill.nombre)} aria-label="Mandar nombre skill"
-                        className="w-16 h-16 flex justify-center items-center bg-[rgba(60,62,138,.2)] dark:bg-[#11121b] border border-solid border-[#d9dae2] dark:border-[#242636] rounded-2xl shadow-lg">
+                        className="w-16 h-16 flex justify-center items-center bg-white dark:bg-[#11121b] border border-solid border-[#d9dae2] dark:border-[#242636] rounded-2xl shadow-lg">
                         <img src={skill.imgSkill} width="32px" height="32px" />
                         {/* <DynamicIcon icon={skill.icon} style={{ fontSize: "32px" }} /> */}
                     </button>
