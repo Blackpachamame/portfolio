@@ -21,6 +21,7 @@ export const proyectos = [
         nombre: "Huddle landing page with curved sections",
         tecnologias: ["Angular", "TypeScript", "Tailwind"],
         codigo: "https://github.com/Blackpachamame/aluraplus",
+        sitio: "https://aluraplus-theta-gray.vercel.app",
     },
     {
         id: uuid(),
