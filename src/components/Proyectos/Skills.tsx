@@ -5,7 +5,7 @@ type HandleSkill = {
     obtenerSkill: (event: string) => void;
 }
 
-function Skills({ obtenerSkill }: HandleSkill) {
+export default function Skills({ obtenerSkill }: HandleSkill) {
     const handleClick = (event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>, skill: string) => {
         event.currentTarget.classList.toggle('activo');
         obtenerSkill(skill)
@@ -16,8 +16,9 @@ function Skills({ obtenerSkill }: HandleSkill) {
             {skills.map((skill) => (
                 <div key={skill.id} className="group relative inline-block">
                     <button onClick={(e) => handleClick(e, skill.nombre)} aria-label="Mandar nombre skill"
-                        className="w-16 h-16 flex justify-center items-center bg-white dark:bg-[#11121b] border border-solid border-[#d9dae2] dark:border-[#242636] rounded-2xl shadow-lg">
-                        <img src={skill.imgSkill} width="32px" height="32px" />
+                        className="w-16 h-16 flex justify-center items-center bg-white dark:bg-[#11121b] 
+                        border border-solid border-[#d9dae2] dark:border-[#242636] rounded-2xl shadow-lg transition duration-300">
+                        <img src={skill.imgSkill} width="32px" height="32px" alt={"Logo " + skill.nombre} />
                     </button>
                     <div className="bg-[#BFBFD9] dark:bg-[#11121b] absolute top-full left-1/2 z-20 mt-3 
                 -translate-x-1/2 rounded-[5px] py-1.5 px-3.5 text-center text-sm leading-4 font-semibold 
@@ -30,4 +31,3 @@ function Skills({ obtenerSkill }: HandleSkill) {
         </div>
     )
 }
-export default Skills

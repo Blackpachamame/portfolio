@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Educacion, Header, Home, Proyectos, SobreMi } from "./components";
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <main className="max-w-screen-xl min-h-screen flex flex-col my-0 mx-auto p-4 md:p-6">
@@ -23,5 +23,3 @@ function App() {
     </BrowserRouter>
   )
 }
-
-export default App

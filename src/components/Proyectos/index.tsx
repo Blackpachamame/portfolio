@@ -5,7 +5,7 @@ import { proyectos } from "../../assets/data";
 
 const arraySkills: string[] = [];
 
-function Proyectos() {
+export default function Proyectos() {
   const [tecnologias, setTecnologias] = useState(arraySkills);
   let projects;
 
@@ -68,4 +68,3 @@ function Proyectos() {
     </div>
   );
 }
-export default Proyectos;

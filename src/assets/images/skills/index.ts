@@ -1,17 +1,20 @@
-import javascript from "../skills/javascript.svg";
-import typescript from "../skills/typescript.svg";
-import react from "../skills/react.svg";
-import css from "../skills/css.svg";
-import html from "../skills/html.svg";
-import styledComponents from "../skills/styled-components.svg";
-import php from "../skills/php.svg";
+
+import bootstrap from "../skills/logo-bootstrap.svg";
+import javascript from "../skills/logo-javascript.svg";
+import php from "../skills/logo-php.svg";
+import react from "../skills/logo-react.svg";
+import sass from "../skills/logo-sass.svg";
+import styledComponents from "../skills/logo-styled-components.svg";
+import tailwind from "../skills/logo-tailwind.svg";
+import typescript from "../skills/logo-typescript.svg";
 
 export {
+    bootstrap,
     javascript,
-    typescript,
-    react,
-    css,
-    html,
-    styledComponents,
     php,
+    react,
+    sass,
+    styledComponents,
+    tailwind,
+    typescript,
 };

@@ -5,7 +5,7 @@ type ChangeTheme = {
     handleChangeTheme: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-function Redes({ theme, handleChangeTheme }: ChangeTheme) {
+export default function Redes({ theme, handleChangeTheme }: ChangeTheme) {
     return (
         <div className="flex items-center gap-5">
             <a href="https://github.com/Blackpachamame" target="_blank" rel="noopener noreferrer" aria-label="Ver Github"><BsGithub style={{ fontSize: "24px" }} /></a>
@@ -20,4 +20,3 @@ function Redes({ theme, handleChangeTheme }: ChangeTheme) {
         </div>
     )
 }
-export default Redes

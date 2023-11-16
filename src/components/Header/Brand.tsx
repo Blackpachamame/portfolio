@@ -4,7 +4,7 @@ import logoWhite from "./../../assets/logo-white.png"
 import logoBlack from "./../../assets/logo-black.png"
 import { NavLink } from "react-router-dom";
 
-function Brand() {
+export default function Brand() {
     const [theme, setTheme] = useState(() => {
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
             return "dark";
@@ -39,4 +39,3 @@ function Brand() {
         </div>
     )
 }
-export default Brand

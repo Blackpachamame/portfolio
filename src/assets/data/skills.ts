@@ -1,55 +1,54 @@
 import { v4 as uuid } from 'uuid';
 import {
-    html,
-    css,
+    bootstrap,
     javascript,
-    typescript,
-    react,
-    styledComponents,
     php,
+    react,
+    sass,
+    styledComponents,
+    tailwind,
+    typescript,
 } from "../images/skills"
 
 export const skills = [
     {
         id: uuid(),
-        imgSkill: html,
-        nombre: "HTML",
-        icon: "SiHtml5",
-    },
-    {
-        id: uuid(),
-        imgSkill: css,
-        nombre: "CSS",
-        icon: "SiCss3",
+        imgSkill: bootstrap,
+        nombre: "Bootstrap",
     },
     {
         id: uuid(),
         imgSkill: javascript,
         nombre: "JavaScript",
-        icon: "SiJavascript",
-    },
-    {
-        id: uuid(),
-        imgSkill: typescript,
-        nombre: "TypeScript",
-        icon: "SiTypescript",
-    },
-    {
-        id: uuid(),
-        imgSkill: react,
-        nombre: "React",
-        icon: "SiReact",
-    },
-    {
-        id: uuid(),
-        imgSkill: styledComponents,
-        nombre: "Styled Components",
-        icon: "SiStyledcomponents",
     },
     {
         id: uuid(),
         imgSkill: php,
         nombre: "PHP",
-        icon: "SiPhp",
+    },
+    {
+        id: uuid(),
+        imgSkill: react,
+        nombre: "React",
+    },
+    {
+        id: uuid(),
+        imgSkill: sass,
+        nombre: "Sass",
+    },
+    {
+        id: uuid(),
+        imgSkill: styledComponents,
+        nombre: "Styled Components",
+    },
+    {
+        id: uuid(),
+        imgSkill: tailwind,
+        nombre: "Tailwind",
+    },
+    {
+        id: uuid(),
+        imgSkill: typescript,
+        nombre: "TypeScript",
     },
 ];

@@ -1,4 +1,4 @@
-function SobreMi() {
+export default function SobreMi() {
   return (
     <div className="text-center">
       <p className="md:text-lg mb-3">
@@ -16,4 +16,3 @@ function SobreMi() {
     </div>
   );
 }
-export default SobreMi;

@@ -6,10 +6,12 @@ interface EmployeeProps {
         imgProyecto: string,
         nombre: string,
         tecnologias: string[],
+        codigo: string,
+        sitio: string,
     };
 }
 
-function BoxProyecto({ data }: EmployeeProps) {
+export default function BoxProyecto({ data }: EmployeeProps) {
     return (
         <div className="flex flex-col justify-between items-center border border-solid border-[#d9dae2] dark:border-[#292b3d] rounded-2xl
         bg-gradient-to-t from-[rgba(124,130,177,.12)] to-[rgba(17,18,27,0)] overflow-hidden">
@@ -30,15 +32,16 @@ function BoxProyecto({ data }: EmployeeProps) {
                     ))}
                 </div>
                 <div className="w-full flex justify-center gap-4 pt-2">
+                    {data.sitio &&
+                        <a className="flex items-center gap-2"
+                            href={data.sitio}><FiGlobe style={{ fontSize: "16px" }} />Online
+                        </a>
+                    }
                     <a className="flex items-center gap-2"
-                        href="https://blackpachamame.github.io/desafíos-frontendmentor/newsletter-sign-up-with-success-message/"><FiGlobe style={{ fontSize: "16px" }} />Online
-                    </a>
-                    <a className="flex items-center gap-2"
-                        href="https://blackpachamame.github.io/desafíos-frontendmentor/newsletter-sign-up-with-success-message/"><FiCode style={{ fontSize: "16px" }} />Código
+                        href={data.codigo}><FiCode style={{ fontSize: "16px" }} />Código
                     </a>
                 </div>
             </div>
         </div>
     )
 }
-export default BoxProyecto

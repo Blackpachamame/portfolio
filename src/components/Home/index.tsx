@@ -1,6 +1,6 @@
 import ButtonCV from "./ButtonCV"
 
-function Principal() {
+export default function Principal() {
     return (
         <div className="flex flex-col justify-center items-center gap-4 text-center w-full">
             <div>
@@ -17,4 +17,3 @@ function Principal() {
         </div>
     )
 }
-export default Principal
