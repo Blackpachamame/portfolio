@@ -11,7 +11,7 @@ export default function App() {
         bg-gradient-to-tr from-[rgba(60,62,138,.2)] to-transparent text-gray-900 
         dark:from-[rgba(78,89,192,.2)] dark:text-slate-100
         border border-solid border-[#d9dae2] dark:border-[#242636] rounded-2xl 
-        shadow-lg p-6 md:p-10 pb-8 md:pb-12 transition duration-300">
+        shadow-lg p-2 sm:p-4 md:p-10 py-5 md:py-12 transition duration-300">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sobremi" element={<SobreMi />} />

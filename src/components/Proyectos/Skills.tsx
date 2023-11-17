@@ -16,7 +16,7 @@ export default function Skills({ obtenerSkill }: HandleSkill) {
             {skills.map((skill) => (
                 <div key={skill.id} className="group relative inline-block">
                     <button onClick={(e) => handleClick(e, skill.nombre)} aria-label="Mandar nombre skill"
-                        className="w-16 h-16 flex justify-center items-center bg-[rgba(243,243,243,.3)] dark:bg-[#11121b] 
+                        className="w-14 h-14 md:w-16 md:h-16 flex justify-center items-center bg-[rgba(243,243,243,.3)] dark:bg-[#11121b] 
                         border border-solid border-[#d9dae2] dark:border-[#242636] rounded-2xl shadow-lg transition duration-300">
                         <img src={skill.imgSkill} width="32px" height="32px" alt={"Logo " + skill.nombre} />
                     </button>
