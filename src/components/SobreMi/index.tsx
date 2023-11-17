@@ -1,18 +1,17 @@
 export default function SobreMi() {
   return (
-    <div className="text-center">
+    <section className="text-center">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-3">Sobre mi</h1>
       <p className="md:text-lg mb-3">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-        It has survived not only five centuries, but also the leap into electronic typesetting,
-        remaining essentially unchanged.
+        ¡Saludos! Mi nombre es Marcos Andrés Travaglini, vivo en Neuquén, Argentina.
+        Soy desarrollador frontend y estoy buscando mi primera oportunidad laboral en IT.
+        Obtuve el título de Tecnico universitario en Desarrollo Web en la Universidad Nacional del Comahue.
       </p>
       <p className="md:text-lg">
-        It is a long established fact that a reader will be distracted
-        by the readable content of a page when looking at its layout.
-        The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.
+        Me considero una persona comprometida, honesta, responsable,
+        con mucha curiosidad en saber como funciona todo,
+        muchas ganas de aprender y seguir profundizando en los conocimientos que ya poseo.
       </p>
-    </div>
+    </section>
   );
 }

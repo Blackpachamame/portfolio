@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Educacion, Header, Home, Proyectos, SobreMi } from "./components";
+import { Header, Home, Proyectos, SobreMi } from "./components";
 
 export default function App() {
   return (
@@ -11,12 +11,11 @@ export default function App() {
         bg-gradient-to-tr from-[rgba(60,62,138,.2)] to-transparent text-gray-900 
         dark:from-[rgba(78,89,192,.2)] dark:text-slate-100
         border border-solid border-[#d9dae2] dark:border-[#242636] rounded-2xl 
-        shadow-lg p-2 sm:p-4 md:p-10 py-5 md:py-12 transition duration-300">
+        shadow-lg px-4 py-6 lg:px-10 lg:py-8 transition duration-300">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sobremi" element={<SobreMi />} />
             <Route path="/proyectos" element={<Proyectos />} />
-            <Route path="/educacion" element={<Educacion />} />
           </Routes>
         </div>
       </main>

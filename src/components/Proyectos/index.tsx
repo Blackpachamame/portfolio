@@ -1,6 +1,6 @@
 import { useState } from "react";
-import BoxProyecto from "./BoxProyecto";
-import Skills from "./Skills";
+import BoxProyectos from "./BoxProyectos";
+import SkillsProyectos from "./SkillsProyectos";
 import { proyectos } from "../../assets/data";
 import { RiShareBoxFill } from "react-icons/ri";
 
@@ -57,16 +57,17 @@ export default function Proyectos() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-12">
-      <Skills obtenerSkill={obtenerSkill} />
+    <section className="flex flex-col items-center gap-8">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold">Proyectos</h1>
+      <SkillsProyectos obtenerSkill={obtenerSkill} />
       <div className="grid justify-center items-stretch gap-4 grid-cols-16">
         {(projects.length > 0)
           ? projects.map((proyecto) => (
-            <BoxProyecto key={proyecto.id} data={proyecto} />
+            <BoxProyectos key={proyecto.id} data={proyecto} />
           ))
           : <h3 className="text-xl">No se encontraron proyectos</h3>}
       </div>
       <a className="flex items-center gap-2 hover:underline underline-offset-2" href="https://github.com/Blackpachamame?tab=repositories" target="_blank" rel="noreferrer"><RiShareBoxFill /> Revisar todos los proyectos</a>
-    </div>
+    </section>
   );
 }
