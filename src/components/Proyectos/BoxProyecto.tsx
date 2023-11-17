@@ -18,7 +18,7 @@ export default function BoxProyecto({ data }: EmployeeProps) {
             <figure className="overflow-hidden">
                 <img className="w-full scale-100 hover:scale-125 transition duration-300 ease-in-out"
                     src={data.imgProyecto}
-                    alt="newsletter preview" />
+                    alt={"Imagen previa del proyecto " + data.nombre} />
             </figure>
             <div className="w-full flex flex-col justify-between items-center grow gap-4 p-4">
                 <header className="w-full text-center font-semibold">
@@ -27,7 +27,7 @@ export default function BoxProyecto({ data }: EmployeeProps) {
                 <div className="w-full flex justify-center items-center flex-wrap gap-2 text-center font-semibold">
                     {data.tecnologias.map((tecnologia) => (
                         <span key={tecnologia} className="flex gap-2 items-center justify-center 
-                bg-[rgba(60,62,138,.2)] dark:bg-gray-900 text-sm text-gray-900 dark:text-slate-100 
+                bg-[rgba(60,62,138,.2)] dark:bg-gray-900 text-xs text-gray-900 dark:text-slate-100 
                 px-3 py-1 rounded-2xl shadow-md">{tecnologia}</span>
                     ))}
                 </div>
