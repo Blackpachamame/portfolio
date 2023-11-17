@@ -20,14 +20,14 @@ export default function BoxProyecto({ data }: EmployeeProps) {
                     src={data.imgProyecto}
                     alt="newsletter preview" />
             </figure>
-            <div className="w-full text-center font-semibold px-4 pt-4">
-                <h3 className="text-xl">{data.nombre}</h3>
-            </div>
-            <div className="w-full flex flex-col justify-between items-center gap-4 p-4">
+            <div className="w-full flex flex-col justify-between items-center grow gap-4 p-4">
+                <header className="w-full text-center font-semibold">
+                    <h3 className="text-xl">{data.nombre}</h3>
+                </header>
                 <div className="w-full flex justify-center items-center flex-wrap gap-2 text-center font-semibold">
                     {data.tecnologias.map((tecnologia) => (
                         <span key={tecnologia} className="flex gap-2 items-center justify-center 
-                bg-[rgba(60,62,138,.2)] dark:bg-gray-900 text-xs text-gray-900 dark:text-slate-100 
+                bg-[rgba(60,62,138,.2)] dark:bg-gray-900 text-sm text-gray-900 dark:text-slate-100 
                 px-3 py-1 rounded-2xl shadow-md">{tecnologia}</span>
                     ))}
                 </div>
