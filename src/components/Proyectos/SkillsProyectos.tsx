@@ -5,7 +5,7 @@ type HandleSkill = {
     obtenerSkill: (event: string) => void;
 }
 
-export default function Skills({ obtenerSkill }: HandleSkill) {
+export default function SkillsProyectos({ obtenerSkill }: HandleSkill) {
     const handleClick = (event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>, skill: string) => {
         event.currentTarget.classList.toggle('activo');
         obtenerSkill(skill)
