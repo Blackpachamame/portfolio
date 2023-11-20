@@ -42,7 +42,7 @@ export const proyectos = [
     },
     {
         id: uuid(),
-        imgProyecto: proyect1,
+        imgProyecto: proyect3,
         logo: ParkOurLogo,
         nombre: "Park-Our",
         tecnologias: ["Capacitor", "Quasar", "TypeScript"],
@@ -59,7 +59,7 @@ export const proyectos = [
     },
     {
         id: uuid(),
-        imgProyecto: proyect3,
+        imgProyecto: proyect1,
         logo: FrontendmentorLogo,
         nombre: "Newsletter sign-up form with success message",
         tecnologias: ["HTML", "CSS", "JavaScript"],
