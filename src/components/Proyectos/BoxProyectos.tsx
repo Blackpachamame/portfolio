@@ -6,6 +6,7 @@ interface EmployeeProps {
         imgProyecto: string,
         nombre: string,
         tecnologias: string[],
+        descripcion: string,
         codigo: string,
         sitio?: string,
         logo: string,
