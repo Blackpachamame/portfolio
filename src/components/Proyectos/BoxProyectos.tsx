@@ -23,8 +23,8 @@ export default function BoxProyectos({ data }: EmployeeProps) {
                     alt={"Imagen previa del proyecto " + data.nombre} />
                 {/* Descripcion proyecto */}
                 <div className="absolute inset-0 z-10 bg-[rgba(60,62,138,.9)] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <div className="w-full h-full flex justify-center items-center">
-                        <p className="">Hola Carola</p>
+                    <div className="w-full h-full flex justify-center items-center p-2">
+                        <p className="text-center">{data.descripcion}</p>
                     </div>
                 </div>
                 {/* Borde arriba del logo */}
