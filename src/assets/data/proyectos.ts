@@ -6,10 +6,10 @@ import {
     AdviceAppPreview,
     GorinkaiPreview,
     GorinkaiLogo,
+    ParkOurPreview,
     ParkOurLogo,
     proyect1,
     proyect2,
-    proyect3,
 } from "../images/proyects"
 
 export const proyectos = [
@@ -45,7 +45,7 @@ export const proyectos = [
     },
     {
         id: uuid(),
-        imgProyecto: proyect3,
+        imgProyecto: ParkOurPreview,
         logo: ParkOurLogo,
         nombre: "Park-Our",
         tecnologias: ["Capacitor", "Quasar", "TypeScript"],
