@@ -6,7 +6,7 @@ import GorinkaiPreview from "../proyects/gorinkai-preview.jpg";
 import GorinkaiLogo from "../proyects/gorinkai-logo.png";
 import ParkOurPreview from "../proyects/parkour-preview.jpg";
 import ParkOurLogo from "../proyects/parkour-logo.png";
-import proyect1 from "../proyects/proyect1.jpg";
+import TodoApp from "../proyects/todoApp-preview.jpg";
 import proyect2 from "../proyects/proyect2.jpg";
 import proyect3 from "../proyects/proyect3.jpg";
 
@@ -19,7 +19,7 @@ export {
     GorinkaiLogo,
     ParkOurPreview,
     ParkOurLogo,
-    proyect1,
+    TodoApp,
     proyect2,
     proyect3,
 };

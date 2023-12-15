@@ -8,11 +8,21 @@ import {
     GorinkaiLogo,
     ParkOurPreview,
     ParkOurLogo,
-    proyect1,
+    TodoApp,
     proyect2,
 } from "../images/proyects"
 
 export const proyectos = [
+    {
+        id: uuid(),
+        imgProyecto: TodoApp,
+        logo: FrontendmentorLogo,
+        nombre: "Todo app",
+        tecnologias: ["Dnd Kit", "JavaScript", "React", "Tailwind"],
+        descripcion: "Aplicación de tareas pendientes, permite reordenar las tareas con drag and drop.",
+        codigo: "https://github.com/Blackpachamame/todo-app",
+        sitio: "https://todo-app-neon-kappa.vercel.app",
+    },
     {
         id: uuid(),
         imgProyecto: AluraPlusPreview,
@@ -57,16 +67,6 @@ export const proyectos = [
         imgProyecto: proyect2,
         logo: FrontendmentorLogo,
         nombre: "Huddle landing page with curved sections",
-        tecnologias: ["HTML", "CSS", "JavaScript"],
-        descripcion: "Este sitio es una mutación del desafío Aluraflix de Alura Latam para el curso de frontend del Grupo 5.",
-        codigo: "https://github.com/Blackpachamame/aluraplus",
-        sitio: "https://aluraplus-theta-gray.vercel.app",
-    },
-    {
-        id: uuid(),
-        imgProyecto: proyect1,
-        logo: FrontendmentorLogo,
-        nombre: "Newsletter sign-up form with success message",
         tecnologias: ["HTML", "CSS", "JavaScript"],
         descripcion: "Este sitio es una mutación del desafío Aluraflix de Alura Latam para el curso de frontend del Grupo 5.",
         codigo: "https://github.com/Blackpachamame/aluraplus",
