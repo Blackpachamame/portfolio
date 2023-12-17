@@ -44,7 +44,7 @@ export const skills = [
     {
         id: uuid(),
         imgSkill: tailwind,
-        nombre: "Tailwind",
+        nombre: "Tailwind CSS",
     },
     {
         id: uuid(),

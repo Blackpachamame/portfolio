@@ -18,7 +18,7 @@ export const proyectos = [
         imgProyecto: TodoApp,
         logo: FrontendmentorLogo,
         nombre: "Todo app",
-        tecnologias: ["Dnd Kit", "JavaScript", "React", "Tailwind"],
+        tecnologias: ["Dnd Kit", "JavaScript", "React", "Tailwind CSS"],
         descripcion: "Aplicación de tareas pendientes, permite reordenar las tareas con drag and drop.",
         codigo: "https://github.com/Blackpachamame/todo-app",
         sitio: "https://todo-app-neon-kappa.vercel.app",
