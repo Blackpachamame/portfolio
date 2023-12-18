@@ -9,9 +9,9 @@ export default function Principal() {
                         Marcos Andrés Travaglini
                     </span>
                 </h1>
-                <h3 className="text-xl md:text-2xl lg:text-3xl text-slate-900 dark:text-[#d0d0ff] font-bold">
+                <p className="text-xl md:text-2xl lg:text-3xl text-slate-900 dark:text-[#d0d0ff] font-bold">
                     Desarrollador Web Frontend
-                </h3>
+                </p>
             </div>
             <ButtonCV />
         </div>
