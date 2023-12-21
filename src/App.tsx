@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Header, Home, Proyectos, SobreMi } from "./components";
+import { Header, Home, Proyectos, SobreMi, Skills } from "./components";
 
 export default function App() {
   return (
@@ -16,6 +16,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/sobremi" element={<SobreMi />} />
             <Route path="/proyectos" element={<Proyectos />} />
+            <Route path="/skills" element={<Skills />} />
           </Routes>
         </div>
       </main>
