@@ -15,6 +15,9 @@ import {
     nodejs,
     mysql,
     photoshop,
+    laravel,
+    html,
+    css,
 } from "../images/skills"
 
 export const skills = [
@@ -107,5 +110,23 @@ export const skills = [
         boxProject: false,
         imgSkill: photoshop,
         nombre: "Photoshop",
+    },
+    {
+        id: uuid(),
+        boxProject: false,
+        imgSkill: laravel,
+        nombre: "Laravel",
+    },
+    {
+        id: uuid(),
+        boxProject: false,
+        imgSkill: html,
+        nombre: "HTML",
+    },
+    {
+        id: uuid(),
+        boxProject: false,
+        imgSkill: css,
+        nombre: "CSS",
     },
 ];

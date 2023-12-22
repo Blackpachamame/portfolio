@@ -14,6 +14,9 @@ import jquery from "../skills/logo-jquery.svg";
 import nodejs from "../skills/logo-nodejs.svg";
 import mysql from "../skills/logo-mysql.svg";
 import photoshop from "../skills/logo-photoshop.svg";
+import laravel from "../skills/logo-laravel.svg";
+import html from "../skills/logo-html.svg";
+import css from "../skills/logo-css.svg";
 
 export {
     bootstrap,
@@ -31,4 +34,7 @@ export {
     nodejs,
     mysql,
     photoshop,
+    laravel,
+    html,
+    css,
 };
