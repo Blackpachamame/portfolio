@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Redes from "./Redes"
-import logoWhite from "./../../assets/logo-white.png"
-import logoBlack from "./../../assets/logo-black.png"
+import logoWhite from "./../../assets/logoLight.png"
+import logoBlack from "./../../assets/logoDark.png"
 import { NavLink } from "react-router-dom";
 
 export default function Brand() {
