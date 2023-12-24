@@ -68,8 +68,8 @@ export const proyectos = [
         logo: FrontendmentorLogo,
         nombre: "Huddle landing page with curved sections",
         tecnologias: ["HTML", "CSS", "JavaScript"],
-        descripcion: "Este sitio es una mutación del desafío Aluraflix de Alura Latam para el curso de frontend del Grupo 5.",
-        codigo: "https://github.com/Blackpachamame/aluraplus",
-        sitio: "https://aluraplus-theta-gray.vercel.app",
+        descripcion: "Landing page agrupada con secciones curvas.",
+        codigo: "https://github.com/Blackpachamame/Blackpachamame.github.io/tree/main/desafíos-frontendmentor/huddle-landing-page-with-curved-sections",
+        sitio: "https://blackpachamame.github.io/desafíos-frontendmentor/huddle-landing-page-with-curved-sections/",
     },
 ];

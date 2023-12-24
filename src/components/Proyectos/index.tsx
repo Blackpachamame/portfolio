@@ -58,7 +58,7 @@ export default function Proyectos() {
 
   return (
     <section className="flex flex-col items-center gap-8">
-      <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold">Proyectos</h1>
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold">Proyectos</h2>
       <SkillsProyectos obtenerSkill={obtenerSkill} />
       <div className="grid justify-center items-stretch gap-4 grid-cols-16">
         {(projects.length > 0)

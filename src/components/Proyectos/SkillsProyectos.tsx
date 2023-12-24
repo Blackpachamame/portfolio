@@ -11,9 +11,11 @@ export default function SkillsProyectos({ obtenerSkill }: HandleSkill) {
         obtenerSkill(skill)
     };
 
+    const skillsProyect = skills.filter((skill) => skill.boxProject === true)
+
     return (
         <div className="flex justify-center flex-wrap gap-5">
-            {skills.map((skill) => (
+            {skillsProyect.map((skill) => (
                 <div key={skill.id} className="group relative inline-block">
                     <button onClick={(e) => handleClick(e, skill.nombre)} aria-label="Enviar skill"
                         className="w-14 h-14 md:w-16 md:h-16 flex justify-center items-center bg-[rgba(243,243,243,.3)] dark:bg-[#11121b] 
