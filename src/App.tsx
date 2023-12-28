@@ -1,24 +1,14 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Header, Home, Proyectos, SobreMi, Skills } from "./components";
+import { BrowserRouter } from "react-router-dom";
+import AnimatedRoutes from "./components/AnimatedRoutes";
+import Header from "./components/Header";
 
 export default function App() {
   return (
     <BrowserRouter>
       <main className="max-w-screen-xl min-h-screen flex flex-col my-0 mx-auto p-4 md:p-6">
         <div className="fixed inset-0 bg-[rgba(60,62,138,.1)] dark:bg-[#11121b]"></div>
-        <Header></Header>
-        <div className="flex-1 flex flex-col justify-center items-center relative z-10 
-        bg-gradient-to-tr from-[rgba(60,62,138,.2)] to-transparent text-gray-900 
-        dark:from-[rgba(78,89,192,.2)] dark:text-slate-100
-        border border-solid border-[#d9dae2] dark:border-[#242636] rounded-2xl 
-        shadow-lg px-4 py-6 lg:px-10 lg:py-8 transition duration-300">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/sobremi" element={<SobreMi />} />
-            <Route path="/proyectos" element={<Proyectos />} />
-            <Route path="/skills" element={<Skills />} />
-          </Routes>
-        </div>
+        <Header />
+        <AnimatedRoutes />
       </main>
     </BrowserRouter>
   )

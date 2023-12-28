@@ -3,6 +3,7 @@ import BoxProyectos from "./BoxProyectos";
 import SkillsProyectos from "./SkillsProyectos";
 import { proyectos } from "../../assets/data";
 import { RiShareBoxFill } from "react-icons/ri";
+import { motion } from "framer-motion";
 
 const arraySkills: string[] = [];
 
@@ -57,7 +58,11 @@ export default function Proyectos() {
   };
 
   return (
-    <section className="flex flex-col items-center gap-8">
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="flex flex-col items-center gap-8">
       <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold">Proyectos</h2>
       <SkillsProyectos obtenerSkill={obtenerSkill} />
       <div className="grid justify-center items-stretch gap-4 grid-cols-16">
@@ -68,6 +73,6 @@ export default function Proyectos() {
           : <h3 className="text-xl">No se encontraron proyectos</h3>}
       </div>
       <a className="flex items-center gap-2 hover:underline underline-offset-2" href="https://github.com/Blackpachamame?tab=repositories" target="_blank" rel="noreferrer"><RiShareBoxFill /> Revisar todos los proyectos</a>
-    </section>
+    </motion.section>
   );
 }

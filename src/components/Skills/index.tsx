@@ -1,9 +1,13 @@
+import { motion } from "framer-motion";
 import { skills } from "../../assets/data";
 
 export default function Skills() {
-
   return (
-    <section className="w-full sm:max-w-[768px] flex flex-col items-center gap-8">
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="w-full sm:max-w-[768px] flex flex-col items-center gap-8">
       <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold">Skills</h2>
       <div className="flex justify-center flex-wrap gap-5">
         {skills.map((skill) => (
@@ -22,6 +26,6 @@ export default function Skills() {
           </div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }
