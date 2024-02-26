@@ -36,7 +36,7 @@ Los usuarios deberían poder:
 
 ### Lo que aprendí
 
-- Este proyecto lo use para entrar al mundo de Tailwind CSS, un framework que hace mucho tiempo quise probar, pero prefería seguir prácticando CSS puro. Además, en este proyecto, también implemento typescript como para ir agarrando confinanza.
+- Este proyecto lo use para entrar al mundo de Tailwind CSS, un framework que hace mucho tiempo quise probar, pero prefería seguir practicando CSS puro. Además, en este proyecto, también implemento typescript como para ir agarrando confianza.
 
 ### Desarrollo continuo
 
