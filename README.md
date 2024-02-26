@@ -30,13 +30,14 @@ Los usuarios deberían poder:
 ### Construido con
 
 - React
+- TypeScript
 - Tailwind CSS
 - Framer Motion
 - React Router
 
 ### Lo que aprendí
 
-- Este proyecto lo use para entrar al mundo de Tailwind CSS, un framework que hace mucho tiempo quise probar, pero prefería seguir practicando CSS puro. Además, en este proyecto, también implemento typescript como para ir agarrando confianza.
+- Este proyecto lo use para entrar al mundo de Tailwind CSS, un framework que hace mucho tiempo quise probar, pero prefería seguir practicando CSS puro. Además, en este proyecto, también implemento TypeScript como para ir agarrando confianza.
 
 ### Desarrollo continuo
 
