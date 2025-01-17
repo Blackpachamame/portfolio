@@ -53,8 +53,8 @@ export const proyectos = [
     descripcion:
       "Aplicación generadora de consejos utilizando la Advice Slip API.",
     codigo:
-      "https://github.com/Blackpachamame/Blackpachamame.github.io/tree/main/desafíos-frontendmentor/advice-generator-app",
-    sitio: "https://advice-generator-app-dun-gamma.vercel.app",
+      "https://github.com/Blackpachamame/frontendmentor/tree/main/junior/advice-generator-app",
+    sitio: "https://advice-generator-app-orpin-nine.vercel.app/",
   },
   {
     id: uuid(),
