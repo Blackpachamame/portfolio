@@ -1,9 +1,13 @@
-import { FadeSection } from '../ui/FadeSection';
+import { motion } from 'framer-motion';
 import ButtonCV from './ButtonCV';
 
 export default function Principal() {
   return (
-    <FadeSection className="flex w-full flex-col items-center justify-center text-center">
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="flex w-full flex-col items-center justify-center text-center">
       <h1 className="text-xl font-extrabold uppercase min-[425px]:text-2xl sm:text-3xl md:text-4xl">
         <span className="bg-gradient-to-r from-rose-900 to-blue-900 bg-clip-text text-transparent dark:from-[#9796f0] dark:to-[#fbc7d4]">
           Marcos Andrés Travaglini
@@ -13,6 +17,6 @@ export default function Principal() {
         Desarrollador Web Frontend
       </p>
       <ButtonCV />
-    </FadeSection>
+    </motion.section>
   );
 }

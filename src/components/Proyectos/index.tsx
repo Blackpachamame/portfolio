@@ -3,7 +3,7 @@ import BoxProyectos from './BoxProyectos';
 import SkillsProyectos from './SkillsProyectos';
 import { proyectos } from '../../assets/data';
 import { RiShareBoxFill } from 'react-icons/ri';
-import { FadeSection } from '../ui/FadeSection';
+import { motion } from 'framer-motion';
 
 const arraySkills: string[] = [];
 
@@ -58,7 +58,11 @@ export default function Proyectos() {
   };
 
   return (
-    <FadeSection className="flex flex-col items-center gap-8">
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="flex flex-col items-center gap-8">
       <h2 className="text-xl font-extrabold sm:text-2xl md:text-3xl">Proyectos</h2>
       <SkillsProyectos obtenerSkill={obtenerSkill} />
       <div className="grid grid-cols-[repeat(auto-fill,minmax(254px,1fr))] items-stretch justify-center gap-4">
@@ -75,6 +79,6 @@ export default function Proyectos() {
         rel="noreferrer">
         <RiShareBoxFill /> Revisar todos los proyectos
       </a>
-    </FadeSection>
+    </motion.section>
   );
 }

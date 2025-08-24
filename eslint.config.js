@@ -1,13 +1,18 @@
 import js from '@eslint/js';
 import globals from 'globals';
-import react from 'eslint-plugin-react';
-import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
-import { globalIgnores } from 'eslint/config';
+import { FlatCompat } from '@eslint/eslintrc';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const compat = new FlatCompat({ baseDirectory: __dirname });
 
 export default tseslint.config([
-  globalIgnores(['node_modules/**', 'dist/**', 'dist-ssr/**', 'coverage/**']),
+  { ignores: ['node_modules/**', 'dist/**', 'dist-ssr/**', 'coverage/**'] },
+
+  { settings: { react: { version: 'detect' } } },
+
   {
     files: [
       '**/*.{config,cfg}.{js,ts}',
@@ -20,32 +25,32 @@ export default tseslint.config([
       globals: globals.node,
     },
   },
+
+  // Carga presets legacy en modo Flat (evita el error de plugins: ["react"])
+  ...compat.extends(
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+  ),
+
+  // Base JS/Browser
   {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      react.configs.recommended,
-      react.configs['jsx-runtime'],
-      reactHooks.configs['recommended-latest'],
-      reactRefresh.configs.vite,
-    ],
+    files: ['**/*.{ts,tsx,js,jsx}'],
+    extends: [js.configs.recommended],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: globals.browser,
     },
-    settings: { react: { version: 'detect' } },
     rules: {
       'react/prop-types': 'off',
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     },
   },
+
+  // TS sin y con type-checking
   {
     files: ['**/*.{ts,tsx}'],
-    extends: [...tseslint.configs.recommendedTypeChecked],
-    languageOptions: {
-      parserOptions: { projectService: true },
-    },
+    extends: [...tseslint.configs.recommended, ...tseslint.configs.recommendedTypeChecked],
+    languageOptions: { parserOptions: { projectService: true } },
   },
 ]);

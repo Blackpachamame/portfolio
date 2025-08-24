@@ -1,9 +1,13 @@
-import { FadeSection } from '../ui/FadeSection';
+import { motion } from 'framer-motion';
 import { skills } from '../../assets/data';
 
 export default function Skills() {
   return (
-    <FadeSection className="flex w-full flex-col items-center gap-8 sm:max-w-[768px]">
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="flex w-full flex-col items-center gap-8 sm:max-w-[768px]">
       <h2 className="text-xl font-extrabold sm:text-2xl md:text-3xl">Skills</h2>
 
       <div className="flex flex-wrap justify-center gap-5">
@@ -28,6 +32,6 @@ export default function Skills() {
           </div>
         ))}
       </div>
-    </FadeSection>
+    </motion.section>
   );
 }

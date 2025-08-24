@@ -1,7 +1,8 @@
 import { BsGithub, BsLinkedin, BsFillSunFill, BsFillMoonStarsFill } from 'react-icons/bs';
 
+type Theme = 'light' | 'dark';
 type ChangeTheme = {
-  theme: string;
+  theme: Theme;
   handleChangeTheme: () => void;
 };
 

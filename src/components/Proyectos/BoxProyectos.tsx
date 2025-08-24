@@ -55,13 +55,21 @@ export default function BoxProyectos({ data }: EmployeeProps) {
         </div>
         <div className="flex w-full justify-center gap-4">
           {data.sitio && (
-            <a className="flex items-center gap-2" href={data.sitio} target="_blank">
+            <a
+              className="flex items-center gap-2"
+              href={data.sitio}
+              target="_blank"
+              rel="noreferrer">
               <FiGlobe style={{ fontSize: '16px' }} />
               Online
             </a>
           )}
           {data.codigo && (
-            <a className="flex items-center gap-2" href={data.codigo} target="_blank">
+            <a
+              className="flex items-center gap-2"
+              href={data.codigo}
+              target="_blank"
+              rel="noreferrer">
               <FiCode style={{ fontSize: '16px' }} />
               Código
             </a>

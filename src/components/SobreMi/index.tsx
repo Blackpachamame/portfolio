@@ -1,8 +1,12 @@
-import { FadeSection } from '../ui/FadeSection';
+import { motion } from 'framer-motion';
 
 export default function SobreMi() {
   return (
-    <FadeSection className="text-center">
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="component text-center">
       <h2 className="mb-5 text-xl font-extrabold sm:text-2xl md:text-3xl">Sobre mi</h2>
       <p className="mb-3 md:text-lg">
         ¡Saludos! Mi nombre es Marcos Andrés Travaglini, vivo en Neuquén, Argentina. Soy
@@ -14,6 +18,6 @@ export default function SobreMi() {
         cómo funciona todo, muchas ganas de aprender y seguir profundizando en los conocimientos que
         ya poseo.
       </p>
-    </FadeSection>
+    </motion.section>
   );
 }

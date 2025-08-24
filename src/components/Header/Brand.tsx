@@ -4,26 +4,28 @@ import logoWhite from './../../assets/logoLight.png';
 import logoBlack from './../../assets/logoDark.png';
 import { NavLink } from 'react-router-dom';
 
+type Theme = 'light' | 'dark';
+
+function getInitialTheme(): Theme {
+  if (typeof window === 'undefined') return 'light';
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light' || saved === 'dark') return saved;
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  return prefersDark ? 'dark' : 'light';
+}
+
 export default function Brand() {
-  const themePrefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  const [theme, setTheme] = useState(getInitialTheme);
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
-    if (theme === 'dark') {
-      document.querySelector('html')?.classList.add('dark');
-    } else {
-      document.querySelector('html')?.classList.remove('dark');
-    }
-    localStorage.setItem('theme', JSON.stringify(theme));
+    const root = document.documentElement;
+    root.classList.toggle('dark', theme === 'dark');
+    root.style.colorScheme = theme;
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
-  function getInitialTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    return savedTheme ? JSON.parse(savedTheme) : themePrefers;
-  }
-
   const handleChangeTheme = () => {
-    setTheme((prevTheme: string) => (prevTheme === 'light' ? 'dark' : 'light'));
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
   return (
@@ -31,9 +33,9 @@ export default function Brand() {
       <div className="flex items-center">
         <NavLink to="/" className="flex items-center gap-2 text-2xl font-medium uppercase">
           {theme === 'light' ? (
-            <img src={logoBlack} alt="logo" width="32" height="32" />
+            <img src={logoBlack} alt="logo" width={32} height={32} />
           ) : (
-            <img src={logoWhite} alt="logo" width="32" height="32" />
+            <img src={logoWhite} alt="logo" width={32} height={32} />
           )}
         </NavLink>
       </div>
