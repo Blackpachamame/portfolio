@@ -1,7 +1,4 @@
-import { proyectos } from "./proyectos.js";
-import { skills } from "./skills";
+import { proyectos } from './proyectos.js';
+import { skills } from './skills';
 
-export {
-    proyectos,
-    skills,
-};
+export { proyectos, skills };

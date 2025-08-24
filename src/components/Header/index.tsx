@@ -1,15 +1,14 @@
-import Brand from "./Brand"
-import Navbar from "./Navbar";
+import Brand from './Brand';
+import Navbar from './Navbar';
 
 export default function Header() {
-    return (
-        <header className="bg-gradient-to-tr from-[rgba(60,62,138,.1)] to-transparent text-indigo-950 
-        dark:from-[rgba(78,89,192,.2)] dark:text-slate-300 border border-solid border-[#d9dae2] dark:border-[#242636] rounded-2xl mb-3 relative z-10 transition duration-300">
-            <div className="px-4 py-5 lg:px-10 lg:py-6 flex flex-col justify-center relative">
-                <Brand />
-                <div className="dark:bg-gray-800 bg-[#cbcddb] block lg:hidden h-px my-5 -mx-4"></div>
-                <Navbar />
-            </div>
-        </header>
-    );
+  return (
+    <header className="relative z-10 mb-3 rounded-2xl border border-solid border-[#d9dae2] bg-gradient-to-tr from-[rgba(60,62,138,.1)] to-transparent text-indigo-950 transition duration-300 dark:border-[#242636] dark:from-[rgba(78,89,192,.2)] dark:text-slate-300">
+      <div className="relative flex flex-col justify-center px-4 py-5 lg:px-10 lg:py-6">
+        <Brand />
+        <div className="-mx-4 my-5 block h-px bg-[#cbcddb] lg:hidden dark:bg-gray-800"></div>
+        <Navbar />
+      </div>
+    </header>
+  );
 }

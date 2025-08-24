@@ -7,16 +7,36 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Env
+.env
+.env.*.local
+
+# Dependencias y cachés
+node_modules/
+.vite/
+.eslintcache
+*.tsbuildinfo
+
+# Salidas de build
+dist/
+dist-ssr/
+
+# Overrides locales
 *.local
 
-# Editor directories and files
+# Bun lockfiles
+bun.lock
+bun.lockb
+
+# Cobertura de tests (si aplica)
+coverage/
+
+# Editor / SO
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
+Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj
