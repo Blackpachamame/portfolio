@@ -17,6 +17,7 @@ import {
   laravel,
   html,
   css,
+  angular,
 } from '../images/skills';
 
 export const skills = [
@@ -102,7 +103,7 @@ export const skills = [
     id: crypto.randomUUID(),
     boxProject: false,
     imgSkill: mysql,
-    nombre: 'Mysql',
+    nombre: 'MySQL',
   },
   {
     id: crypto.randomUUID(),
@@ -127,5 +128,11 @@ export const skills = [
     boxProject: false,
     imgSkill: css,
     nombre: 'CSS',
+  },
+  {
+    id: crypto.randomUUID(),
+    boxProject: false,
+    imgSkill: angular,
+    nombre: 'Angular',
   },
 ];

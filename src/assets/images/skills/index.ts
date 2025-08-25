@@ -16,6 +16,7 @@ import photoshop from '../skills/logo-photoshop.svg';
 import laravel from '../skills/logo-laravel.svg';
 import html from '../skills/logo-html.svg';
 import css from '../skills/logo-css.svg';
+import angular from '../skills/logo_angular.svg';
 
 export {
   bootstrap,
@@ -36,4 +37,5 @@ export {
   laravel,
   html,
   css,
+  angular,
 };
