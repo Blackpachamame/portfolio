@@ -6,7 +6,7 @@ export default function SobreMi() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="component text-center">
+      className="text-center">
       <h2 className="mb-5 text-xl font-extrabold sm:text-2xl md:text-3xl">Sobre mi</h2>
       <p className="mb-3 md:text-lg">
         ¡Saludos! Mi nombre es Marcos Andrés Travaglini, vivo en Neuquén, Argentina. Soy

@@ -5,57 +5,19 @@ import { proyectos } from '../../assets/data';
 import { RiShareBoxFill } from 'react-icons/ri';
 import { motion } from 'framer-motion';
 
-const arraySkills: string[] = [];
-
 export default function Proyectos() {
-  const [tecnologias, setTecnologias] = useState(arraySkills);
-  let projects;
+  const [tecnologias, setTecnologias] = useState<string[]>([]);
 
-  if (tecnologias.length > 0) {
-    projects = verProyectos();
-  } else {
-    projects = proyectos;
-  }
-
-  function verProyectos() {
-    const arrayProjects = proyectos.filter((proyecto) =>
-      existeSkill(proyecto.tecnologias, tecnologias),
+  const toggleSkill = (skill: string) => {
+    setTecnologias((prev) =>
+      prev.includes(skill) ? prev.filter((s) => s !== skill) : [...prev, skill],
     );
-    return arrayProjects;
-  }
-
-  function existeSkill(tecnoProyecto: string[], tecnoSkills: string[]) {
-    let existe = false;
-    for (let i = 0; i < tecnoSkills.length; i = i + 1) {
-      existe = tecnoProyecto.includes(tecnoSkills[i]);
-      if (!existe) {
-        i = tecnoSkills.length;
-      }
-    }
-    return existe;
-  }
-
-  function obtenerSkill(skill: string) {
-    editarTecnologia(skill);
-  }
-
-  const editarTecnologia = (unaSkill: string) => {
-    const encontrado = tecnologias.includes(unaSkill);
-    if (!encontrado) {
-      agregarSkill(unaSkill);
-    } else {
-      eliminarSkill(unaSkill);
-    }
   };
 
-  const agregarSkill = (unaSkill: string) => {
-    setTecnologias([...tecnologias, unaSkill]);
-  };
-
-  const eliminarSkill = (unaSkill: string) => {
-    const nuevasSkills = tecnologias.filter((skill) => skill !== unaSkill);
-    setTecnologias(nuevasSkills);
-  };
+  const projects =
+    tecnologias.length === 0
+      ? proyectos
+      : proyectos.filter((p) => tecnologias.every((s) => p.tecnologias.includes(s)));
 
   return (
     <motion.section
@@ -64,7 +26,7 @@ export default function Proyectos() {
       exit={{ opacity: 0 }}
       className="flex flex-col items-center gap-8">
       <h2 className="text-xl font-extrabold sm:text-2xl md:text-3xl">Proyectos</h2>
-      <SkillsProyectos obtenerSkill={obtenerSkill} />
+      <SkillsProyectos toggleSkill={toggleSkill} tecnologiasActivas={tecnologias} />
       <div className="grid grid-cols-[repeat(auto-fill,minmax(254px,1fr))] items-stretch justify-center gap-4">
         {projects.length > 0 ? (
           projects.map((proyecto) => <BoxProyectos key={proyecto.id} data={proyecto} />)

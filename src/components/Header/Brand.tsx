@@ -33,9 +33,9 @@ export default function Brand() {
       <div className="flex items-center">
         <NavLink to="/" className="flex items-center gap-2 text-2xl font-medium uppercase">
           {theme === 'light' ? (
-            <img src={logoBlack} alt="logo" width={32} height={32} />
+            <img src={logoBlack} alt="logo" width={32} height={32} fetchPriority="high" />
           ) : (
-            <img src={logoWhite} alt="logo" width={32} height={32} />
+            <img src={logoWhite} alt="logo" width={32} height={32} fetchPriority="high" />
           )}
         </NavLink>
       </div>

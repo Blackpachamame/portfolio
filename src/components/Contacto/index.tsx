@@ -16,8 +16,9 @@ export default function Contacto() {
     if (state.succeeded) {
       toast.success('¡Mensaje enviado! Te responderé pronto.');
       formRef.current?.reset();
-      return;
-    } else if (state.errors) toast.error('Ups, hubo un problema. Revisá los campos.');
+    } else if (state.errors && Object.keys(state.errors).length > 0) {
+      toast.error('Ups, hubo un problema. Revisá los campos.');
+    }
   }, [state.submitting, state.succeeded, state.errors]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {

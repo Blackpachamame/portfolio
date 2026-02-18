@@ -1,16 +1,16 @@
 import FrontendmentorLogo from '../proyects/frontendmentor-logo.png';
-import AluraPlusPreview from '../proyects/aluraPlus-preview.jpg';
+import AluraPlusPreview from '../proyects/aluraPlus-preview.webp';
 import AluraPlusLogo from '../proyects/aluraPlus-logo.png';
-import AdviceAppPreview from '../proyects/adviceApp-preview.jpg';
-import GorinkaiPreview from '../proyects/gorinkai-preview.jpg';
+import AdviceAppPreview from '../proyects/adviceApp-preview.webp';
+import GorinkaiPreview from '../proyects/gorinkai-preview.webp';
 import GorinkaiLogo from '../proyects/gorinkai-logo.png';
-import ManganetaPreview from '../proyects/manganeta-preview.jpg';
+import ManganetaPreview from '../proyects/manganeta-preview.webp';
 import ManganetaLogo from '../proyects/manganeta-logo.png';
-import ParkOurPreview from '../proyects/parkour-preview.jpg';
+import ParkOurPreview from '../proyects/parkour-preview.webp';
 import ParkOurLogo from '../proyects/parkour-logo.png';
-import TodoApp from '../proyects/todoApp-preview.jpg';
-// import proyect2 from "../proyects/proyect2.jpg";
-// import proyect3 from "../proyects/proyect3.jpg";
+import TodoApp from '../proyects/todoApp-preview.webp';
+// import proyect2 from "../proyects/proyect2.webp";
+// import proyect3 from "../proyects/proyect3.webp";
 
 export {
   FrontendmentorLogo,
