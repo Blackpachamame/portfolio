@@ -18,6 +18,7 @@ import {
   html,
   css,
   angular,
+  expo,
 } from '../images/skills';
 
 export const skills = [
@@ -134,5 +135,11 @@ export const skills = [
     boxProject: false,
     imgSkill: angular,
     nombre: 'Angular',
+  },
+  {
+    id: crypto.randomUUID(),
+    boxProject: false,
+    imgSkill: expo,
+    nombre: 'Expo',
   },
 ];
