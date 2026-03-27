@@ -9,8 +9,8 @@ import ManganetaLogo from '../proyects/manganeta-logo.png';
 import ParkOurPreview from '../proyects/parkour-preview.webp';
 import ParkOurLogo from '../proyects/parkour-logo.png';
 import TodoApp from '../proyects/todoApp-preview.webp';
-// import proyect2 from "../proyects/proyect2.webp";
-// import proyect3 from "../proyects/proyect3.webp";
+import ClipFlowLogo from '../proyects/clipFlow-logo.png';
+import ClipFlow from '../proyects/clipFlow-preview.webp';
 
 export {
   FrontendmentorLogo,
@@ -24,4 +24,6 @@ export {
   ParkOurPreview,
   ParkOurLogo,
   TodoApp,
+  ClipFlowLogo,
+  ClipFlow,
 };

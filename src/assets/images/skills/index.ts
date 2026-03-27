@@ -17,6 +17,7 @@ import laravel from '../skills/logo-laravel.svg';
 import html from '../skills/logo-html.svg';
 import css from '../skills/logo-css.svg';
 import angular from '../skills/logo_angular.svg';
+import expo from '../skills/logo_expo.svg';
 
 export {
   bootstrap,
@@ -38,4 +39,5 @@ export {
   html,
   css,
   angular,
+  expo,
 };
