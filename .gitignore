@@ -24,10 +24,6 @@ dist-ssr/
 # Overrides locales
 *.local
 
-# Bun lockfiles
-bun.lock
-bun.lockb
-
 # Cobertura de tests (si aplica)
 coverage/
 
