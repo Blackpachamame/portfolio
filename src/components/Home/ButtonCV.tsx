@@ -3,7 +3,7 @@ import { BsDownload } from 'react-icons/bs';
 export default function ButtonCV() {
   return (
     <a
-      href="https://drive.google.com/file/d/1v9yaJpAvTlxXSyOGlfLP2_rNkzD6Sbk2/view?usp=sharing"
+      href="https://docs.google.com/document/d/1uIQlvvtBKE1vzOm7GHVlD1bBv_JQYVzGeqlCuEkyDac/edit?usp=sharing"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Abrir Curriculum en una nueva pestaña"
