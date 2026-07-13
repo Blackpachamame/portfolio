@@ -1,52 +1,43 @@
-# Portafolio
+# Astro Starter Kit: Minimal
 
-<div align="center">
-    <img src="./src/assets/preview-portfolio.png"></img>
-</div>
+```sh
+bun create astro@latest -- --template minimal
+```
 
-## Tabla de contenido
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-- [Portafolio](#portafolio)
-  - [Tabla de contenido](#tabla-de-contenido)
-  - [Descripción](#descripción)
-  - [Mi Procedimiento](#mi-procedimiento)
-    - [Construido con](#construido-con)
-    - [Lo que aprendí](#lo-que-aprendí)
-    - [Desarrollo continuo](#desarrollo-continuo)
-    - [Recursos útiles](#recursos-útiles)
-  - [Autor](#autor)
+## 🚀 Project Structure
 
-## Descripción
+Inside of your Astro project, you'll see the following folders and files:
 
-En está página encontrarás mi portafolio, donde doy una breve descripción sobre mi y muestro mis proyectos mas destacados.
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
 
-Los usuarios deberían poder:
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-- Ver el diseño óptimo según el tamaño de la pantalla de su dispositivo
-- Ver estados de desplazamiento para elementos interactivos
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-## Mi Procedimiento
+Any static assets, like images, can be placed in the `public/` directory.
 
-### Construido con
+## 🧞 Commands
 
-- React
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- React Router
+All commands are run from the root of the project, from a terminal:
 
-### Lo que aprendí
+| Command               | Action                                           |
+| :-------------------- | :----------------------------------------------- |
+| `bun install`         | Installs dependencies                            |
+| `bun dev`             | Starts local dev server at `localhost:4321`      |
+| `bun build`           | Build your production site to `./dist/`          |
+| `bun preview`         | Preview your build locally, before deploying     |
+| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `bun astro -- --help` | Get help using the Astro CLI                     |
 
-- Este proyecto lo use para entrar al mundo de Tailwind CSS, un framework que hace mucho tiempo quise probar, pero prefería seguir practicando CSS puro. Además, en este proyecto, también implemento TypeScript como para ir agarrando confianza.
+## 👀 Want to learn more?
 
-### Desarrollo continuo
-
-En el futuro me gustaría ir agregando otras secciones al portafolio, como la experiencia que voy ganando en el trabajo o nuevas skills que voy aprendiendo.
-
-### Recursos útiles
-
-- [Tailwind CSS](https://tailwindcss.com/) - Documentación.
-
-## Autor
-
-- Github - [Blackpachamame](https://github.com/Blackpachamame)
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

@@ -1,40 +1,24 @@
-# Logs
-logs
-*.log
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
-# Env
+
+# environment variables
 .env
-.env.*.local
+.env.production
 
-# Dependencias y cachés
-node_modules/
-.vite/
-.eslintcache
-*.tsbuildinfo
-
-# Salidas de build
-dist/
-dist-ssr/
-
-# Overrides locales
-*.local
-
-# Cobertura de tests (si aplica)
-coverage/
-
-# Editor / SO
-.vscode/*
-!.vscode/extensions.json
-.idea/
+# macOS-specific files
 .DS_Store
-Thumbs.db
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+
+# jetbrains setting folder
+.idea/
