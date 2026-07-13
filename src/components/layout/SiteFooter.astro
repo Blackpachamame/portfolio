@@ -1,0 +1,12 @@
+---
+import { siteInfo } from '../../data/site';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner container">
+    <p>© {currentYear} {siteInfo.name}</p>
+    <p>{siteInfo.role} · {siteInfo.location}</p>
+  </div>
+</footer>

@@ -1,0 +1,49 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import { experiences } from '../../data/experience';
+---
+
+<section id="experiencia" class="landing-section" aria-labelledby="experiencia-title">
+  <div class="container">
+    <SectionHeading
+      headingId="experiencia-title"
+      eyebrow="Experiencia"
+      title="Trabajo frontend en contextos profesionales y colaborativos"
+      introduction="Experiencias diferenciadas por su modalidad y alcance, con responsabilidades concretas dentro de cada equipo."
+    />
+
+    <div class="entry-list">
+      {
+        experiences.map((experience) => (
+          <article class="entry">
+            <header class="entry__header">
+              <div>
+                <h3>{experience.organization}</h3>
+                <p class="entry__role">{experience.role}</p>
+              </div>
+              <p class="entry__period">{experience.period}</p>
+            </header>
+
+            {experience.modality && <p class="entry__meta">{experience.modality}</p>}
+            {experience.context && <p class="entry__context">{experience.context}</p>}
+            <p>{experience.summary}</p>
+
+            <ul class="detail-list">
+              {experience.contributions.map((contribution) => (
+                <li>{contribution}</li>
+              ))}
+            </ul>
+
+            <ul
+              class="tag-list"
+              aria-label={`Tecnologías utilizadas en ${experience.organization}`}>
+              {experience.technologies.map((technology) => (
+                <li>{technology}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

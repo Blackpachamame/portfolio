@@ -1,0 +1,19 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import { profileContent, siteInfo } from '../../data/site';
+---
+
+<section id="perfil" class="landing-section" aria-labelledby="perfil-title">
+  <div class="section-layout container">
+    <SectionHeading
+      headingId="perfil-title"
+      eyebrow="Perfil profesional"
+      title="Frontend con experiencia práctica en equipos"
+    />
+
+    <div class="prose-content">
+      {profileContent.map((paragraph) => <p>{paragraph}</p>)}
+      <p><strong>Formación:</strong> {siteInfo.education}</p>
+    </div>
+  </div>
+</section>

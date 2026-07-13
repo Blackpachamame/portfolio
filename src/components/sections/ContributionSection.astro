@@ -1,0 +1,25 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import { contributionAreas } from '../../data/site';
+---
+
+<section id="aportes" class="landing-section" aria-labelledby="aportes-title">
+  <div class="container">
+    <SectionHeading
+      headingId="aportes-title"
+      eyebrow="Cómo puedo aportar"
+      title="Capacidades aplicables a tareas frontend concretas"
+    />
+
+    <ul class="capability-list" role="list">
+      {
+        contributionAreas.map((area) => (
+          <li>
+            <h3>{area.title}</h3>
+            <p>{area.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

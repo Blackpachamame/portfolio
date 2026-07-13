@@ -1,0 +1,44 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import { secondaryCollaborations } from '../../data/projects';
+---
+
+<section id="colaboraciones" class="landing-section" aria-labelledby="colaboraciones-title">
+  <div class="container">
+    <SectionHeading
+      headingId="colaboraciones-title"
+      eyebrow="Otras colaboraciones"
+      title="Aportes puntuales de frontend y mantenimiento"
+    />
+
+    <div class="entry-list">
+      {
+        secondaryCollaborations.map((collaboration) => (
+          <article class="entry">
+            <header class="entry__header">
+              <div>
+                <h3>{collaboration.name}</h3>
+                <p class="entry__role">{collaboration.role}</p>
+              </div>
+              <p class="entry__period">{collaboration.period}</p>
+            </header>
+            <p>{collaboration.description}</p>
+            <ul class="detail-list">
+              {collaboration.contributions.map((contribution) => (
+                <li>{contribution}</li>
+              ))}
+            </ul>
+            <a
+              class="text-link"
+              href={collaboration.link.href}
+              target="_blank"
+              rel="noopener noreferrer">
+              {collaboration.link.label}
+              <span aria-hidden="true"> ↗</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

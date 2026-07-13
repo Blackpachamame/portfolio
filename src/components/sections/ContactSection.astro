@@ -1,0 +1,32 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import { contactContent, siteInfo, socialLinks } from '../../data/site';
+---
+
+<section id="contacto" class="landing-section contact-section" aria-labelledby="contacto-title">
+  <div class="section-layout container">
+    <SectionHeading headingId="contacto-title" eyebrow="Contacto" title={contactContent.title} />
+
+    <div class="prose-content">
+      <p>{contactContent.description}</p>
+      <p>{siteInfo.location}</p>
+      <ul class="contact-links" role="list">
+        {
+          socialLinks.map((link) => (
+            <li>
+              <a
+                class="button-link"
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${link.label} (se abre en una pestaña nueva)`}>
+                {link.platform}
+                <span aria-hidden="true"> ↗</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

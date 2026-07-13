@@ -1,22 +1,28 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import SiteFooter from '../components/layout/SiteFooter.astro';
+import SiteHeader from '../components/layout/SiteHeader.astro';
+import CollaborationsSection from '../components/sections/CollaborationsSection.astro';
+import ContactSection from '../components/sections/ContactSection.astro';
+import ContributionSection from '../components/sections/ContributionSection.astro';
+import ExperienceSection from '../components/sections/ExperienceSection.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+import ProfileSection from '../components/sections/ProfileSection.astro';
+import ProjectsSection from '../components/sections/ProjectsSection.astro';
+import SkillsSection from '../components/sections/SkillsSection.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<Layout>
-  <main class="mx-auto flex min-h-screen max-w-6xl items-center px-6 py-20">
-    <section>
-      <p class="mb-4 text-sm font-medium tracking-widest text-neutral-400 uppercase">
-        Frontend Developer
-      </p>
-
-      <h1 class="max-w-4xl text-5xl font-semibold tracking-tight sm:text-7xl">
-        Marcos Andrés Travaglini
-      </h1>
-
-      <p class="mt-6 max-w-2xl text-lg leading-8 text-neutral-300">
-        Desarrollo interfaces web responsivas y productos digitales con React, TypeScript y
-        tecnologías modernas de frontend.
-      </p>
-    </section>
+<BaseLayout>
+  <SiteHeader />
+  <main id="contenido-principal">
+    <HeroSection />
+    <ProfileSection />
+    <ExperienceSection />
+    <ProjectsSection />
+    <ContributionSection />
+    <SkillsSection />
+    <CollaborationsSection />
+    <ContactSection />
   </main>
-</Layout>
+  <SiteFooter />
+</BaseLayout>
