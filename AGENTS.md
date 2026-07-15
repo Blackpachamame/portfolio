@@ -602,6 +602,8 @@ No definir toda la dirección visual en una tarea de arquitectura o contenido.
 
 El diseño debe implementarse sección por sección.
 
+La versión 2 utilizará exclusivamente modo oscuro. No implementar modo claro, selector de tema ni variantes basadas en `prefers-color-scheme`.
+
 ---
 
 ## 15. Responsive

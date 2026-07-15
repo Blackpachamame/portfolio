@@ -35,8 +35,12 @@ export const socialLinks: SocialLink[] = [
 
 export const heroContent = {
   eyebrow: 'Frontend Developer Junior · Neuquén, Argentina',
+  titleLines: ['Marcos Andrés', 'Travaglini'],
   introduction:
-    'Desarrollo interfaces web con React y TypeScript, con foco en componentes, responsive e integración de APIs REST.',
+    'Construyo interfaces web claras, responsivas y mantenibles con React y TypeScript, colaborando en productos reales junto a equipos de desarrollo.',
+  supportingText:
+    'Experiencia práctica en UI, componentes reutilizables, integración con APIs y mantenimiento de frontends existentes.',
+  highlights: ['Trabajo remoto', 'React', 'TypeScript', 'APIs REST'],
 };
 
 export const profileContent = [

@@ -302,6 +302,8 @@ Se evitarán elementos frecuentes en portfolios genéricos:
 - Métricas inventadas.
 - Frases motivacionales vacías.
 
+La primera versión de producción utilizará un sistema visual exclusivamente oscuro.
+
 ## Gestor de paquetes
 
 El proyecto utiliza Bun.
