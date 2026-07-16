@@ -1,4 +1,10 @@
-import type { ContributionArea, NavigationLink, SiteInfo, SocialLink } from '../types/portfolio';
+import type {
+  ContributionArea,
+  NavigationLink,
+  ProfileDetail,
+  SiteInfo,
+  SocialLink,
+} from '../types/portfolio';
 
 export const siteInfo: SiteInfo = {
   name: 'Marcos Andrés Travaglini',
@@ -43,9 +49,30 @@ export const heroContent = {
   highlights: ['Trabajo remoto', 'React', 'TypeScript', 'APIs REST'],
 };
 
-export const profileContent = [
-  'Soy Técnico Universitario en Desarrollo Web y cuento con experiencia práctica en proyectos reales, colaborativos y simulaciones laborales.',
-  'Me interesa sumarme de forma remota a equipos de producto, SaaS o aplicaciones web donde pueda resolver tareas frontend concretas, recibir feedback técnico y seguir creciendo mediante code review.',
+export const profileContent = {
+  eyebrow: '01 — Perfil',
+  title: 'Frontend con experiencia práctica y foco en producto.',
+  paragraphs: [
+    'Soy Técnico Universitario en Desarrollo Web y cuento con experiencia práctica en proyectos reales y colaborativos, además de simulaciones laborales.',
+    'Trabajo principalmente con React y TypeScript, creando componentes, ajustando interfaces responsive e integrando APIs REST.',
+    'Busco sumarme de forma remota a un equipo de producto, SaaS o aplicaciones web donde pueda aportar en tareas frontend concretas y seguir creciendo mediante feedback técnico y code review.',
+  ],
+};
+
+export const profileDetails: ProfileDetail[] = [
+  {
+    label: 'Formación',
+    value: 'Técnico Universitario en Desarrollo Web',
+    supportingText: 'Universidad Nacional del Comahue',
+  },
+  {
+    label: 'Foco',
+    value: 'React · TypeScript · UI responsive · APIs REST',
+  },
+  {
+    label: 'Modalidad',
+    value: 'Remoto desde Argentina · Equipos con code review',
+  },
 ];
 
 export const contributionAreas: ContributionArea[] = [

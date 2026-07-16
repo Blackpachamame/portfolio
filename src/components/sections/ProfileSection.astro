@@ -1,19 +1,35 @@
 ---
-import SectionHeading from '../ui/SectionHeading.astro';
-import { profileContent, siteInfo } from '../../data/site';
+import { profileContent, profileDetails } from '../../data/site';
 ---
 
-<section id="perfil" class="landing-section" aria-labelledby="perfil-title">
-  <div class="section-layout container">
-    <SectionHeading
-      headingId="perfil-title"
-      eyebrow="Perfil profesional"
-      title="Frontend con experiencia práctica en equipos"
-    />
+<section id="perfil" class="profile-section landing-section" aria-labelledby="perfil-title">
+  <div class="profile-section__layout container">
+    <header class="profile-section__heading">
+      <div class="profile-section__index">
+        <p>{profileContent.eyebrow}</p>
+        <span aria-hidden="true"></span>
+      </div>
+      <h2 id="perfil-title">{profileContent.title}</h2>
+    </header>
 
-    <div class="prose-content">
-      {profileContent.map((paragraph) => <p>{paragraph}</p>)}
-      <p><strong>Formación:</strong> {siteInfo.education}</p>
+    <div class="profile-section__body">
+      <div class="profile-section__copy">
+        {profileContent.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+
+      <dl class="profile-section__details">
+        {
+          profileDetails.map((detail) => (
+            <div class="profile-section__detail">
+              <dt>{detail.label}</dt>
+              <dd>
+                <span>{detail.value}</span>
+                {detail.supportingText && <small>{detail.supportingText}</small>}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
     </div>
   </div>
 </section>

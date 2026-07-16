@@ -543,6 +543,110 @@ strong {
   margin-block-end: 0;
 }
 
+.profile-section__layout {
+  display: grid;
+  gap: clamp(3rem, 10vw, 5rem);
+}
+
+.profile-section__heading,
+.profile-section__body {
+  min-width: 0;
+}
+
+.profile-section__index {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-block-end: 1.5rem;
+}
+
+.profile-section__index p {
+  flex: 0 0 auto;
+  margin-block-end: 0;
+  color: var(--color-accent-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.profile-section__index span {
+  width: min(100%, 9rem);
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-border), var(--color-accent-warm));
+}
+
+.profile-section__heading h2 {
+  max-width: 13ch;
+  margin-block-end: 0;
+  font-size: clamp(2rem, 9vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1.02;
+}
+
+.profile-section__copy {
+  max-width: 40rem;
+}
+
+.profile-section__copy p {
+  margin-block-end: 1.25rem;
+}
+
+.profile-section__copy p:first-child {
+  color: var(--color-text);
+  font-size: clamp(1.12rem, 3vw, 1.3rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.55;
+}
+
+.profile-section__copy p:last-child {
+  margin-block-end: 0;
+}
+
+.profile-section__details {
+  max-width: 40rem;
+  margin-block: clamp(2.5rem, 8vw, 4rem) 0;
+  border-block-start: 1px solid var(--color-border);
+}
+
+.profile-section__detail {
+  display: grid;
+  gap: 0.45rem;
+  padding-block: 1.15rem;
+  border-block-end: 1px solid var(--color-border);
+}
+
+.profile-section__detail dt {
+  color: var(--color-accent-warm);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.profile-section__detail dd {
+  min-width: 0;
+  margin-inline-start: 0;
+  color: var(--color-text);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.profile-section__detail dd span,
+.profile-section__detail dd small {
+  display: block;
+}
+
+.profile-section__detail dd small {
+  margin-block-start: 0.2rem;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
 .entry-list {
   display: grid;
   gap: 3rem;
@@ -770,6 +874,16 @@ strong {
     gap: clamp(3rem, 8vw, 7rem);
   }
 
+  .profile-section__layout {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: start;
+    gap: clamp(3rem, 7vw, 6rem);
+  }
+
+  .profile-section__heading h2 {
+    font-size: clamp(2.5rem, 5.2vw, 4rem);
+  }
+
   .entry__header,
   .entry__footer,
   .site-footer__inner {
@@ -795,6 +909,13 @@ strong {
   .skill-groups {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 4rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .profile-section__detail {
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 1.5rem;
   }
 }
 

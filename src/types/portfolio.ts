@@ -21,6 +21,12 @@ export interface SocialLink extends ExternalLink {
   platform: string;
 }
 
+export interface ProfileDetail {
+  label: string;
+  value: string;
+  supportingText?: string;
+}
+
 export interface Experience {
   organization: string;
   role: string;
