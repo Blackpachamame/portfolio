@@ -249,7 +249,7 @@ Aportes:
 - Trabajo responsive.
 - Participación en metodologías ágiles.
 - Participación en dailies, planificación y revisiones.
-- Implementación o colaboración en tests con Jest y Testing Library.
+- Implementación de tests unitarios con Jest y Testing Library.
 
 ### No Country
 

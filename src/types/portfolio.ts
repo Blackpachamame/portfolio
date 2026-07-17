@@ -27,12 +27,14 @@ export interface ProfileDetail {
   supportingText?: string;
 }
 
+export type ExperienceType = 'Experiencia en equipo' | 'Simulación laboral' | 'Proyecto puntual';
+
 export interface Experience {
   organization: string;
   role: string;
   period: string;
-  modality?: string;
-  context?: string;
+  modality: string;
+  type: ExperienceType;
   summary: string;
   contributions: string[];
   technologies: string[];
