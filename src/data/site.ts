@@ -79,27 +79,27 @@ export const contributionAreas: ContributionArea[] = [
   {
     title: 'Interfaces y componentes',
     description:
-      'Implementación de interfaces a partir de diseños y creación de componentes reutilizables con una estructura clara.',
+      'Implementación de interfaces a partir de diseños y creación de componentes reutilizables con estructura clara y consistente.',
   },
   {
-    title: 'Responsive y consistencia',
+    title: 'Responsive y consistencia visual',
     description:
-      'Ajustes para distintos tamaños de pantalla, correcciones visuales y mantenimiento de frontends existentes.',
+      'Adaptación de vistas a distintos tamaños de pantalla, corrección de detalles visuales y mantenimiento de patrones existentes.',
   },
   {
-    title: 'Formularios y APIs',
+    title: 'Formularios e integración con APIs',
     description:
-      'Trabajo con formularios, validaciones y consumo e integración de APIs REST desde el frontend.',
+      'Implementación de formularios, validaciones y consumo de APIs REST desde el frontend.',
   },
   {
-    title: 'Trabajo colaborativo',
+    title: 'Trabajo dentro de equipos',
     description:
-      'Uso de Git, ramas y Pull Requests, coordinación con diseño y backend, y participación en revisiones de cambios.',
+      'Coordinación mediante Git, ramas y Pull Requests, colaborando con diseño, backend y revisiones de código.',
   },
   {
-    title: 'Mejoras progresivas',
+    title: 'Mantenimiento y mejoras progresivas',
     description:
-      'Corrección, reorganización y migraciones progresivas de estado y datos con supervisión técnica para reducir regresiones.',
+      'Corrección y reorganización de código existente, migraciones graduales de estado o datos y prevención de regresiones.',
   },
 ];
 

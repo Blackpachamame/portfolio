@@ -1,25 +1,35 @@
 ---
-import SectionHeading from '../ui/SectionHeading.astro';
 import { contributionAreas } from '../../data/site';
 ---
 
-<section id="aportes" class="landing-section" aria-labelledby="aportes-title">
-  <div class="container">
-    <SectionHeading
-      headingId="aportes-title"
-      eyebrow="Cómo puedo aportar"
-      title="Capacidades aplicables a tareas frontend concretas"
-    />
+<section id="aportes" class="contribution-section landing-section" aria-labelledby="aportes-title">
+  <div class="contribution-section__inner container">
+    <header class="contribution-section__heading">
+      <div class="contribution-section__index">
+        <p>04 — Aportes</p>
+        <span aria-hidden="true"></span>
+      </div>
+      <h2 id="aportes-title">Aportes concretos para construir y mejorar productos frontend.</h2>
+      <p class="contribution-section__introduction">
+        Puedo integrarme a tareas de implementación, mantenimiento y mejora progresiva, trabajando
+        junto a diseño, backend y perfiles con mayor experiencia.
+      </p>
+    </header>
 
-    <ul class="capability-list" role="list">
+    <ol class="contribution-list" role="list">
       {
-        contributionAreas.map((area) => (
+        contributionAreas.map((area, index) => (
           <li>
-            <h3>{area.title}</h3>
-            <p>{area.description}</p>
+            <span class="contribution-list__number" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div class="contribution-list__content">
+              <h3>{area.title}</h3>
+              <p>{area.description}</p>
+            </div>
           </li>
         ))
       }
-    </ul>
+    </ol>
   </div>
 </section>
