@@ -1,3 +1,5 @@
+import type { ImageMetadata } from 'astro';
+
 export interface ExternalLink {
   label: string;
   href: string;
@@ -40,17 +42,23 @@ export interface Experience {
   technologies: string[];
 }
 
+export type ProjectLevel = 'Destacado' | 'Secundario';
+
+export type ProjectMedia = 'Desktop' | 'Mobile';
+
 export interface Project {
   name: string;
-  period: string;
-  type: string;
+  category: string;
   role: string;
+  level: ProjectLevel;
+  media: ProjectMedia;
+  image: ImageMetadata;
+  imageAlt: string;
   description: string;
-  contributions: string[];
+  contributions?: string[];
   technologies: string[];
-  liveLink: ExternalLink;
-  repositoryVisibility: 'Público' | 'Privado';
-  caseStudyPath: `/proyectos/${string}`;
+  primaryLink: ExternalLink;
+  caseStudyPath?: `/proyectos/${string}`;
 }
 
 export interface Skill {

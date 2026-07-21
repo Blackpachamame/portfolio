@@ -12,7 +12,7 @@ import {
   // ManganetaPreview,
   ClipFlowLogo,
   ClipFlow,
-} from '../images/proyects';
+} from '../images/projects';
 
 export const proyectos = [
   {

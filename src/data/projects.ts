@@ -1,19 +1,26 @@
 import type { Project, SecondaryCollaboration } from '../types/portfolio';
+import clipFlowPreview from '../assets/images/projects/clipflow-preview.webp';
+import mundifigusPreview from '../assets/images/projects/mundifigus-preview.webp';
+import nesDuelPreview from '../assets/images/projects/nesduel-preview.webp';
+import pokeKitPreview from '../assets/images/projects/pokekit-preview.webp';
 
-export const featuredProjects: Project[] = [
+export const projects: Project[] = [
   {
     name: 'NesDuel',
-    period: 'Junio — julio de 2026',
-    type: 'Producto propio desarrollado por un equipo de dos personas',
-    role: 'Co-creador y Frontend Developer',
+    category: 'Producto propio',
+    role: 'Frontend Developer',
+    level: 'Destacado',
+    media: 'Desktop',
+    image: nesDuelPreview,
+    imageAlt: 'Pantalla principal de NesDuel con navegación y acceso a partidas.',
     description:
-      'Juego táctico multijugador 1v1 en tiempo real desarrollado con Next.js, TypeScript y tecnologías modernas del ecosistema frontend.',
+      'Juego táctico multijugador 1v1 desarrollado como producto propio por un equipo de dos personas. Mi foco estuvo en la interfaz, el responsive, la integración de flujos del frontend y la validación de cambios.',
     contributions: [
-      'Desarrollo y mejora de interfaces, ajustes responsive y correcciones de experiencia de usuario.',
-      'Configuración de Prettier y configuración y validación de Google OAuth.',
-      'Trabajo sobre el flujo frontend de Mercado Pago.',
-      'Implementación, ajuste y validación de tests y ejecución de comprobaciones antes de aceptar cambios.',
-      'Coordinación continua con el desarrollador backend y participación en tareas de Capacitor, Android y despliegue.',
+      'Implementación de UI y componentes.',
+      'Adaptación responsive.',
+      'Integración del acceso con Google.',
+      'Flujo frontend de Mercado Pago.',
+      'Pruebas y revisión de cambios.',
     ],
     technologies: [
       'Next.js',
@@ -24,28 +31,53 @@ export const featuredProjects: Project[] = [
       'Mercado Pago',
       'Capacitor',
     ],
-    liveLink: { label: 'Visitar el sitio de NesDuel', href: 'https://nesduel.com/es/' },
-    repositoryVisibility: 'Privado',
-    caseStudyPath: '/proyectos/nesduel',
+    primaryLink: { label: 'Visitar NesDuel', href: 'https://nesduel.com/es/' },
   },
   {
     name: 'Mundifigus',
-    period: 'Mayo — junio de 2026',
-    type: 'Producto en equipo ya iniciado · Publicado en producción',
+    category: 'Producto colaborativo',
     role: 'Frontend Developer',
+    level: 'Destacado',
+    media: 'Desktop',
+    image: mundifigusPreview,
+    imageAlt: 'Interfaz de Mundifigus con funciones del álbum y el torneo.',
     description:
-      'Plataforma web creada alrededor del Mundial 2026, con álbum digital, marketplace, fixture, calendario, grupos, playoffs y predicciones.',
+      'Plataforma web para el Mundial 2026 con álbum digital, marketplace, fixture y predicciones. Me incorporé a una base existente y trabajé en la reorganización progresiva del frontend y en flujos completos del torneo.',
     contributions: [
-      'Revisión, limpieza y reorganización progresiva de un frontend existente.',
-      'Propuesta y migración progresiva desde un uso excesivo de Context y paso de props hacia Zustand y TanStack Query.',
-      'Implementación de fixture, calendario, grupos, playoffs y predicciones.',
-      'Primera versión del flujo de intercambio del marketplace.',
-      'Ajustes visuales en marketplace y álbum, correcciones responsive y mejoras de consistencia visual.',
+      'Migración progresiva del estado a Zustand.',
+      'Gestión de datos con TanStack Query.',
+      'Implementación de fixture, grupos y playoffs.',
+      'Flujos de predicciones.',
+      'Ajustes visuales del álbum y marketplace.',
     ],
     technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Zustand', 'TanStack Query'],
-    liveLink: { label: 'Visitar el sitio de Mundifigus', href: 'https://mundifigus.com/' },
-    repositoryVisibility: 'Privado',
-    caseStudyPath: '/proyectos/mundifigus',
+    primaryLink: { label: 'Visitar Mundifigus', href: 'https://mundifigus.com/' },
+  },
+  {
+    name: 'ClipFlow',
+    category: 'Simulación laboral',
+    role: 'Frontend Developer',
+    level: 'Secundario',
+    media: 'Desktop',
+    image: clipFlowPreview,
+    imageAlt: 'Página principal de ClipFlow para transformar videos en clips verticales.',
+    description:
+      'Aplicación desarrollada en una simulación de No Country para transformar videos horizontales en clips verticales. Trabajé en el frontend dentro de un equipo multidisciplinario.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'TanStack Query', 'APIs REST'],
+    primaryLink: { label: 'Ver código', href: 'https://github.com/Blackpachamame/ClipFlow' },
+  },
+  {
+    name: 'PokéKit',
+    category: 'Proyecto personal mobile',
+    role: 'React Native Developer',
+    level: 'Secundario',
+    media: 'Mobile',
+    image: pokeKitPreview,
+    imageAlt: 'Pantalla móvil de PokéKit con información de Pokémon.',
+    description:
+      'Aplicación móvil creada para practicar React Native y Expo mediante exploración, búsqueda, filtros, detalles y favoritos de Pokémon.',
+    technologies: ['React Native', 'Expo', 'TypeScript', 'APIs REST'],
+    primaryLink: { label: 'Ver código', href: 'https://github.com/Blackpachamame/RN-PokeKit' },
   },
 ];
 

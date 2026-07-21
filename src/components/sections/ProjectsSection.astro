@@ -1,64 +1,140 @@
 ---
-import SectionHeading from '../ui/SectionHeading.astro';
-import { featuredProjects } from '../../data/projects';
+import { Image } from 'astro:assets';
+import { projects } from '../../data/projects';
+
+const featuredProjects = projects.filter((project) => project.level === 'Destacado');
+const secondaryProjects = projects.filter((project) => project.level === 'Secundario');
 ---
 
 <section id="proyectos" class="landing-section" aria-labelledby="proyectos-title">
-  <div class="container">
-    <SectionHeading
-      headingId="proyectos-title"
-      eyebrow="Proyectos destacados"
-      title="Productos reales desarrollados en equipo"
-      introduction="Mi rol y mis aportes se presentan por separado del trabajo asumido por otros integrantes."
-    />
+  <div class="projects-section__inner container">
+    <header class="projects-section__heading">
+      <div class="projects-section__index">
+        <p>03 — Proyectos</p>
+        <span aria-hidden="true"></span>
+      </div>
+      <h2 id="proyectos-title">
+        Productos publicados y proyectos con desafíos frontend concretos.
+      </h2>
+      <p class="projects-section__introduction">
+        Una selección de productos propios, colaboraciones y proyectos de aprendizaje donde trabajé
+        en interfaces, estado, integración con APIs y experiencia responsive.
+      </p>
+    </header>
 
-    <div class="entry-list">
+    <div class="projects-featured">
       {
         featuredProjects.map((project) => (
-          <article class="entry project-entry">
-            <header class="entry__header">
-              <div>
-                <h3>{project.name}</h3>
-                <p class="entry__role">{project.role}</p>
-              </div>
-              <p class="entry__period">{project.period}</p>
-            </header>
-
-            <p class="entry__meta">{project.type}</p>
-            <p>{project.description}</p>
-
-            <div>
-              <h4>Aportes principales</h4>
-              <ul class="detail-list">
-                {project.contributions.map((contribution) => (
-                  <li>{contribution}</li>
-                ))}
-              </ul>
+          <article class="project-card project-card--featured">
+            <div class="project-card__media project-card__media--desktop">
+              <Image
+                src={project.image}
+                alt={project.imageAlt}
+                widths={[640, 960, 1280]}
+                sizes="(min-width: 1024px) 544px, calc(100vw - 32px)"
+                loading="lazy"
+              />
             </div>
 
-            <ul class="tag-list" aria-label={`Tecnologías utilizadas en ${project.name}`}>
-              {project.technologies.map((technology) => (
-                <li>{technology}</li>
-              ))}
-            </ul>
+            <div class="project-card__content">
+              <header class="project-card__header">
+                <p class="project-card__category">{project.category}</p>
+                <h3>{project.name}</h3>
+                <p class="project-card__role">{project.role}</p>
+              </header>
 
-            <div class="entry__footer">
+              <p class="project-card__description">{project.description}</p>
+
+              <div class="project-card__contributions">
+                <h4>Aportes concretos</h4>
+                <ul>
+                  {project.contributions?.map((contribution) => (
+                    <li>{contribution}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <ul
+                class="project-card__technologies"
+                aria-label={`Tecnologías utilizadas en ${project.name}`}>
+                {project.technologies.map((technology) => (
+                  <li>{technology}</li>
+                ))}
+              </ul>
+
               <a
-                class="text-link"
-                href={project.liveLink.href}
+                class="project-card__link"
+                href={project.primaryLink.href}
                 target="_blank"
                 rel="noopener noreferrer">
-                {project.liveLink.label}
+                {project.primaryLink.label}
                 <span aria-hidden="true"> ↗</span>
+                <span class="project-card__new-tab">(abre en una pestaña nueva)</span>
               </a>
-              <p>
-                Repositorio {project.repositoryVisibility.toLowerCase()} · Caso de estudio en
-                preparación
-              </p>
             </div>
           </article>
         ))
       }
     </div>
+
+    <section class="projects-secondary" aria-labelledby="otros-proyectos-title">
+      <header class="projects-secondary__heading">
+        <p>Selección complementaria</p>
+        <h3 id="otros-proyectos-title">Otros proyectos</h3>
+      </header>
+
+      <div class="projects-secondary__grid">
+        {
+          secondaryProjects.map((project) => (
+            <article class="project-card project-card--secondary">
+              <div
+                class:list={[
+                  'project-card__media',
+                  `project-card__media--${project.media.toLowerCase()}`,
+                ]}>
+                <Image
+                  src={project.image}
+                  alt={project.imageAlt}
+                  widths={project.media === 'Mobile' ? [320, 480] : [480, 720, 960]}
+                  sizes={
+                    project.media === 'Mobile'
+                      ? '240px'
+                      : '(min-width: 768px) 528px, calc(100vw - 32px)'
+                  }
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="project-card__content">
+                <header class="project-card__header">
+                  <p class="project-card__category">{project.category}</p>
+                  <h4>{project.name}</h4>
+                </header>
+
+                <p class="project-card__description">{project.description}</p>
+
+                <ul
+                  class="project-card__technologies"
+                  aria-label={`Tecnologías utilizadas en ${project.name}`}>
+                  {project.technologies.map((technology) => (
+                    <li>{technology}</li>
+                  ))}
+                </ul>
+
+                <a
+                  class="project-card__link"
+                  href={project.primaryLink.href}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  {project.primaryLink.label}
+                  <span aria-hidden="true"> ↗</span>
+                  <span class="project-card__new-tab">(abre en una pestaña nueva)</span>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
   </div>
 </section>
