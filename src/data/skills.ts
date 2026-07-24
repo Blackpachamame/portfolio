@@ -2,34 +2,59 @@ import type { SkillGroup } from '../types/portfolio';
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: 'Stack principal',
-    description: 'Tecnologías con mayor peso en mi perfil y en las tareas frontend que realizo.',
+    title: 'Frontend principal',
+    description:
+      'Tecnologías con las que trabajo con mayor frecuencia para implementar interfaces web.',
     skills: [
       { name: 'React' },
       { name: 'TypeScript' },
       { name: 'JavaScript' },
+      { name: 'Angular' },
+      { name: 'Next.js' },
       { name: 'HTML' },
       { name: 'CSS' },
       { name: 'Tailwind CSS' },
-      { name: 'APIs REST' },
-      { name: 'Git y GitHub' },
     ],
   },
   {
-    title: 'Tecnologías complementarias',
+    title: 'Estado y datos',
     description:
-      'Herramientas que utilicé en proyectos, experiencias de equipo o tareas específicas.',
+      'Herramientas utilizadas para manejar estado, sincronizar datos y conectar el frontend con servicios externos.',
     skills: [
-      { name: 'Next.js' },
-      { name: 'Angular' },
-      { name: 'NgRx' },
-      { name: 'Zustand' },
+      { name: 'APIs REST' },
       { name: 'TanStack Query' },
-      { name: 'React Hook Form' },
-      { name: 'Zod' },
+      { name: 'Zustand' },
+      { name: 'NgRx' },
+      { name: 'Context API' },
+    ],
+  },
+  {
+    title: 'Experiencia complementaria',
+    description:
+      'Tecnologías aplicadas en proyectos específicos, productos propios o trabajos puntuales.',
+    skills: [
       { name: 'Astro' },
-      { name: 'WordPress y Elementor' },
-      { name: 'React Native y Expo' },
+      { name: 'React Native' },
+      { name: 'Expo' },
+      { name: 'Capacitor' },
+      { name: 'WordPress' },
+      { name: 'Elementor' },
+    ],
+  },
+  {
+    title: 'Flujo de trabajo y calidad',
+    description:
+      'Herramientas que utilizo para colaborar, mantener consistencia y validar cambios.',
+    skills: [
+      { name: 'Git' },
+      { name: 'GitHub' },
+      { name: 'Bun' },
+      { name: 'Prettier' },
+      { name: 'Jest' },
+      { name: 'Testing Library' },
+      { name: 'Figma' },
+      { name: 'Jira' },
+      { name: 'Trello' },
     ],
   },
 ];

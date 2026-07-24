@@ -1,24 +1,37 @@
 ---
-import SectionHeading from '../ui/SectionHeading.astro';
 import { skillGroups } from '../../data/skills';
 ---
 
-<section id="stack" class="landing-section" aria-labelledby="stack-title">
-  <div class="container">
-    <SectionHeading
-      headingId="stack-title"
-      eyebrow="Stack técnico"
-      title="Tecnologías principales y complementarias"
-      introduction="La separación refleja el peso de cada grupo dentro de mi perfil; no representa porcentajes ni niveles artificiales."
-    />
+<section id="stack" class="stack-section landing-section" aria-labelledby="stack-title">
+  <div class="stack-section__inner container">
+    <header class="stack-section__heading">
+      <div class="stack-section__index">
+        <p>05 — Stack</p>
+        <span aria-hidden="true"></span>
+      </div>
+      <h2 id="stack-title">
+        Tecnologías que utilizo para construir y mantener productos frontend.
+      </h2>
+      <p class="stack-section__introduction">
+        Mi foco principal está en React y TypeScript, acompañado por herramientas de estado, consumo
+        de datos, calidad y colaboración aplicadas en proyectos reales.
+      </p>
+    </header>
 
-    <div class="skill-groups">
+    <div class="stack-groups">
       {
         skillGroups.map((group, index) => (
-          <article class:list={['skill-group', { 'skill-group--secondary': index > 0 }]}>
-            <h3>{group.title}</h3>
-            <p>{group.description}</p>
-            <ul class="tag-list" role="list">
+          <article class:list={['stack-group', `stack-group--${index + 1}`]}>
+            <header class="stack-group__header">
+              <p class="stack-group__number" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </p>
+              <div>
+                <h3>{group.title}</h3>
+                <p>{group.description}</p>
+              </div>
+            </header>
+            <ul class="stack-group__technologies" role="list">
               {group.skills.map((skill) => (
                 <li>{skill.name}</li>
               ))}
