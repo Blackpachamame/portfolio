@@ -1,4 +1,4 @@
-import type { Project, SecondaryCollaboration } from '../types/portfolio';
+import type { Project } from '../types/portfolio';
 import clipFlowPreview from '../assets/images/projects/clipflow-preview.webp';
 import mundifigusPreview from '../assets/images/projects/mundifigus-preview.webp';
 import nesDuelPreview from '../assets/images/projects/nesduel-preview.webp';
@@ -78,23 +78,5 @@ export const projects: Project[] = [
       'Aplicación móvil creada para practicar React Native y Expo mediante exploración, búsqueda, filtros, detalles y favoritos de Pokémon.',
     technologies: ['React Native', 'Expo', 'TypeScript', 'APIs REST'],
     primaryLink: { label: 'Ver código', href: 'https://github.com/Blackpachamame/RN-PokeKit' },
-  },
-];
-
-export const secondaryCollaborations: SecondaryCollaboration[] = [
-  {
-    name: 'NesConsulting',
-    period: 'Mayo — junio de 2026',
-    role: 'Colaboración frontend y mantenimiento',
-    description: 'Sitio institucional de un proyecto interno de servicios digitales.',
-    contributions: [
-      'Configuración de Prettier, normalización con Bun y ajustes de build y documentación.',
-      'Mejoras de contraste, formularios, responsive y consistencia visual.',
-      'Correcciones de contenido, metadatos, URLs y refactorización del footer.',
-    ],
-    link: {
-      label: 'Visitar el sitio de NesConsulting',
-      href: 'https://nes-consulting.com/',
-    },
   },
 ];

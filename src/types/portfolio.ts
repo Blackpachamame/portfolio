@@ -73,6 +73,7 @@ export interface SkillGroup {
 
 export interface SecondaryCollaboration {
   name: string;
+  category: string;
   period: string;
   role: string;
   description: string;
