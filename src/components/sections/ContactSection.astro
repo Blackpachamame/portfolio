@@ -1,32 +1,55 @@
 ---
-import SectionHeading from '../ui/SectionHeading.astro';
 import { contactContent, siteInfo, socialLinks } from '../../data/site';
+
+const emailHref = `mailto:${siteInfo.email}`;
 ---
 
 <section id="contacto" class="landing-section contact-section" aria-labelledby="contacto-title">
-  <div class="section-layout container">
-    <SectionHeading headingId="contacto-title" eyebrow="Contacto" title={contactContent.title} />
+  <div class="contact-section__inner container">
+    <header class="contact-section__heading">
+      <div class="contact-section__index">
+        <p>{contactContent.eyebrow}</p>
+        <span aria-hidden="true"></span>
+      </div>
+      <h2 id="contacto-title">{contactContent.title}</h2>
+      <p class="contact-section__introduction">{contactContent.description}</p>
+      <a class="button-link contact-section__primary-action" href={emailHref}>
+        {contactContent.primaryAction}
+      </a>
+    </header>
 
-    <div class="prose-content">
-      <p>{contactContent.description}</p>
-      <p>{siteInfo.location}</p>
-      <ul class="contact-links" role="list">
-        {
-          socialLinks.map((link) => (
-            <li>
-              <a
-                class="button-link"
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${link.label} (se abre en una pestaña nueva)`}>
-                {link.platform}
-                <span aria-hidden="true"> ↗</span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+    <address class="contact-details">
+      <div class="contact-details__item contact-details__item--availability">
+        <p class="contact-details__label">{contactContent.availabilityLabel}</p>
+        <p>{contactContent.availability}</p>
+      </div>
+
+      <div class="contact-details__item">
+        <p class="contact-details__label">Ubicación</p>
+        <p>{siteInfo.location}</p>
+      </div>
+
+      <div class="contact-details__item">
+        <p class="contact-details__label">Correo</p>
+        <a class="contact-details__email" href={emailHref}>{siteInfo.email}</a>
+      </div>
+
+      <div class="contact-details__item">
+        <p class="contact-details__label">Perfiles profesionales</p>
+        <ul class="contact-details__links" role="list">
+          {
+            socialLinks.map((link) => (
+              <li>
+                <a href={link.href} target="_blank" rel="noopener noreferrer">
+                  Ver {link.platform}
+                  <span aria-hidden="true"> ↗</span>
+                  <span class="contact-details__new-tab">(abre en una pestaña nueva)</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </address>
   </div>
 </section>

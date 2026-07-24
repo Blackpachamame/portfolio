@@ -10,6 +10,7 @@ export const siteInfo: SiteInfo = {
   name: 'Marcos Andrés Travaglini',
   role: 'Frontend Developer Junior',
   location: 'Neuquén, Argentina',
+  email: 'marcos.travaglini@est.fi.uncoma.edu.ar',
   education: 'Técnico Universitario en Desarrollo Web por la Universidad Nacional del Comahue.',
   title: 'Marcos Travaglini | Frontend Developer Junior',
   description:
@@ -104,7 +105,11 @@ export const contributionAreas: ContributionArea[] = [
 ];
 
 export const contactContent = {
-  title: 'Hablemos sobre una oportunidad frontend',
+  eyebrow: '07 — Contacto',
+  title: '¿Buscás un Frontend Developer Junior para tu equipo?',
   description:
-    'Estoy disponible preferentemente para posiciones remotas dentro de equipos con feedback técnico y code review.',
+    'Estoy disponible para oportunidades remotas donde pueda participar en tareas frontend concretas, colaborar con otros perfiles y seguir creciendo mediante feedback técnico y code review.',
+  primaryAction: 'Escribirme por correo',
+  availabilityLabel: 'Disponible para',
+  availability: 'Posiciones frontend junior · Trabajo remoto · Equipos con code review',
 };

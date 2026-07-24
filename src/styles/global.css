@@ -1675,6 +1675,188 @@ strong {
   font-size: 0.9rem;
 }
 
+.contact-section {
+  --section-space: clamp(4.75rem, 11vw, 8.5rem);
+
+  position: relative;
+  background: var(--color-surface);
+}
+
+.contact-section::before {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  height: 0.1875rem;
+  background: var(--color-accent-soft);
+  content: '';
+}
+
+.contact-section__inner {
+  display: grid;
+  gap: clamp(3.5rem, 10vw, 7rem);
+}
+
+.contact-section__heading {
+  min-width: 0;
+}
+
+.contact-section__index {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-block-end: 1.5rem;
+}
+
+.contact-section__index p {
+  flex: 0 0 auto;
+  margin-block-end: 0;
+  color: var(--color-accent-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.contact-section__index span {
+  width: min(100%, 11rem);
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-border), var(--color-accent-warm));
+}
+
+.contact-section__heading h2 {
+  max-width: 19ch;
+  margin-block-end: 1.5rem;
+  font-size: clamp(2.15rem, 10.5vw, 4.75rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.contact-section__introduction {
+  max-width: 39rem;
+  margin-block-end: 2rem;
+  color: var(--color-text-secondary);
+  font-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+.contact-section__primary-action {
+  width: 100%;
+}
+
+.contact-details {
+  display: grid;
+  min-width: 0;
+  margin: 0;
+  padding-block-start: 1.5rem;
+  border-block-start: 1px solid var(--color-border);
+  font-style: normal;
+}
+
+.contact-details__item {
+  min-width: 0;
+  padding-block: 1.25rem;
+  border-block-end: 1px solid var(--color-border);
+}
+
+.contact-details__item p {
+  margin-block-end: 0;
+}
+
+.contact-details__item > p:not(.contact-details__label) {
+  max-width: 31rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.contact-details__label {
+  margin-block-end: 0.45rem;
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-details__item--availability {
+  padding-block-start: 0;
+}
+
+.contact-details__email {
+  display: inline-block;
+  max-width: 100%;
+  color: var(--color-text);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.contact-details__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-details__links a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.contact-details__links a:hover {
+  color: var(--color-accent-soft);
+}
+
+.contact-details__links a > span[aria-hidden='true'] {
+  color: var(--color-accent-warm);
+}
+
+.contact-details__new-tab {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.site-footer {
+  border-block-start: 0;
+}
+
+.site-footer__inner {
+  gap: 1rem;
+}
+
+.site-footer__identity {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.site-footer__identity span:first-child {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.site-footer__identity span:last-child,
+.site-footer__build,
+.site-footer__year {
+  color: var(--color-text-muted);
+}
+
+.site-footer__identity span:last-child {
+  font-size: 0.78rem;
+}
+
+.site-footer__build {
+  max-width: 28rem;
+}
+
 @media (max-width: 23.99rem) {
   .hero__actions a {
     width: 100%;
@@ -1880,6 +2062,31 @@ strong {
   .skill-groups {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 4rem;
+  }
+
+  .contact-section__inner {
+    grid-template-columns: minmax(0, 1.25fr) minmax(17rem, 0.75fr);
+    align-items: start;
+  }
+
+  .contact-section__primary-action {
+    width: fit-content;
+  }
+
+  .contact-details {
+    padding-block-start: 0;
+    border-block-start-color: var(--color-accent-warm);
+  }
+
+  .site-footer__inner {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.85fr) minmax(18rem, 1fr) auto;
+    align-items: end;
+    gap: clamp(1.5rem, 4vw, 4rem);
+  }
+
+  .site-footer__year {
+    text-align: end;
   }
 }
 

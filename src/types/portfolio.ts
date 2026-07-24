@@ -9,6 +9,7 @@ export interface SiteInfo {
   name: string;
   role: string;
   location: string;
+  email: string;
   education: string;
   title: string;
   description: string;
