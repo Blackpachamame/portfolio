@@ -19,7 +19,7 @@ export const experiences: Experience[] = [
       'Colaboración con perfiles de diseño y backend.',
       'Implementación de tests unitarios con Jest y Testing Library.',
     ],
-    technologies: ['Angular', 'TypeScript', 'Tailwind CSS', 'NgRx'],
+    technologies: ['Angular', 'TypeScript', 'Tailwind CSS', 'NgRx', 'Jest', 'Testing Library'],
   },
   {
     organization: 'No Country',

@@ -10,7 +10,6 @@ export interface SiteInfo {
   role: string;
   location: string;
   email: string;
-  education: string;
   title: string;
   description: string;
 }
@@ -59,7 +58,6 @@ export interface Project {
   contributions?: string[];
   technologies: string[];
   primaryLink: ExternalLink;
-  caseStudyPath?: `/proyectos/${string}`;
 }
 
 export interface Skill {

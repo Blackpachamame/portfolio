@@ -1,6 +1,6 @@
 # Portfolio de Marcos Travaglini
 
-Portfolio profesional de **Marcos Andrés Travaglini**, Frontend Developer Junior especializado en desarrollo de interfaces web con React, TypeScript y tecnologías modernas de frontend.
+Portfolio profesional de **Marcos Andrés Travaglini**, Frontend Developer Junior enfocado en el desarrollo de interfaces web con React, TypeScript y tecnologías modernas de frontend.
 
 El objetivo del proyecto es presentar de forma clara:
 
