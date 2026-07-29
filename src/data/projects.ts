@@ -10,7 +10,6 @@ export const projects: Project[] = [
     category: 'Producto propio',
     role: 'Frontend Developer',
     level: 'Destacado',
-    media: 'Desktop',
     image: nesDuelPreview,
     imageAlt: 'Pantalla principal de NesDuel con navegación y acceso a partidas.',
     description:
@@ -38,7 +37,6 @@ export const projects: Project[] = [
     category: 'Producto colaborativo',
     role: 'Frontend Developer',
     level: 'Destacado',
-    media: 'Desktop',
     image: mundifigusPreview,
     imageAlt: 'Interfaz de Mundifigus con funciones del álbum y el torneo.',
     description:
@@ -58,7 +56,6 @@ export const projects: Project[] = [
     category: 'Simulación laboral',
     role: 'Frontend Developer',
     level: 'Secundario',
-    media: 'Desktop',
     image: clipFlowPreview,
     imageAlt: 'Página principal de ClipFlow para transformar videos en clips verticales.',
     description:
@@ -71,7 +68,6 @@ export const projects: Project[] = [
     category: 'Proyecto personal mobile',
     role: 'React Native Developer',
     level: 'Secundario',
-    media: 'Mobile',
     image: pokeKitPreview,
     imageAlt: 'Pantalla móvil de PokéKit con información de Pokémon.',
     description:

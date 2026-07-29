@@ -44,14 +44,11 @@ export interface Experience {
 
 export type ProjectLevel = 'Destacado' | 'Secundario';
 
-export type ProjectMedia = 'Desktop' | 'Mobile';
-
 export interface Project {
   name: string;
   category: string;
   role: string;
   level: ProjectLevel;
-  media: ProjectMedia;
   image: ImageMetadata;
   imageAlt: string;
   description: string;

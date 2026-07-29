@@ -26,7 +26,7 @@ const secondaryProjects = projects.filter((project) => project.level === 'Secund
       {
         featuredProjects.map((project) => (
           <article class="project-card project-card--featured">
-            <div class="project-card__media project-card__media--desktop">
+            <div class="project-card__media">
               <Image
                 src={project.image}
                 alt={project.imageAlt}
@@ -87,20 +87,12 @@ const secondaryProjects = projects.filter((project) => project.level === 'Secund
         {
           secondaryProjects.map((project) => (
             <article class="project-card project-card--secondary">
-              <div
-                class:list={[
-                  'project-card__media',
-                  `project-card__media--${project.media.toLowerCase()}`,
-                ]}>
+              <div class="project-card__media">
                 <Image
                   src={project.image}
                   alt={project.imageAlt}
-                  widths={project.media === 'Mobile' ? [320, 480] : [480, 720, 960]}
-                  sizes={
-                    project.media === 'Mobile'
-                      ? '240px'
-                      : '(min-width: 768px) 528px, calc(100vw - 32px)'
-                  }
+                  widths={[480, 720, 960]}
+                  sizes="(min-width: 768px) 528px, calc(100vw - 32px)"
                   loading="lazy"
                 />
               </div>

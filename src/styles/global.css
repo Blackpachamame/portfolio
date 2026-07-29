@@ -882,33 +882,16 @@ strong {
   display: grid;
   min-width: 0;
   overflow: hidden;
+  aspect-ratio: 16 / 10;
   border-block-end: 1px solid var(--color-border);
   background: var(--color-canvas);
 }
 
-.project-card__media--desktop {
-  aspect-ratio: 16 / 10;
-}
-
-.project-card__media--desktop img {
+.project-card__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
-}
-
-.project-card__media--mobile {
-  height: clamp(15rem, 70vw, 20rem);
-  place-items: center;
-  padding: 1.25rem;
-  background: var(--color-surface-raised);
-}
-
-.project-card__media--mobile img {
-  width: auto;
-  max-width: min(100%, 14rem);
-  height: 100%;
-  object-fit: contain;
 }
 
 .project-card__content {
@@ -1771,10 +1754,6 @@ strong {
 
   .projects-secondary__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .project-card__media--mobile {
-    height: 20rem;
   }
 
   .experience-entry {
