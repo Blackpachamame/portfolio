@@ -16,20 +16,20 @@ import { profileContent, profileDetails } from '../../data/site';
       <div class="profile-section__copy">
         {profileContent.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
       </div>
-
-      <dl class="profile-section__details">
-        {
-          profileDetails.map((detail) => (
-            <div class="profile-section__detail">
-              <dt>{detail.label}</dt>
-              <dd>
-                <span>{detail.value}</span>
-                {detail.supportingText && <small>{detail.supportingText}</small>}
-              </dd>
-            </div>
-          ))
-        }
-      </dl>
     </div>
+
+    <dl class="profile-section__details">
+      {
+        profileDetails.map((detail) => (
+          <div class="profile-section__detail">
+            <dt>{detail.label}</dt>
+            <dd>
+              <span>{detail.value}</span>
+              {detail.supportingText && <small>{detail.supportingText}</small>}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
   </div>
 </section>

@@ -41,23 +41,22 @@ export const headerContent = {
 };
 
 export const heroContent = {
-  eyebrow: 'Frontend Developer · Neuquén, Argentina',
   titleLines: ['Marcos Andrés', 'Travaglini'],
   introduction:
     'Desarrollo interfaces web claras, responsivas y mantenibles con React y TypeScript, colaborando con equipos en productos reales.',
-  detailsLabel: 'En la práctica',
-  supportingText:
-    'Experiencia práctica en UI, componentes reutilizables, integración con APIs y mantenimiento de frontends existentes.',
-  highlights: ['Disponibilidad remota', 'React', 'TypeScript', 'APIs REST'],
+  highlights: [
+    'Trabajo en producto',
+    'Colaboración con diseño y backend',
+    'Remoto desde Argentina',
+  ],
 };
 
 export const profileContent = {
   eyebrow: '01 — Perfil',
-  title: 'Frontend con experiencia práctica y foco en producto.',
+  title: 'Construir frontend también es entender el producto.',
   paragraphs: [
-    'Soy Técnico Universitario en Desarrollo Web y cuento con experiencia práctica en proyectos reales y colaborativos, además de simulaciones laborales.',
-    'Trabajo principalmente con React y TypeScript, creando componentes, ajustando interfaces responsive e integrando APIs REST.',
-    'Busco sumarme de forma remota a un equipo de producto, SaaS o aplicaciones web donde pueda aportar en tareas frontend concretas y seguir creciendo mediante feedback técnico y code review.',
+    'Mi experiencia combina el desarrollo de interfaces nuevas con el trabajo sobre frontends ya iniciados: entender su estructura, mantener componentes y considerar cómo cada cambio afecta al flujo completo del producto.',
+    'Participé en productos propios y equipos multidisciplinarios, coordinando cambios con diseño y backend. Busco seguir desarrollándome dentro de equipos de producto, con feedback y code review, aportando en tareas frontend concretas.',
   ],
 };
 
@@ -68,12 +67,13 @@ export const profileDetails: ProfileDetail[] = [
     supportingText: 'Universidad Nacional del Comahue',
   },
   {
-    label: 'Foco',
-    value: 'React · TypeScript · UI responsive · APIs REST',
+    label: 'Foco actual',
+    value: 'Frontend · Producto · Interfaces · Integraciones',
   },
   {
-    label: 'Modalidad',
-    value: 'Remoto desde Argentina · Equipos con code review',
+    label: 'Forma de trabajo',
+    value: 'Colaboración · Git · Pull Requests · Code review',
+    supportingText: 'Coordinación con diseño y backend',
   },
 ];
 

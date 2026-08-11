@@ -5,7 +5,6 @@ import { heroContent } from '../../data/site';
 <section id="inicio" class="hero" aria-labelledby="hero-title">
   <div class="hero__inner container">
     <div class="hero__main">
-      <p class="hero__eyebrow">{heroContent.eyebrow}</p>
       <h1 id="hero-title">
         {heroContent.titleLines.map((line) => <span>{line}</span>)}
       </h1>
@@ -16,9 +15,7 @@ import { heroContent } from '../../data/site';
       </div>
     </div>
 
-    <aside class="hero__details" aria-label="Resumen profesional">
-      <p class="hero__details-label">{heroContent.detailsLabel}</p>
-      <p class="hero__supporting-text">{heroContent.supportingText}</p>
+    <aside class="hero__summary" aria-label="Resumen profesional">
       <ul class="hero__highlights" aria-label="Información destacada" role="list">
         {heroContent.highlights.map((highlight) => <li>{highlight}</li>)}
       </ul>
