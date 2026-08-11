@@ -12,7 +12,7 @@ import { experiences } from '../../data/experience';
         <p>02 — Experiencia</p>
         <span aria-hidden="true"></span>
       </div>
-      <h2 id="experiencia-title">Trabajo en equipo, proyectos reales y aprendizaje aplicado.</h2>
+      <h2 id="experiencia-title">Experiencia práctica construyendo frontend en equipo.</h2>
     </header>
 
     <ol class="experience-list" role="list">
@@ -29,7 +29,7 @@ import { experiences } from '../../data/experience';
             ]}>
             <article class="experience-entry">
               <dl class="experience-entry__meta">
-                <div>
+                <div class="experience-entry__period">
                   <dt>Período</dt>
                   <dd>{experience.period}</dd>
                 </div>
@@ -51,17 +51,23 @@ import { experiences } from '../../data/experience';
 
                 <p class="experience-entry__summary">{experience.summary}</p>
 
-                <div class="experience-entry__contributions">
-                  <h4>Aportes concretos</h4>
-                  <ul>
-                    {experience.contributions.map((contribution) => (
-                      <li>{contribution}</li>
-                    ))}
-                  </ul>
-                </div>
+                {experience.contributions.length > 0 && (
+                  <div class="experience-entry__contributions">
+                    <h4>
+                      {experience.type === 'Experiencia en equipo'
+                        ? 'Aportes seleccionados'
+                        : 'Trabajo realizado'}
+                    </h4>
+                    <ul>
+                      {experience.contributions.map((contribution) => (
+                        <li>{contribution}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 <div class="experience-entry__technologies">
-                  <p>Tecnologías</p>
+                  <p>Stack</p>
                   <ul>
                     {experience.technologies.map((technology) => (
                       <li>{technology}</li>
