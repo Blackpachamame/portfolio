@@ -13,13 +13,12 @@ export const projects: Project[] = [
     image: nesDuelPreview,
     imageAlt: 'Pantalla principal de NesDuel con navegación y acceso a partidas.',
     description:
-      'Juego táctico multijugador 1v1 desarrollado como producto propio por un equipo de dos personas. Mi foco estuvo en la interfaz, el responsive, la integración de flujos del frontend y la validación de cambios.',
+      'Juego táctico multijugador 1v1 en tiempo real, creado como producto propio por un equipo de dos personas. Trabajé principalmente en interfaces, responsive, integración de flujos frontend y validación de cambios.',
     contributions: [
-      'Implementación de UI y componentes.',
-      'Adaptación responsive.',
-      'Integración del acceso con Google.',
-      'Flujo frontend de Mercado Pago.',
-      'Pruebas y revisión de cambios.',
+      'Implementación de interfaces, componentes y ajustes responsive.',
+      'Configuración y validación del acceso con Google OAuth.',
+      'Trabajo sobre el flujo frontend de Mercado Pago, coordinado con la lógica del backend.',
+      'Implementación de pruebas y revisión técnica de cambios antes de integrarlos.',
     ],
     technologies: [
       'Next.js',
@@ -40,13 +39,12 @@ export const projects: Project[] = [
     image: mundifigusPreview,
     imageAlt: 'Interfaz de Mundifigus con funciones del álbum y el torneo.',
     description:
-      'Plataforma web para el Mundial 2026 con álbum digital, marketplace, fixture y predicciones. Me incorporé a una base existente y trabajé en la reorganización progresiva del frontend y en flujos completos del torneo.',
+      'Plataforma web para el Mundial 2026 con álbum digital, marketplace, fixture y predicciones. Me incorporé a un frontend existente y participé en su reorganización progresiva y en la implementación de flujos del torneo.',
     contributions: [
-      'Migración progresiva del estado a Zustand.',
-      'Gestión de datos con TanStack Query.',
+      'Migración progresiva del estado de cliente a Zustand y de los datos del servidor a TanStack Query.',
       'Implementación de fixture, grupos y playoffs.',
-      'Flujos de predicciones.',
-      'Ajustes visuales del álbum y marketplace.',
+      'Implementación de flujos de predicciones.',
+      'Ajustes visuales y responsive en álbum y marketplace.',
     ],
     technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Zustand', 'TanStack Query'],
     primaryLink: { label: 'Visitar Mundifigus', href: 'https://mundifigus.com/' },
@@ -69,9 +67,10 @@ export const projects: Project[] = [
     role: 'React Native Developer',
     level: 'Secundario',
     image: pokeKitPreview,
-    imageAlt: 'Pantalla móvil de PokéKit con información de Pokémon.',
+    imageAlt:
+      'Tres pantallas de PokéKit con la Pokédex, el menú principal y el juego «¿Quién es ese Pokémon?».',
     description:
-      'Aplicación móvil creada para practicar React Native y Expo mediante exploración, búsqueda, filtros, detalles y favoritos de Pokémon.',
+      'Aplicación móvil personal desarrollada con React Native y Expo para explorar Pokémon con búsqueda, filtros y fichas de detalle, gestionar favoritos y jugar a «¿Quién es ese Pokémon?».',
     technologies: ['React Native', 'Expo', 'TypeScript', 'APIs REST'],
     primaryLink: { label: 'Ver código', href: 'https://github.com/Blackpachamame/RN-PokeKit' },
   },
