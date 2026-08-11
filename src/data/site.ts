@@ -1,10 +1,4 @@
-import type {
-  ContributionArea,
-  NavigationLink,
-  ProfileDetail,
-  SiteInfo,
-  SocialLink,
-} from '../types/portfolio';
+import type { NavigationLink, ProfileDetail, SiteInfo, SocialLink } from '../types/portfolio';
 
 export const siteInfo: SiteInfo = {
   name: 'Marcos Andrés Travaglini',
@@ -77,36 +71,8 @@ export const profileDetails: ProfileDetail[] = [
   },
 ];
 
-export const contributionAreas: ContributionArea[] = [
-  {
-    title: 'Interfaces y componentes',
-    description:
-      'Implementación de interfaces a partir de diseños y creación de componentes reutilizables con estructura clara y consistente.',
-  },
-  {
-    title: 'Responsive y consistencia visual',
-    description:
-      'Adaptación de vistas a distintos tamaños de pantalla, corrección de detalles visuales y mantenimiento de patrones existentes.',
-  },
-  {
-    title: 'Formularios e integración con APIs',
-    description:
-      'Implementación de formularios, validaciones y consumo de APIs REST desde el frontend.',
-  },
-  {
-    title: 'Trabajo dentro de equipos',
-    description:
-      'Coordinación mediante Git, ramas y Pull Requests, colaborando con diseño, backend y revisiones de código.',
-  },
-  {
-    title: 'Mantenimiento y mejoras progresivas',
-    description:
-      'Corrección y reorganización de código existente, migraciones graduales de estado o datos y prevención de regresiones.',
-  },
-];
-
 export const contactContent = {
-  eyebrow: '07 — Contacto',
+  eyebrow: '06 — Contacto',
   title: '¿Buscás un Frontend Developer Junior para tu equipo?',
   description:
     'Estoy disponible para oportunidades remotas donde pueda participar en tareas frontend concretas, colaborar con otros perfiles y seguir creciendo mediante feedback técnico y code review.',

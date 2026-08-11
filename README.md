@@ -172,11 +172,10 @@ La landing principal incluirá:
 3. Perfil profesional.
 4. Experiencia.
 5. Proyectos destacados.
-6. Cómo puedo aportar.
-7. Stack técnico.
-8. Otras colaboraciones.
-9. Contacto.
-10. Footer.
+6. Stack técnico.
+7. Otras colaboraciones.
+8. Contacto.
+9. Footer.
 
 ## Proyectos principales
 

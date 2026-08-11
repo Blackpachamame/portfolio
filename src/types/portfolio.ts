@@ -76,8 +76,3 @@ export interface SecondaryCollaboration {
   contributions: string[];
   link: ExternalLink;
 }
-
-export interface ContributionArea {
-  title: string;
-  description: string;
-}
