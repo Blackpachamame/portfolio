@@ -173,9 +173,8 @@ La landing principal incluirá:
 4. Experiencia.
 5. Proyectos destacados.
 6. Stack técnico.
-7. Otras colaboraciones.
-8. Contacto.
-9. Footer.
+7. Contacto.
+8. Footer.
 
 ## Proyectos principales
 

@@ -66,13 +66,3 @@ export interface SkillGroup {
   description: string;
   skills: Skill[];
 }
-
-export interface SecondaryCollaboration {
-  name: string;
-  category: string;
-  period: string;
-  role: string;
-  description: string;
-  contributions: string[];
-  link: ExternalLink;
-}

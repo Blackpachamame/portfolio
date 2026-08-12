@@ -72,7 +72,7 @@ export const profileDetails: ProfileDetail[] = [
 ];
 
 export const contactContent = {
-  eyebrow: '06 — Contacto',
+  eyebrow: '05 — Contacto',
   title: '¿Buscás un Frontend Developer Junior para tu equipo?',
   description:
     'Estoy disponible para oportunidades remotas donde pueda participar en tareas frontend concretas, colaborar con otros perfiles y seguir creciendo mediante feedback técnico y code review.',
