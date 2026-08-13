@@ -1,5 +1,3 @@
-@import 'tailwindcss';
-
 @font-face {
   font-family: 'Manrope';
   font-style: normal;
@@ -101,6 +99,7 @@ select {
 
 a {
   color: inherit;
+  text-decoration-line: none;
   text-decoration-color: var(--color-accent);
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.25em;
@@ -156,6 +155,7 @@ h4 {
 }
 
 ul {
+  list-style: none;
   margin-block-start: 0;
 }
 

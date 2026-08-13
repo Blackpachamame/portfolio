@@ -4,7 +4,7 @@
 
 Este repositorio contiene la versión 2 del portfolio profesional de Marcos Andrés Travaglini.
 
-La versión anterior fue desarrollada con React, Vite, TypeScript y Tailwind CSS. La nueva versión se reconstruye desde cero utilizando Astro, TypeScript y Tailwind CSS 4.
+La versión anterior fue desarrollada con React, Vite, TypeScript y Tailwind CSS. La nueva versión se reconstruye desde cero utilizando Astro, TypeScript y CSS.
 
 El objetivo principal del proyecto es mejorar la empleabilidad de Marcos como Frontend Developer Junior, presentando de forma clara:
 
@@ -296,11 +296,10 @@ El portfolio actual utiliza:
 
 - Astro
 - TypeScript 5.9
-- Tailwind CSS 4
+- CSS
 - Bun
 - Prettier
 - prettier-plugin-astro
-- prettier-plugin-tailwindcss
 
 No instalar React, Vue, Svelte, Solid u otro framework sin una necesidad concreta y aprobación previa.
 

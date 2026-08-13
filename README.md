@@ -51,11 +51,10 @@ La versión 2 se está construyendo desde cero con Astro, priorizando:
 
 - [Astro](https://astro.build/)
 - TypeScript
-- Tailwind CSS 4
+- CSS
 - Bun
 - Prettier
 - prettier-plugin-astro
-- prettier-plugin-tailwindcss
 
 ## Requisitos
 
@@ -332,10 +331,8 @@ v1.0.0
 
 - [x] Inicializar Astro.
 - [x] Configurar TypeScript.
-- [x] Configurar Tailwind CSS 4.
 - [x] Configurar Prettier.
 - [x] Configurar prettier-plugin-astro.
-- [x] Configurar prettier-plugin-tailwindcss.
 - [x] Agregar validaciones de calidad.
 - [x] Registrar la versión anterior como `v1.0.0`.
 

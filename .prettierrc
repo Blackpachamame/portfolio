@@ -6,8 +6,7 @@
   "printWidth": 100,
   "bracketSpacing": true,
   "bracketSameLine": true,
-  "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
-  "tailwindStylesheet": "./src/styles/global.css",
+  "plugins": ["prettier-plugin-astro"],
   "overrides": [
     {
       "files": "*.astro",
