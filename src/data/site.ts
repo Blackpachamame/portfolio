@@ -73,10 +73,10 @@ export const profileDetails: ProfileDetail[] = [
 
 export const contactContent = {
   eyebrow: '05 — Contacto',
-  title: '¿Buscás un Frontend Developer Junior para tu equipo?',
+  title: '¿Buscás sumar frontend a tu equipo?',
   description:
-    'Estoy disponible para oportunidades remotas donde pueda participar en tareas frontend concretas, colaborar con otros perfiles y seguir creciendo mediante feedback técnico y code review.',
+    'Estoy disponible para oportunidades frontend junior en equipos de producto, donde pueda aportar en tareas concretas, colaborar con otros perfiles y seguir creciendo con feedback técnico.',
   primaryAction: 'Escribirme por correo',
   availabilityLabel: 'Disponible para',
-  availability: 'Posiciones frontend junior · Trabajo remoto · Equipos con code review',
+  availability: 'Frontend junior · Remoto desde Argentina',
 };

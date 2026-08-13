@@ -1,5 +1,5 @@
 ---
-import { siteInfo } from '../../data/site';
+import { headerContent, siteInfo } from '../../data/site';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -8,9 +8,9 @@ const currentYear = new Date().getFullYear();
   <div class="site-footer__inner container">
     <p class="site-footer__identity">
       <span>{siteInfo.name}</span>
-      <span>{siteInfo.role}</span>
+      <span>{headerContent.descriptor}</span>
     </p>
-    <p class="site-footer__build">Portfolio desarrollado con Astro, TypeScript y Tailwind CSS.</p>
+    <p class="site-footer__build">Astro · TypeScript · Tailwind CSS</p>
     <p class="site-footer__year">© {currentYear}</p>
   </div>
 </footer>

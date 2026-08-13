@@ -42,7 +42,7 @@ const emailHref = `mailto:${siteInfo.email}`;
               socialLinks.map((link) => (
                 <li>
                   <a href={link.href} target="_blank" rel="noopener noreferrer">
-                    Ver {link.platform}
+                    {link.platform}
                     <span aria-hidden="true"> ↗</span>
                     <span class="contact-details__new-tab">(abre en una pestaña nueva)</span>
                   </a>
