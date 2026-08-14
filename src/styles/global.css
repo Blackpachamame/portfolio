@@ -32,16 +32,16 @@
 
 :root {
   color-scheme: dark;
-  --color-canvas: #0b1112;
-  --color-surface: #121a1b;
-  --color-surface-raised: #192324;
-  --color-border: #293536;
-  --color-text: #f1efe9;
-  --color-text-secondary: #b0b5af;
-  --color-text-muted: #7f8985;
-  --color-accent: #d28a5b;
-  --color-accent-soft: #e2ad82;
-  --color-accent-secondary: #78a99a;
+  --color-canvas: #11121b;
+  --color-surface: #171824;
+  --color-surface-raised: #1e1f2d;
+  --color-border: #2d2f43;
+  --color-text: #f3f2f7;
+  --color-text-secondary: #c5c4d8;
+  --color-text-muted: #8c8da4;
+  --color-accent: #9796f0;
+  --color-accent-soft: #b8b6f5;
+  --color-accent-secondary: #b191ad;
   --content-width: 72rem;
   --reading-width: 44rem;
   --page-gutter: 1rem;
@@ -106,8 +106,7 @@ a {
   transition:
     color 160ms ease,
     border-color 160ms ease,
-    background-color 160ms ease,
-    transform 160ms ease;
+    background-color 160ms ease;
 }
 
 a:hover {
@@ -193,7 +192,7 @@ strong {
   z-index: 50;
   inset-block-start: 0;
   border-block-end: 1px solid var(--color-border);
-  background: var(--color-canvas);
+  background: linear-gradient(to top right, rgba(78, 89, 192, 0.2), #12131f), #11121b;
 }
 
 .site-header__inner {
@@ -215,15 +214,10 @@ strong {
   text-decoration: none;
 }
 
-.site-header__brand:hover .site-header__logo {
-  transform: rotate(-12deg);
-}
-
 .site-header__logo {
   width: 1.75rem;
   height: 1.75rem;
   flex: 0 0 auto;
-  transition: transform 180ms ease;
 }
 
 .site-header__identity {
@@ -360,11 +354,33 @@ strong {
   line-height: 1;
 }
 
+.hero h1 {
+  margin-block-end: 0.85rem;
+}
+
 .hero h1 span:last-child {
-  color: var(--color-accent-soft);
+  background: linear-gradient(90deg, #9796f0 0%, #fbc7d4 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  overflow: visible;
+  padding-block-end: 0.2em;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   font-size: clamp(3.35rem, 8vw, 7rem);
   letter-spacing: -0.035em;
   line-height: 0.9;
+}
+
+@media (min-width: 48rem) {
+  .hero h1 {
+    margin-block-end: 0.75rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .hero h1 {
+    margin-block-end: 0.5rem;
+  }
 }
 
 .hero__introduction {
@@ -402,6 +418,12 @@ strong {
   font-size: 0.9rem;
   font-weight: 700;
   text-decoration: none;
+
+  transition:
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
 }
 
 .button-link:hover {
@@ -413,6 +435,7 @@ strong {
 
 .button-link:active {
   transform: translateY(0);
+  transition-duration: 100ms;
 }
 
 .button-link--secondary {
@@ -1018,12 +1041,17 @@ strong {
 
 .project-link {
   display: inline-flex;
+  gap: 0.2rem;
   width: fit-content;
   min-height: 2.75rem;
   align-items: center;
   border-block-end: 1px solid var(--color-border);
   color: var(--color-text);
   font-weight: 700;
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease;
 }
 
 .project-link:hover {
@@ -1285,9 +1313,8 @@ strong {
 
 .contact-section {
   --section-space: clamp(4rem, 8vw, 6.5rem);
-
   position: relative;
-  background: var(--color-surface);
+  background: linear-gradient(to top right, rgba(78, 89, 192, 0.2), #12131f), #11121b;
 }
 
 .contact-section::before {
