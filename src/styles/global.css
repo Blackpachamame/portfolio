@@ -351,6 +351,99 @@ strong {
   opacity: 0.18;
 }
 
+.botanical-reveal {
+  --botanical-reveal-delay: 0ms;
+}
+
+.botanical-reveal--right {
+  --botanical-reveal-delay: 160ms;
+}
+
+.botanical-mask__stroke {
+  fill: none;
+  stroke: white;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.botanical-mask__stem {
+  stroke-width: 220;
+}
+
+.botanical-mask__branch {
+  stroke-width: 184;
+}
+
+.botanical-mask__twig {
+  stroke-width: 148;
+}
+
+.botanical-mask__coverage {
+  opacity: 1;
+}
+
+@keyframes botanical-mask-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes botanical-mask-complete {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@supports (animation-name: botanical-mask-draw) {
+  @media (prefers-reduced-motion: no-preference) {
+    .botanical-mask__stroke {
+      animation-name: botanical-mask-draw;
+      animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+      animation-fill-mode: both;
+    }
+
+    .botanical-mask__stem {
+      animation-duration: 1.35s;
+      animation-delay: var(--botanical-reveal-delay);
+    }
+
+    .botanical-mask__branch--first {
+      animation-duration: 1.2s;
+      animation-delay: calc(var(--botanical-reveal-delay) + 280ms);
+    }
+
+    .botanical-mask__branch--second {
+      animation-duration: 1.15s;
+      animation-delay: calc(var(--botanical-reveal-delay) + 500ms);
+    }
+
+    .botanical-mask__twig--first {
+      animation-duration: 1s;
+      animation-delay: calc(var(--botanical-reveal-delay) + 720ms);
+    }
+
+    .botanical-mask__twig--second {
+      animation-duration: 950ms;
+      animation-delay: calc(var(--botanical-reveal-delay) + 900ms);
+    }
+
+    .botanical-mask__coverage {
+      animation: botanical-mask-complete 750ms ease-out calc(var(--botanical-reveal-delay) + 1.55s)
+        both;
+    }
+  }
+}
+
 .hero__inner {
   position: relative;
   z-index: 1;

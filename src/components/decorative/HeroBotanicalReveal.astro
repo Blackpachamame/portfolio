@@ -1,0 +1,109 @@
+---
+import { getImage } from 'astro:assets';
+
+import branchLeft from '../../assets/seasonal/default/branch-left.png';
+import branchRight from '../../assets/seasonal/default/branch-right.png';
+
+const [leftBranch, rightBranch] = await Promise.all([
+  getImage({ src: branchLeft, width: 960, format: 'webp', quality: 82 }),
+  getImage({ src: branchRight, width: 960, format: 'webp', quality: 82 }),
+]);
+---
+
+<div class="hero__art" aria-hidden="true">
+  <svg
+    class="hero__branch hero__branch--left botanical-reveal botanical-reveal--left"
+    viewBox="0 0 960 640"
+    width="960"
+    height="640"
+    focusable="false">
+    <defs>
+      <mask
+        id="hero-branch-mask-left"
+        x="0"
+        y="0"
+        width="960"
+        height="640"
+        maskUnits="userSpaceOnUse"
+        maskContentUnits="userSpaceOnUse">
+        <path
+          class="botanical-mask__stroke botanical-mask__stem"
+          pathLength="1"
+          d="M -70 8 C 64 36 98 116 134 212 C 172 314 208 386 288 476"></path>
+        <path
+          class="botanical-mask__stroke botanical-mask__branch botanical-mask__branch--first"
+          pathLength="1"
+          d="M 0 32 C 116 70 210 56 310 82 C 402 106 454 148 550 176"></path>
+        <path
+          class="botanical-mask__stroke botanical-mask__branch botanical-mask__branch--second"
+          pathLength="1"
+          d="M 62 86 C 164 106 230 150 298 208 C 358 258 408 274 490 306"></path>
+        <path
+          class="botanical-mask__stroke botanical-mask__twig botanical-mask__twig--first"
+          pathLength="1"
+          d="M 112 126 C 72 220 52 294 94 374 C 120 422 162 454 228 512"></path>
+        <path
+          class="botanical-mask__stroke botanical-mask__twig botanical-mask__twig--second"
+          pathLength="1"
+          d="M 204 116 C 254 36 338 24 434 48 M 302 202 C 392 196 470 242 550 300"></path>
+        <rect class="botanical-mask__coverage" width="960" height="640" fill="white"></rect>
+      </mask>
+    </defs>
+
+    <image
+      href={leftBranch.src}
+      width="960"
+      height="640"
+      preserveAspectRatio="xMidYMid meet"
+      mask="url(#hero-branch-mask-left)"
+    />
+  </svg>
+
+  <svg
+    class="hero__branch hero__branch--right botanical-reveal botanical-reveal--right"
+    viewBox="0 0 960 640"
+    width="960"
+    height="640"
+    focusable="false">
+    <defs>
+      <mask
+        id="hero-branch-mask-right"
+        x="0"
+        y="0"
+        width="960"
+        height="640"
+        maskUnits="userSpaceOnUse"
+        maskContentUnits="userSpaceOnUse">
+        <path
+          class="botanical-mask__stroke botanical-mask__stem"
+          pathLength="1"
+          d="M 1030 4 C 918 42 894 126 874 226 C 854 330 834 408 782 510"></path>
+        <path
+          class="botanical-mask__stroke botanical-mask__branch botanical-mask__branch--first"
+          pathLength="1"
+          d="M 962 28 C 852 58 778 72 704 116 C 636 156 584 178 500 194"></path>
+        <path
+          class="botanical-mask__stroke botanical-mask__branch botanical-mask__branch--second"
+          pathLength="1"
+          d="M 916 92 C 820 124 758 182 710 246 C 664 304 616 342 546 386"></path>
+        <path
+          class="botanical-mask__stroke botanical-mask__twig botanical-mask__twig--first"
+          pathLength="1"
+          d="M 882 136 C 920 218 930 302 902 378 C 882 432 846 480 798 542"></path>
+        <path
+          class="botanical-mask__stroke botanical-mask__twig botanical-mask__twig--second"
+          pathLength="1"
+          d="M 814 112 C 770 48 694 34 608 58 M 710 232 C 634 234 568 286 508 354"></path>
+        <rect class="botanical-mask__coverage" width="960" height="640" fill="white"></rect>
+      </mask>
+    </defs>
+
+    <image
+      href={rightBranch.src}
+      width="960"
+      height="640"
+      preserveAspectRatio="xMidYMid meet"
+      mask="url(#hero-branch-mask-right)"
+    />
+  </svg>
+</div>

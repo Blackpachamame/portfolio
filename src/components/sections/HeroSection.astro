@@ -1,34 +1,10 @@
 ---
-import { Image } from 'astro:assets';
-
-import branchLeft from '../../assets/seasonal/default/branch-left.png';
-import branchRight from '../../assets/seasonal/default/branch-right.png';
 import { heroContent } from '../../data/site';
+import HeroBotanicalReveal from '../decorative/HeroBotanicalReveal.astro';
 ---
 
 <section id="inicio" class="hero" aria-labelledby="hero-title">
-  <div class="hero__art" aria-hidden="true">
-    <Image
-      class="hero__branch hero__branch--left"
-      src={branchLeft}
-      alt=""
-      width={960}
-      format="webp"
-      quality={82}
-      loading="eager"
-      decoding="sync"
-    />
-    <Image
-      class="hero__branch hero__branch--right"
-      src={branchRight}
-      alt=""
-      width={960}
-      format="webp"
-      quality={82}
-      loading="eager"
-      decoding="sync"
-    />
-  </div>
+  <HeroBotanicalReveal />
 
   <div class="hero__inner container">
     <div class="hero__main">
