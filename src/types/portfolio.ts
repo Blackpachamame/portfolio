@@ -59,6 +59,7 @@ export interface Project {
 
 export interface Skill {
   name: string;
+  featured?: boolean;
 }
 
 export interface SkillGroup {

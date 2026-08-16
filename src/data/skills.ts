@@ -6,8 +6,8 @@ export const skillGroups: SkillGroup[] = [
     description:
       'Tecnologías con las que trabajo con mayor frecuencia para implementar interfaces web.',
     skills: [
-      { name: 'React' },
-      { name: 'TypeScript' },
+      { name: 'React', featured: true },
+      { name: 'TypeScript', featured: true },
       { name: 'JavaScript' },
       { name: 'Angular' },
       { name: 'Next.js' },

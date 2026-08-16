@@ -1431,6 +1431,12 @@ strong {
   background: var(--color-surface-raised);
 }
 
+.stack-group--1 .stack-group__technologies .stack-group__technology--featured {
+  border-color: var(--color-accent-soft);
+  background: color-mix(in srgb, var(--color-accent) 18%, var(--color-surface-raised));
+  font-weight: 700;
+}
+
 .stack-group--2 .stack-group__technologies li {
   border-color: var(--color-accent-secondary);
 }
