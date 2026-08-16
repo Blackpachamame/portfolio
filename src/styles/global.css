@@ -1801,7 +1801,7 @@ strong {
   }
 
   .contact-section__inner {
-    grid-template-columns: minmax(0, 1.25fr) minmax(17rem, 0.75fr);
+    grid-template-columns: minmax(0, 1.25fr) minmax(17.25rem, 0.75fr);
     align-items: start;
   }
 
@@ -1826,6 +1826,12 @@ strong {
 
   .site-footer__year {
     text-align: end;
+  }
+}
+
+@media (min-width: 48rem) and (max-width: 60.0625rem) {
+  .contact-details__email {
+    font-size: clamp(0.9rem, 1.64vw, 1rem);
   }
 }
 
