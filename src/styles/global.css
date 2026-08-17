@@ -939,6 +939,7 @@ strong {
 .experience-entry__contributions ul {
   display: grid;
   gap: 0.55rem;
+  list-style: disc;
   margin: 0;
   padding-inline-start: 1.1rem;
 }
@@ -1142,6 +1143,7 @@ strong {
 .project-feature__contributions ul {
   display: grid;
   gap: 0.45rem;
+  list-style: disc;
   margin: 0.75rem 0 0;
   padding-inline-start: 1.1rem;
 }
@@ -1596,6 +1598,7 @@ strong {
   display: inline-flex;
   min-height: 2.75rem;
   align-items: center;
+  gap: 0.25rem;
   color: var(--color-text);
   font-size: 0.9rem;
   font-weight: 700;
