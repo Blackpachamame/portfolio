@@ -5,9 +5,9 @@ export const siteInfo: SiteInfo = {
   role: 'Frontend Developer Junior',
   location: 'Neuquén, Argentina',
   email: 'marcos.travaglini@est.fi.uncoma.edu.ar',
-  title: 'Marcos Travaglini | Frontend Developer Junior',
+  title: 'Marcos Travaglini | Frontend Developer',
   description:
-    'Portfolio de Marcos Travaglini, Frontend Developer Junior enfocado en React, TypeScript, interfaces responsive y APIs REST.',
+    'Portfolio de Marcos Travaglini, Frontend Developer enfocado en React, TypeScript, interfaces responsive y APIs REST.',
 };
 
 export const navigationLinks: NavigationLink[] = [
