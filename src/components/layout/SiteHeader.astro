@@ -36,6 +36,7 @@ import { headerContent, navigationLinks, siteInfo, socialLinks } from '../../dat
       <select class="site-header__season-select" id="season-selector" data-season-selector>
         <option value="default">Predeterminado</option>
         <option value="autumn">Otoño</option>
+        <option value="spring">Primavera</option>
       </select>
     </div>
 
@@ -63,10 +64,13 @@ import { headerContent, navigationLinks, siteInfo, socialLinks } from '../../dat
 
   if (seasonSelector instanceof HTMLSelectElement) {
     const currentSeason = document.documentElement.dataset.season;
-    seasonSelector.value = currentSeason === 'autumn' ? 'autumn' : 'default';
+    seasonSelector.value =
+      currentSeason === 'autumn' || currentSeason === 'spring' ? currentSeason : 'default';
 
     seasonSelector.addEventListener('change', () => {
-      const season = seasonSelector.value === 'autumn' ? 'autumn' : 'default';
+      const selectedSeason = seasonSelector.value;
+      const season =
+        selectedSeason === 'autumn' || selectedSeason === 'spring' ? selectedSeason : 'default';
       document.documentElement.dataset.season = season;
 
       try {

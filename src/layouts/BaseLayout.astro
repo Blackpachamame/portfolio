@@ -23,7 +23,7 @@ const socialPreviewAlt = 'Portfolio de Marcos Travaglini, Frontend Developer';
       try {
         const savedSeason = localStorage.getItem('portfolio-season');
 
-        if (savedSeason === 'default' || savedSeason === 'autumn') {
+        if (savedSeason === 'default' || savedSeason === 'autumn' || savedSeason === 'spring') {
           document.documentElement.dataset.season = savedSeason;
         }
       } catch {}

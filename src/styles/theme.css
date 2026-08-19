@@ -35,3 +35,20 @@ html[data-season='autumn'] {
   --color-environment-tint: rgba(111, 56, 76, 0.22);
   --color-environment-base: #191216;
 }
+
+html[data-season='spring'] {
+  --color-canvas: #0f1517;
+  --color-surface: #151e20;
+  --color-surface-raised: #1c2829;
+  --color-border: #40544f;
+  --color-text: #f3f2f7;
+  --color-text-secondary: #c6cecc;
+  --color-text-muted: #91a39e;
+  --color-accent: #78ae97;
+  --color-accent-soft: #a7ceb8;
+  --color-accent-secondary: #b990ab;
+  --color-title-gradient-start: #7fb49c;
+  --color-title-gradient-end: #d0a0bc;
+  --color-environment-tint: rgba(43, 103, 83, 0.21);
+  --color-environment-base: #11191a;
+}
