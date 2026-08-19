@@ -42,10 +42,30 @@
   --color-accent: #9796f0;
   --color-accent-soft: #b8b6f5;
   --color-accent-secondary: #b191ad;
+  --color-title-gradient-start: #9796f0;
+  --color-title-gradient-end: #fbc7d4;
+  --color-environment-tint: rgba(78, 89, 192, 0.2);
+  --color-environment-base: #12131f;
   --content-width: 72rem;
   --reading-width: 44rem;
   --page-gutter: 1rem;
   --section-space: clamp(4.5rem, 10vw, 8rem);
+}
+
+html[data-season='autumn'] {
+  --color-canvas: #151114;
+  --color-surface: #1d171a;
+  --color-surface-raised: #261e22;
+  --color-border: #7b5d64;
+  --color-text-secondary: #cec6c9;
+  --color-text-muted: #a29095;
+  --color-accent: #be7e70;
+  --color-accent-soft: #d5a08c;
+  --color-accent-secondary: #aa7280;
+  --color-title-gradient-start: #c48670;
+  --color-title-gradient-end: #e2a8a4;
+  --color-environment-tint: rgba(119, 55, 64, 0.22);
+  --color-environment-base: #191216;
 }
 
 *,
@@ -192,7 +212,9 @@ strong {
   z-index: 50;
   inset-block-start: 0;
   border-block-end: 1px solid var(--color-border);
-  background: linear-gradient(to top right, rgba(78, 89, 192, 0.2), #12131f), #11121b;
+  background:
+    linear-gradient(to top right, var(--color-environment-tint), var(--color-environment-base)),
+    var(--color-canvas);
 }
 
 .site-header__inner {
@@ -479,7 +501,11 @@ strong {
 }
 
 .hero h1 span:last-child {
-  background: linear-gradient(90deg, #9796f0 0%, #fbc7d4 100%);
+  background: linear-gradient(
+    90deg,
+    var(--color-title-gradient-start) 0%,
+    var(--color-title-gradient-end) 100%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   overflow: visible;
@@ -1470,7 +1496,9 @@ strong {
 .contact-section {
   --section-space: clamp(4rem, 8vw, 6.5rem);
   position: relative;
-  background: linear-gradient(to top right, rgba(78, 89, 192, 0.2), #12131f), #11121b;
+  background:
+    linear-gradient(to top right, var(--color-environment-tint), var(--color-environment-base)),
+    var(--color-canvas);
 }
 
 .contact-section::before {
