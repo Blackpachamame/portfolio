@@ -1,0 +1,199 @@
+.site-header {
+  position: sticky;
+  z-index: 50;
+  inset-block-start: 0;
+  border-block-end: 1px solid var(--color-border);
+  background:
+    linear-gradient(to top right, var(--color-environment-tint), var(--color-environment-base)),
+    var(--color-canvas);
+}
+
+.site-header__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.3rem 0.5rem;
+  padding-block: 0.35rem 0.3rem;
+}
+
+.site-header__brand {
+  display: inline-flex;
+  width: fit-content;
+  min-width: 0;
+  min-height: 2.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.site-header__logo {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: 0 0 auto;
+}
+
+.site-header__identity {
+  display: grid;
+  min-width: 0;
+  line-height: 1.15;
+}
+
+.site-header__identity > :first-child {
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+}
+
+.site-header__identity > :last-child {
+  color: var(--color-text-muted);
+  font-size: 0.62rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.site-header__nav {
+  grid-column: 1;
+  grid-row: 2;
+  padding-block-start: 0.2rem;
+  border-block-start: 1px solid var(--color-border);
+}
+
+.site-header__season {
+  display: flex;
+  grid-column: 2;
+  grid-row: 2;
+  align-items: center;
+  justify-content: flex-end;
+  padding-block-start: 0.2rem;
+  border-block-start: 1px solid var(--color-border);
+}
+
+.site-header__season-select {
+  width: 7.5rem;
+  min-height: 2.5rem;
+  padding: 0.4rem 0.35rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.125rem;
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  cursor: pointer;
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.site-header__season-select:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.site-header__navigation,
+.site-header__social {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-header__navigation {
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+
+.site-header__navigation a,
+.site-header__social a {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-header__navigation a {
+  padding-inline: 0.35rem;
+  white-space: nowrap;
+}
+
+.site-header__navigation a.site-header__contact-link {
+  padding-inline: 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-text);
+  background: transparent;
+}
+
+.site-header__navigation a:hover,
+.site-header__social a:hover {
+  color: var(--color-accent-soft);
+}
+
+.site-header__navigation a.site-header__contact-link:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent-soft);
+  background: var(--color-surface);
+}
+
+.site-header__social {
+  grid-column: 2;
+  grid-row: 1;
+  justify-content: flex-end;
+  gap: 0.2rem;
+}
+
+.site-header__social a {
+  gap: 0.2rem;
+  padding-inline: 0.25rem;
+  font-size: 0.68rem;
+}
+
+.site-header__social span {
+  color: var(--color-accent-secondary);
+  font-size: 0.75em;
+}
+
+@media (min-width: 48rem) {
+  .site-header__inner {
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    gap: 1.25rem;
+    padding-block: 0.4rem;
+  }
+
+  .site-header__identity > :first-child {
+    font-size: 0.9rem;
+  }
+
+  .site-header__nav {
+    grid-column: 2;
+    grid-row: 1;
+    padding-block-start: 0;
+    border-block-start: 0;
+  }
+
+  .site-header__season {
+    grid-column: 3;
+    grid-row: 1;
+    padding-block-start: 0;
+    border-block-start: 0;
+  }
+
+  .site-header__navigation {
+    justify-content: center;
+    gap: clamp(0.4rem, 1vw, 1rem);
+  }
+
+  .site-header__navigation a,
+  .site-header__social a {
+    font-size: 0.78rem;
+  }
+
+  .site-header__social {
+    grid-column: 4;
+    grid-row: 1;
+  }
+}

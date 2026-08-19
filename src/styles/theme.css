@@ -1,0 +1,37 @@
+:root {
+  color-scheme: dark;
+  --color-canvas: #11121b;
+  --color-surface: #171824;
+  --color-surface-raised: #1e1f2d;
+  --color-border: #2d2f43;
+  --color-text: #f3f2f7;
+  --color-text-secondary: #c5c4d8;
+  --color-text-muted: #8c8da4;
+  --color-accent: #9796f0;
+  --color-accent-soft: #b8b6f5;
+  --color-accent-secondary: #b191ad;
+  --color-title-gradient-start: #9796f0;
+  --color-title-gradient-end: #fbc7d4;
+  --color-environment-tint: rgba(78, 89, 192, 0.2);
+  --color-environment-base: #12131f;
+  --content-width: 72rem;
+  --reading-width: 44rem;
+  --page-gutter: 1rem;
+  --section-space: clamp(4.5rem, 10vw, 8rem);
+}
+
+html[data-season='autumn'] {
+  --color-canvas: #151114;
+  --color-surface: #1d171a;
+  --color-surface-raised: #261e22;
+  --color-border: #70545b;
+  --color-text-secondary: #cec6c9;
+  --color-text-muted: #a29095;
+  --color-accent: #be7e70;
+  --color-accent-soft: #d5a08c;
+  --color-accent-secondary: #a1728a;
+  --color-title-gradient-start: #c48670;
+  --color-title-gradient-end: #dba3b2;
+  --color-environment-tint: rgba(111, 56, 76, 0.22);
+  --color-environment-base: #191216;
+}

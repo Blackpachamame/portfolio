@@ -1,0 +1,280 @@
+.experience-section {
+  --section-space: clamp(4rem, 5.5vw, 4.75rem);
+}
+
+.experience-section__heading {
+  max-width: 58rem;
+  margin-block-end: clamp(2.25rem, 4vw, 3rem);
+}
+
+.experience-section__index {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-block-end: 1rem;
+}
+
+.experience-section__index p {
+  flex: 0 0 auto;
+  margin-block-end: 0;
+  color: var(--color-accent-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.experience-section__heading h2 {
+  max-width: 22ch;
+  margin-block-end: 0;
+  font-size: clamp(2rem, 8vw, 3.75rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1.03;
+}
+
+.experience-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.experience-list__item {
+  border-block-start: 1px solid var(--color-border);
+}
+
+.experience-list__item--featured {
+  border-block-start: 2px solid var(--color-accent-soft);
+}
+
+.experience-entry {
+  display: grid;
+  gap: clamp(1.75rem, 5vw, 2.5rem);
+  padding-block: clamp(2.25rem, 6vw, 3rem);
+}
+
+.experience-list__item--featured .experience-entry {
+  padding-block: clamp(2.75rem, 7vw, 3.75rem);
+}
+
+.experience-list__item--brief .experience-entry {
+  padding-block: clamp(2rem, 5vw, 2.5rem);
+}
+
+.experience-entry__meta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-self: start;
+  gap: 1rem;
+  min-width: 0;
+  margin: 0;
+}
+
+.experience-entry__meta > div {
+  display: grid;
+  align-content: start;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.experience-entry__meta dt,
+.experience-entry__technologies > p {
+  color: var(--color-text-muted);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.experience-entry__meta dd {
+  min-width: 0;
+  margin-inline-start: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.experience-entry__period dd {
+  color: var(--color-text);
+  font-size: 0.98rem;
+  letter-spacing: -0.015em;
+}
+
+.experience-entry__meta .experience-entry__type {
+  width: fit-content;
+  padding-block-end: 0.1rem;
+  border-block-end: 1px solid var(--color-accent);
+  color: var(--color-accent-soft);
+}
+
+.experience-list__item--simulation .experience-entry__type {
+  border-block-end-color: var(--color-accent-secondary);
+  color: var(--color-accent-secondary);
+}
+
+.experience-list__item--brief .experience-entry__type {
+  border-block-end-color: var(--color-text-muted);
+  color: var(--color-text-secondary);
+}
+
+.experience-entry__content {
+  min-width: 0;
+  max-width: 50rem;
+}
+
+.experience-entry__header {
+  margin-block-end: 1.15rem;
+}
+
+.experience-entry__header h3 {
+  margin-block-end: 0;
+  font-size: clamp(1.7rem, 7vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.experience-list__item--featured .experience-entry__header h3 {
+  font-size: clamp(2.15rem, 9vw, 3.4rem);
+}
+
+.experience-list__item--brief .experience-entry__header h3 {
+  font-size: clamp(1.55rem, 6vw, 2.15rem);
+}
+
+.experience-entry__role {
+  margin-block-end: 0.35rem;
+  color: var(--color-accent-secondary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.experience-list__item--featured .experience-entry__role {
+  color: var(--color-accent-soft);
+}
+
+.experience-list__item--brief .experience-entry__role {
+  color: var(--color-text-muted);
+}
+
+.experience-entry__summary {
+  max-width: 43rem;
+  margin-block-end: 1.5rem;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
+
+.experience-list__item--featured .experience-entry__summary {
+  color: var(--color-text);
+  font-size: clamp(1.05rem, 2vw, 1.18rem);
+  font-weight: 500;
+}
+
+.experience-list__item--brief .experience-entry__summary {
+  max-width: 45rem;
+  margin-block-end: 1.25rem;
+  font-size: 0.96rem;
+}
+
+.experience-entry__contributions {
+  margin-block-end: 1.75rem;
+}
+
+.experience-entry__contributions h4 {
+  margin-block-end: 0.8rem;
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.experience-entry__contributions ul {
+  display: grid;
+  gap: 0.55rem;
+  list-style: disc;
+  margin: 0;
+  padding-inline-start: 1.1rem;
+}
+
+.experience-entry__contributions li {
+  padding-inline-start: 0.15rem;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.experience-entry__contributions li::marker {
+  color: var(--color-accent);
+}
+
+.experience-list__item--simulation .experience-entry__contributions li::marker {
+  color: var(--color-accent-secondary);
+}
+
+.experience-entry__technologies {
+  display: grid;
+  gap: 0.5rem;
+  padding-block-start: 0.9rem;
+  border-block-start: 1px solid var(--color-border);
+}
+
+.experience-entry__technologies > p {
+  margin-block-end: 0;
+}
+
+.experience-entry__technologies ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.experience-entry__technologies li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.experience-list__item--featured .experience-entry__technologies li {
+  color: var(--color-text-secondary);
+}
+
+.experience-entry__technologies li:not(:last-child)::after {
+  color: var(--color-border);
+  content: '·';
+}
+
+@media (min-width: 48rem) {
+  .experience-section__heading h2 {
+    font-size: clamp(2.5rem, 4.8vw, 3.75rem);
+  }
+
+  .experience-entry {
+    grid-template-columns: 11.5rem minmax(0, 1fr);
+    gap: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .experience-entry__meta {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .experience-entry__period {
+    grid-column: auto;
+  }
+}
+
+@media (min-width: 64rem) {
+  .experience-list__item--featured .experience-entry__contributions ul,
+  .experience-list__item--simulation .experience-entry__contributions ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2.5rem;
+  }
+}
