@@ -31,6 +31,14 @@ import { headerContent, navigationLinks, siteInfo, socialLinks } from '../../dat
       </ul>
     </nav>
 
+    <div class="site-header__season">
+      <label class="visually-hidden" for="season-selector">Estación</label>
+      <select class="site-header__season-select" id="season-selector" data-season-selector>
+        <option value="default">Predeterminado</option>
+        <option value="autumn">Otoño</option>
+      </select>
+    </div>
+
     <ul class="site-header__social" aria-label="Redes profesionales" role="list">
       {
         socialLinks.map((link) => (
@@ -49,3 +57,21 @@ import { headerContent, navigationLinks, siteInfo, socialLinks } from '../../dat
     </ul>
   </div>
 </header>
+
+<script is:inline>
+  const seasonSelector = document.querySelector('[data-season-selector]');
+
+  if (seasonSelector instanceof HTMLSelectElement) {
+    const currentSeason = document.documentElement.dataset.season;
+    seasonSelector.value = currentSeason === 'autumn' ? 'autumn' : 'default';
+
+    seasonSelector.addEventListener('change', () => {
+      const season = seasonSelector.value === 'autumn' ? 'autumn' : 'default';
+      document.documentElement.dataset.season = season;
+
+      try {
+        localStorage.setItem('portfolio-season', season);
+      } catch {}
+    });
+  }
+</script>

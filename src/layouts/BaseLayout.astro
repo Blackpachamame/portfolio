@@ -15,10 +15,19 @@ const socialPreviewAlt = 'Portfolio de Marcos Travaglini, Frontend Developer';
 ---
 
 <!doctype html>
-<html lang="es" data-season="autumn">
+<html lang="es" data-season="default">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      try {
+        const savedSeason = localStorage.getItem('portfolio-season');
+
+        if (savedSeason === 'default' || savedSeason === 'autumn') {
+          document.documentElement.dataset.season = savedSeason;
+        }
+      } catch {}
+    </script>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     <meta property="og:title" content={title} />
