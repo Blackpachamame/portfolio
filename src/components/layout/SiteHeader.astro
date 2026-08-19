@@ -37,6 +37,7 @@ import { headerContent, navigationLinks, siteInfo, socialLinks } from '../../dat
         <option value="default">Predeterminado</option>
         <option value="autumn">Otoño</option>
         <option value="spring">Primavera</option>
+        <option value="summer">Verano</option>
         <option value="winter">Invierno</option>
       </select>
     </div>
@@ -66,14 +67,20 @@ import { headerContent, navigationLinks, siteInfo, socialLinks } from '../../dat
   if (seasonSelector instanceof HTMLSelectElement) {
     const currentSeason = document.documentElement.dataset.season;
     seasonSelector.value =
-      currentSeason === 'autumn' || currentSeason === 'spring' || currentSeason === 'winter'
+      currentSeason === 'autumn' ||
+      currentSeason === 'spring' ||
+      currentSeason === 'summer' ||
+      currentSeason === 'winter'
         ? currentSeason
         : 'default';
 
     seasonSelector.addEventListener('change', () => {
       const selectedSeason = seasonSelector.value;
       const season =
-        selectedSeason === 'autumn' || selectedSeason === 'spring' || selectedSeason === 'winter'
+        selectedSeason === 'autumn' ||
+        selectedSeason === 'spring' ||
+        selectedSeason === 'summer' ||
+        selectedSeason === 'winter'
           ? selectedSeason
           : 'default';
       document.documentElement.dataset.season = season;

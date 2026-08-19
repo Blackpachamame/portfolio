@@ -53,6 +53,23 @@ html[data-season='spring'] {
   --color-environment-base: #11191a;
 }
 
+html[data-season='summer'] {
+  --color-canvas: #0a1626;
+  --color-surface: #111f30;
+  --color-surface-raised: #192b3e;
+  --color-border: #405469;
+  --color-text: #f3f2ef;
+  --color-text-secondary: #c6c8c8;
+  --color-text-muted: #919ca5;
+  --color-accent: #bca06f;
+  --color-accent-soft: #d4b88a;
+  --color-accent-secondary: #c47d80;
+  --color-title-gradient-start: #c2a16f;
+  --color-title-gradient-end: #d08a87;
+  --color-environment-tint: rgba(82, 60, 68, 0.16);
+  --color-environment-base: #0d1a29;
+}
+
 html[data-season='winter'] {
   --color-canvas: #0d1318;
   --color-surface: #131b22;
@@ -66,6 +83,6 @@ html[data-season='winter'] {
   --color-accent-secondary: #8993ad;
   --color-title-gradient-start: #829eac;
   --color-title-gradient-end: #aab2c5;
-  --color-environment-tint: rgba(48, 72, 92, 0.18);
-  --color-environment-base: #0f171d;
+  --color-environment-tint: rgba(48, 85, 92, 0.18);
+  --color-environment-base: #0f121d;
 }
