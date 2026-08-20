@@ -2,7 +2,7 @@ import type { NavigationLink, ProfileDetail, SiteInfo, SocialLink } from '../typ
 
 export const siteInfo: SiteInfo = {
   name: 'Marcos Andrés Travaglini',
-  role: 'Frontend Developer Junior',
+  role: 'Frontend Developer',
   location: 'Neuquén, Argentina',
   email: 'marcos.travaglini@est.fi.uncoma.edu.ar',
   title: 'Marcos Travaglini | Frontend Developer',

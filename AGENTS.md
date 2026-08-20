@@ -6,7 +6,7 @@ Este repositorio contiene la versión 2 del portfolio profesional de Marcos Andr
 
 La versión anterior fue desarrollada con React, Vite, TypeScript y Tailwind CSS. La nueva versión se reconstruye desde cero utilizando Astro, TypeScript y CSS.
 
-El objetivo principal del proyecto es mejorar la empleabilidad de Marcos como Frontend Developer Junior, presentando de forma clara:
+El objetivo principal del proyecto es mejorar la empleabilidad de Marcos como Frontend Developer, presentando de forma clara:
 
 - Su experiencia práctica en equipos.
 - Sus proyectos reales y colaborativos.
@@ -29,7 +29,7 @@ Este proyecto no debe convertirse en:
 
 Marcos debe presentarse como:
 
-- Frontend Developer Junior.
+- Frontend Developer.
 - Técnico Universitario en Desarrollo Web.
 - Ubicado en Neuquén, Argentina.
 - Con experiencia práctica en proyectos reales y colaborativos.
@@ -63,7 +63,7 @@ Marcos Andrés Travaglini
 
 ### Rol principal
 
-Frontend Developer Junior
+Frontend Developer
 
 ### Ubicación
 
@@ -224,7 +224,7 @@ No afirmar que Marcos implementó de forma individual todo el marketplace, todo 
 - Corrección del botón de contacto en mobile.
 - Revisión y agregado de información faltante.
 
-NesConsulting debe mostrarse como colaboración secundaria y no como el caso de estudio principal del portfolio.
+NesConsulting se conserva aquí como antecedente profesional, pero fue retirado intencionalmente del contenido público del portfolio.
 
 No afirmar que Marcos desarrolló por sí solo toda la web, arquitectura, administración, base de datos, formularios o sistema de despliegue.
 
@@ -254,7 +254,7 @@ Aportes:
 ### No Country
 
 - Rol: Frontend Web Developer en simulaciones laborales.
-- Períodos: marzo a junio de 2024 y septiembre a octubre de 2025.
+- Períodos: marzo a junio de 2024, septiembre a octubre de 2025 y febrero a marzo de 2026.
 
 Aportes:
 
@@ -453,13 +453,12 @@ La landing principal debería contemplar:
 5. Proyectos destacados.
 6. Cómo puede aportar Marcos.
 7. Stack técnico.
-8. Otras colaboraciones.
-9. Contacto.
-10. Footer.
+8. Contacto.
+9. Footer.
 
 NesDuel y Mundifigus podrán tener páginas propias de caso de estudio.
 
-NesConsulting debe aparecer como colaboración secundaria.
+La antigua sección de colaboraciones secundarias y NesConsulting no forman parte del contenido público actual.
 
 La landing debe poder comprenderse rápidamente por recruiters y líderes técnicos.
 

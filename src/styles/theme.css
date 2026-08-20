@@ -4,6 +4,7 @@
   --color-surface: #171824;
   --color-surface-raised: #1e1f2d;
   --color-border: #2d2f43;
+  --color-control-border: #656689;
   --color-text: #f3f2f7;
   --color-text-secondary: #c5c4d8;
   --color-text-muted: #8c8da4;
@@ -25,6 +26,7 @@ html[data-season='autumn'] {
   --color-surface: #1d171a;
   --color-surface-raised: #261e22;
   --color-border: #70545b;
+  --color-control-border: #7d6068;
   --color-text-secondary: #cec6c9;
   --color-text-muted: #a29095;
   --color-accent: #be7e70;
@@ -41,6 +43,7 @@ html[data-season='spring'] {
   --color-surface: #151e20;
   --color-surface-raised: #1c2829;
   --color-border: #40544f;
+  --color-control-border: #557068;
   --color-text: #f3f2f7;
   --color-text-secondary: #c6cecc;
   --color-text-muted: #91a39e;
@@ -58,6 +61,7 @@ html[data-season='summer'] {
   --color-surface: #111f30;
   --color-surface-raised: #192b3e;
   --color-border: #405469;
+  --color-control-border: #566f89;
   --color-text: #f3f2ef;
   --color-text-secondary: #c6c8c8;
   --color-text-muted: #919ca5;
@@ -75,6 +79,7 @@ html[data-season='winter'] {
   --color-surface: #131b22;
   --color-surface-raised: #1a242d;
   --color-border: #3b4d5c;
+  --color-control-border: #546d7e;
   --color-text: #f3f2f7;
   --color-text-secondary: #c6ccd1;
   --color-text-muted: #8999a6;

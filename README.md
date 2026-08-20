@@ -30,7 +30,7 @@ detalles botánicos discretos.
 - Estados de foco visibles y adaptación a `prefers-reduced-motion`.
 - Imágenes responsivas optimizadas mediante `astro:assets`.
 - Metadata canónica, Open Graph y Twitter Card con imagen social de 1200 × 630 px.
-- Generación estática sin componentes hidratados ni JavaScript de aplicación en el cliente.
+- Generación estática con JavaScript mínimo y sin componentes hidratados en el cliente.
 
 ## Secciones
 
