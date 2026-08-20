@@ -1,14 +1,11 @@
 ---
-import { Image } from 'astro:assets';
-
-import logo from '../../assets/logoLight.png';
 import { headerContent, navigationLinks, socialLinks } from '../../data/site';
 ---
 
 <header class="site-header">
   <div class="site-header__inner container">
     <a class="site-header__brand" href="#inicio">
-      <Image class="site-header__logo" src={logo} alt="" width={56} height={56} loading="eager" />
+      <span class="site-header__logo" aria-hidden="true"></span>
       <span class="site-header__identity">
         <span>{headerContent.shortName}</span>
         <span>{headerContent.descriptor}</span>

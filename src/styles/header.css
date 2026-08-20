@@ -31,6 +31,9 @@
   width: 1.75rem;
   height: 1.75rem;
   flex: 0 0 auto;
+  background-color: var(--color-accent-soft);
+  -webkit-mask: url('../assets/logoLight.png') center / contain no-repeat;
+  mask: url('../assets/logoLight.png') center / contain no-repeat;
 }
 
 .site-header__identity {
@@ -203,6 +206,11 @@
 }
 
 @media (forced-colors: active) {
+  .site-header__logo {
+    background-color: CanvasText;
+    forced-color-adjust: none;
+  }
+
   .site-header__season-select {
     border-color: CanvasText;
   }
