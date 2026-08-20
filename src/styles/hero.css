@@ -92,7 +92,15 @@
 
 @supports (animation-name: botanical-mask-draw) {
   @media (prefers-reduced-motion: no-preference) {
-    .botanical-mask__stroke {
+    .hero__art:not(.hero__art--botanical-ready) .botanical-mask__stroke {
+      stroke-dashoffset: 1;
+    }
+
+    .hero__art:not(.hero__art--botanical-ready) .botanical-mask__coverage {
+      opacity: 0;
+    }
+
+    .hero__art--botanical-ready .botanical-mask__stroke {
       animation-name: botanical-mask-draw;
       animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
       animation-fill-mode: both;
@@ -123,7 +131,7 @@
       animation-delay: calc(var(--botanical-reveal-delay) + 900ms);
     }
 
-    .botanical-mask__coverage {
+    .hero__art--botanical-ready .botanical-mask__coverage {
       animation: botanical-mask-complete 750ms ease-out calc(var(--botanical-reveal-delay) + 1.55s)
         both;
     }

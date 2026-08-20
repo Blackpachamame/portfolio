@@ -1,16 +1,32 @@
 ---
 import { getImage } from 'astro:assets';
 
-import branchLeft from '../../assets/seasonal/default/branch-left.png';
-import branchRight from '../../assets/seasonal/default/branch-right.png';
+import defaultBranchLeft from '../../assets/seasonal/default/branch-left.png';
+import defaultBranchRight from '../../assets/seasonal/default/branch-right.png';
+import winterBranchLeft from '../../assets/seasonal/winter/branch-left.png';
+import winterBranchRight from '../../assets/seasonal/winter/branch-right.png';
 
-const [leftBranch, rightBranch] = await Promise.all([
-  getImage({ src: branchLeft, width: 960, format: 'webp', quality: 82 }),
-  getImage({ src: branchRight, width: 960, format: 'webp', quality: 82 }),
-]);
+const [defaultLeftBranch, defaultRightBranch, winterLeftBranch, winterRightBranch] =
+  await Promise.all([
+    getImage({ src: defaultBranchLeft, width: 960, format: 'webp', quality: 82 }),
+    getImage({ src: defaultBranchRight, width: 960, format: 'webp', quality: 82 }),
+    getImage({ src: winterBranchLeft, width: 960, format: 'webp', quality: 82 }),
+    getImage({ src: winterBranchRight, width: 960, format: 'webp', quality: 82 }),
+  ]);
+
+const botanicalAssets = {
+  default: {
+    left: defaultLeftBranch.src,
+    right: defaultRightBranch.src,
+  },
+  winter: {
+    left: winterLeftBranch.src,
+    right: winterRightBranch.src,
+  },
+};
 ---
 
-<div class="hero__art" aria-hidden="true">
+<div class="hero__art" aria-hidden="true" data-botanical-reveal>
   <svg
     class="hero__branch hero__branch--left botanical-reveal botanical-reveal--left"
     viewBox="0 0 960 640"
@@ -51,7 +67,7 @@ const [leftBranch, rightBranch] = await Promise.all([
     </defs>
 
     <image
-      href={leftBranch.src}
+      data-botanical-image="left"
       width="960"
       height="640"
       preserveAspectRatio="xMidYMid meet"
@@ -99,11 +115,93 @@ const [leftBranch, rightBranch] = await Promise.all([
     </defs>
 
     <image
-      href={rightBranch.src}
+      data-botanical-image="right"
       width="960"
       height="640"
       preserveAspectRatio="xMidYMid meet"
       mask="url(#hero-branch-mask-right)"
     />
   </svg>
+
+  <noscript>
+    <img
+      class="hero__branch hero__branch--left"
+      src={defaultLeftBranch.src}
+      width="960"
+      height="640"
+      alt=""
+    />
+    <img
+      class="hero__branch hero__branch--right"
+      src={defaultRightBranch.src}
+      width="960"
+      height="640"
+      alt=""
+    />
+  </noscript>
 </div>
+
+<script is:inline define:vars={{ botanicalAssets }}>
+  const botanicalReveal = document.querySelector('[data-botanical-reveal]');
+  const leftBranch = botanicalReveal?.querySelector('[data-botanical-image="left"]');
+  const rightBranch = botanicalReveal?.querySelector('[data-botanical-image="right"]');
+
+  if (
+    botanicalReveal instanceof HTMLElement &&
+    leftBranch instanceof SVGImageElement &&
+    rightBranch instanceof SVGImageElement
+  ) {
+    const resolveVariant = () =>
+      document.documentElement.dataset.season === 'winter' ? 'winter' : 'default';
+
+    const applyVariant = (variant) => {
+      const assets = botanicalAssets[variant];
+      leftBranch.setAttribute('href', assets.left);
+      rightBranch.setAttribute('href', assets.right);
+    };
+
+    const preloadVariant = async (variant) => {
+      const assets = botanicalAssets[variant];
+
+      await Promise.all(
+        Object.values(assets).map(async (src) => {
+          const image = new Image();
+          image.src = src;
+          await image.decode();
+        }),
+      );
+    };
+
+    let activeVariant;
+    let latestRequest = 0;
+
+    const loadVariant = async (nextVariant) => {
+      const request = ++latestRequest;
+
+      if (nextVariant === activeVariant) return;
+
+      try {
+        await preloadVariant(nextVariant);
+      } catch {
+        if (botanicalReveal.classList.contains('hero__art--botanical-ready')) return;
+      }
+
+      if (request !== latestRequest || nextVariant !== resolveVariant()) return;
+
+      applyVariant(nextVariant);
+      activeVariant = nextVariant;
+      botanicalReveal.classList.add('hero__art--botanical-ready');
+    };
+
+    const observer = new MutationObserver(() => {
+      void loadVariant(resolveVariant());
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-season'],
+    });
+
+    void loadVariant(resolveVariant());
+  }
+</script>
