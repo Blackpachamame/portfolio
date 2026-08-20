@@ -188,8 +188,19 @@ const botanicalAssets = {
 
       if (request !== latestRequest || nextVariant !== resolveVariant()) return;
 
+      const shouldReplay = activeVariant !== undefined;
+
+      if (shouldReplay) {
+        botanicalReveal.classList.remove('hero__art--botanical-ready');
+      }
+
       applyVariant(nextVariant);
       activeVariant = nextVariant;
+
+      if (shouldReplay) {
+        void botanicalReveal.offsetWidth;
+      }
+
       botanicalReveal.classList.add('hero__art--botanical-ready');
     };
 
