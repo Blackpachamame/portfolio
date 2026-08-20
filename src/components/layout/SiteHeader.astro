@@ -31,7 +31,7 @@ import { headerContent, navigationLinks, socialLinks } from '../../data/site';
       </ul>
     </nav>
 
-    <div class="site-header__season">
+    <div class="site-header__season" data-season-control hidden>
       <label class="visually-hidden" for="season-selector">Estación</label>
       <select class="site-header__season-select" id="season-selector" data-season-selector>
         <option value="default">Predeterminado</option>
@@ -62,9 +62,10 @@ import { headerContent, navigationLinks, socialLinks } from '../../data/site';
 </header>
 
 <script is:inline>
-  const seasonSelector = document.querySelector('[data-season-selector]');
+  const seasonControl = document.querySelector('[data-season-control]');
+  const seasonSelector = seasonControl?.querySelector('[data-season-selector]');
 
-  if (seasonSelector instanceof HTMLSelectElement) {
+  if (seasonControl instanceof HTMLElement && seasonSelector instanceof HTMLSelectElement) {
     const currentSeason = document.documentElement.dataset.season;
     seasonSelector.value =
       currentSeason === 'autumn' ||
@@ -73,6 +74,7 @@ import { headerContent, navigationLinks, socialLinks } from '../../data/site';
       currentSeason === 'winter'
         ? currentSeason
         : 'default';
+    seasonControl.hidden = false;
 
     seasonSelector.addEventListener('change', () => {
       const selectedSeason = seasonSelector.value;
