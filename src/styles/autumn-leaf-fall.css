@@ -1,0 +1,116 @@
+.autumn-leaf-fall {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.autumn-leaf-fall__leaf {
+  --leaf-color: var(--color-accent-soft);
+  --leaf-opacity: 0.48;
+  --leaf-sway: 1.5rem;
+  --leaf-counter-sway: -0.8rem;
+  --leaf-drift: 1rem;
+  --leaf-fall-distance: 28rem;
+  --leaf-rotation-start: -28deg;
+  --leaf-rotation-first: 48deg;
+  --leaf-rotation-second: 142deg;
+  --leaf-rotation-end: 238deg;
+
+  position: absolute;
+  inset-block-start: -1.5rem;
+  inset-inline-start: 8%;
+  width: 0.7rem;
+  aspect-ratio: 1.55;
+  border-radius: 90% 12% 90% 12%;
+  opacity: 0;
+  background: var(--leaf-color);
+  transform-origin: 70% 70%;
+  animation: autumn-leaf-fall 2.2s cubic-bezier(0.36, 0.08, 0.64, 0.96) both;
+}
+
+.autumn-leaf-fall__leaf:nth-child(2) {
+  --leaf-color: var(--color-accent);
+  --leaf-opacity: 0.42;
+  --leaf-sway: -1.25rem;
+  --leaf-counter-sway: 1rem;
+  --leaf-drift: -1.5rem;
+  --leaf-rotation-start: 32deg;
+  --leaf-rotation-first: -38deg;
+  --leaf-rotation-second: -126deg;
+  --leaf-rotation-end: -224deg;
+
+  inset-inline-start: 29%;
+  width: 0.55rem;
+  animation-delay: 120ms;
+  animation-duration: 2.35s;
+}
+
+.autumn-leaf-fall__leaf:nth-child(3) {
+  --leaf-color: var(--color-accent-secondary);
+  --leaf-opacity: 0.46;
+  --leaf-sway: 1rem;
+  --leaf-counter-sway: -1.35rem;
+  --leaf-drift: 1.75rem;
+  --leaf-rotation-start: -16deg;
+  --leaf-rotation-first: 62deg;
+  --leaf-rotation-second: 168deg;
+  --leaf-rotation-end: 282deg;
+
+  inset-inline-start: 73%;
+  width: 0.62rem;
+  animation-delay: 260ms;
+  animation-duration: 2.1s;
+}
+
+.autumn-leaf-fall__leaf:nth-child(4) {
+  --leaf-opacity: 0.4;
+  --leaf-sway: -1.6rem;
+  --leaf-counter-sway: 0.65rem;
+  --leaf-drift: -1rem;
+  --leaf-rotation-start: 24deg;
+  --leaf-rotation-first: -54deg;
+  --leaf-rotation-second: -148deg;
+  --leaf-rotation-end: -252deg;
+
+  inset-inline-start: 91%;
+  width: 0.74rem;
+  animation-delay: 380ms;
+  animation-duration: 2.25s;
+}
+
+@keyframes autumn-leaf-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -1.5rem, 0) rotate(var(--leaf-rotation-start));
+  }
+
+  12% {
+    opacity: var(--leaf-opacity);
+  }
+
+  34% {
+    transform: translate3d(var(--leaf-sway), 8rem, 0) rotate(var(--leaf-rotation-first));
+  }
+
+  64% {
+    transform: translate3d(var(--leaf-counter-sway), 17rem, 0) rotate(var(--leaf-rotation-second));
+  }
+
+  84% {
+    opacity: var(--leaf-opacity);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--leaf-drift), var(--leaf-fall-distance), 0)
+      rotate(var(--leaf-rotation-end));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .autumn-leaf-fall {
+    display: none;
+  }
+}

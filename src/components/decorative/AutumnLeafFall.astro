@@ -1,0 +1,69 @@
+<template data-autumn-leaf-template>
+  <div class="autumn-leaf-fall" aria-hidden="true" data-autumn-leaf-fall>
+    <span class="autumn-leaf-fall__leaf"></span>
+    <span class="autumn-leaf-fall__leaf"></span>
+    <span class="autumn-leaf-fall__leaf"></span>
+    <span class="autumn-leaf-fall__leaf" data-autumn-leaf-final></span>
+  </div>
+</template>
+
+<script>
+  const hero = document.querySelector('.hero');
+  const seasonSelector = document.querySelector('[data-season-selector]');
+  const leafTemplate = document.querySelector('[data-autumn-leaf-template]');
+
+  if (
+    hero instanceof HTMLElement &&
+    seasonSelector instanceof HTMLSelectElement &&
+    leafTemplate instanceof HTMLTemplateElement
+  ) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let previousSeason = document.documentElement.dataset.season ?? 'default';
+    let activeEffect: HTMLElement | undefined;
+
+    const stopEffect = () => {
+      activeEffect?.remove();
+      activeEffect = undefined;
+    };
+
+    const startEffect = () => {
+      stopEffect();
+
+      if (reducedMotion.matches) return;
+
+      const effect = leafTemplate.content.firstElementChild?.cloneNode(true);
+
+      if (!(effect instanceof HTMLElement)) return;
+
+      const finalLeaf = effect.querySelector('[data-autumn-leaf-final]');
+
+      if (!(finalLeaf instanceof HTMLElement)) return;
+
+      activeEffect = effect;
+      finalLeaf.addEventListener(
+        'animationend',
+        () => {
+          if (activeEffect === effect) stopEffect();
+        },
+        { once: true },
+      );
+      hero.append(effect);
+    };
+
+    seasonSelector.addEventListener('change', () => {
+      const nextSeason = seasonSelector.value;
+
+      if (nextSeason !== 'autumn') {
+        stopEffect();
+      } else if (previousSeason !== 'autumn') {
+        startEffect();
+      }
+
+      previousSeason = nextSeason;
+    });
+
+    reducedMotion.addEventListener('change', (event) => {
+      if (event.matches) stopEffect();
+    });
+  }
+</script>
