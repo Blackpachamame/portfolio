@@ -1,0 +1,254 @@
+.summer-light-motes {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.summer-light-motes__light {
+  --summer-light-peak: 0.66;
+  --summer-light-settle: 0.34;
+
+  position: absolute;
+  inset-block-start: -50%;
+  inset-inline-start: -30%;
+  width: 96%;
+  height: 132%;
+  border-radius: 50%;
+  opacity: 0;
+  background:
+    radial-gradient(
+      ellipse at 28% 28%,
+      color-mix(in srgb, var(--color-accent-soft) 34%, transparent) 0%,
+      color-mix(in srgb, var(--color-accent-soft) 18%, transparent) 27%,
+      color-mix(in srgb, var(--color-title-gradient-end) 8%, transparent) 48%,
+      transparent 70%
+    ),
+    linear-gradient(
+      118deg,
+      transparent 12%,
+      color-mix(in srgb, var(--color-accent-soft) 7%, transparent) 31%,
+      color-mix(in srgb, var(--color-title-gradient-end) 10%, transparent) 43%,
+      color-mix(in srgb, var(--color-accent-secondary) 5%, transparent) 54%,
+      transparent 69%
+    );
+  transform-origin: 30% 30%;
+  will-change: opacity, transform;
+  animation: summer-light-sweep 4.8s cubic-bezier(0.2, 0.62, 0.34, 1) 120ms both;
+}
+
+.summer-light-motes__light::before {
+  position: absolute;
+  inset: 20% 8% 18% 12%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 36% 38%,
+    color-mix(in srgb, var(--color-accent-soft) 14%, transparent) 0%,
+    color-mix(in srgb, var(--color-title-gradient-end) 7%, transparent) 42%,
+    transparent 72%
+  );
+  content: '';
+  opacity: 0.82;
+  transform: rotate(-7deg);
+}
+
+.summer-light-motes__mote {
+  --mote-color: var(--color-accent-soft);
+  --mote-opacity: 0.3;
+  --mote-size: 0.3rem;
+  --mote-drift-first: 0.65rem;
+  --mote-drift-second: 0.2rem;
+  --mote-drift-end: 1.25rem;
+  --mote-rise-first: -1.2rem;
+  --mote-rise-second: -2.5rem;
+  --mote-rise-end: -4rem;
+
+  position: absolute;
+  inset-block-start: 68%;
+  inset-inline-start: 14%;
+  width: var(--mote-size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: 0;
+  background: var(--mote-color);
+  box-shadow:
+    0 0 0.35rem color-mix(in srgb, var(--mote-color) 28%, transparent),
+    0 0 0.8rem color-mix(in srgb, var(--mote-color) 12%, transparent);
+  will-change: opacity, transform;
+  animation: summer-mote-drift 4.55s cubic-bezier(0.34, 0.08, 0.56, 0.96) 140ms both;
+}
+
+.summer-light-motes__mote--far {
+  --mote-color: var(--color-accent);
+  --mote-opacity: 0.18;
+  --mote-size: 0.18rem;
+  --mote-rise-end: -3rem;
+}
+
+.summer-light-motes__mote--near {
+  --mote-color: var(--color-title-gradient-end);
+  --mote-opacity: 0.42;
+  --mote-size: 0.46rem;
+  --mote-rise-end: -5.1rem;
+}
+
+.summer-light-motes__mote:nth-of-type(3) {
+  --mote-color: var(--color-accent-secondary);
+  --mote-drift-first: -0.75rem;
+  --mote-drift-second: -0.2rem;
+  --mote-drift-end: -1.35rem;
+  --mote-rise-first: -0.9rem;
+  --mote-rise-second: -2.1rem;
+  --mote-rise-end: -3.7rem;
+
+  inset-block-start: 45%;
+  inset-inline-start: 29%;
+  animation-delay: 520ms;
+  animation-duration: 4.2s;
+}
+
+.summer-light-motes__mote:nth-of-type(4) {
+  --mote-opacity: 0.38;
+  --mote-size: 0.4rem;
+  --mote-drift-first: 0.85rem;
+  --mote-drift-second: 0.35rem;
+  --mote-drift-end: 1.5rem;
+  --mote-rise-first: -1.4rem;
+  --mote-rise-second: -3rem;
+  --mote-rise-end: -4.8rem;
+
+  inset-block-start: 74%;
+  inset-inline-start: 47%;
+  animation-delay: 240ms;
+  animation-duration: 4.15s;
+}
+
+.summer-light-motes__mote:nth-of-type(5) {
+  --mote-color: var(--color-accent);
+  --mote-opacity: 0.2;
+  --mote-size: 0.22rem;
+  --mote-drift-first: -0.35rem;
+  --mote-drift-second: 0.15rem;
+  --mote-drift-end: -0.7rem;
+  --mote-rise-first: -0.8rem;
+  --mote-rise-second: -1.8rem;
+  --mote-rise-end: -3.1rem;
+
+  inset-block-start: 32%;
+  inset-inline-start: 63%;
+  animation-delay: 340ms;
+  animation-duration: 4.6s;
+}
+
+.summer-light-motes__mote:nth-of-type(6) {
+  --mote-color: var(--color-title-gradient-end);
+  --mote-opacity: 0.34;
+  --mote-size: 0.34rem;
+  --mote-drift-first: 0.55rem;
+  --mote-drift-second: 0.1rem;
+  --mote-drift-end: 0.95rem;
+  --mote-rise-first: -1.25rem;
+  --mote-rise-second: -2.7rem;
+  --mote-rise-end: -4.4rem;
+
+  inset-block-start: 59%;
+  inset-inline-start: 79%;
+  animation-delay: 680ms;
+  animation-duration: 4.05s;
+}
+
+.summer-light-motes__mote:nth-of-type(7) {
+  --mote-color: var(--color-accent-soft);
+  --mote-opacity: 0.25;
+  --mote-size: 0.26rem;
+  --mote-drift-first: -0.7rem;
+  --mote-drift-second: -0.3rem;
+  --mote-drift-end: -1.15rem;
+  --mote-rise-first: -1rem;
+  --mote-rise-second: -2.3rem;
+  --mote-rise-end: -3.9rem;
+
+  inset-block-start: 43%;
+  inset-inline-start: 91%;
+  animation-delay: 180ms;
+  animation-duration: 4.35s;
+}
+
+@keyframes summer-light-sweep {
+  0% {
+    opacity: 0;
+    transform: translate3d(-10%, -4%, 0) scale(0.88) rotate(-2deg);
+  }
+
+  20% {
+    opacity: var(--summer-light-peak);
+  }
+
+  52% {
+    opacity: var(--summer-light-peak);
+    transform: translate3d(2%, 2%, 0) scale(1.02) rotate(0deg);
+  }
+
+  76% {
+    opacity: var(--summer-light-settle);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(11%, 7%, 0) scale(1.14) rotate(2deg);
+  }
+}
+
+@keyframes summer-mote-drift {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0.45rem, 0) scale(0.68);
+  }
+
+  16% {
+    opacity: var(--mote-opacity);
+  }
+
+  40% {
+    opacity: var(--mote-opacity);
+    transform: translate3d(var(--mote-drift-first), var(--mote-rise-first), 0) scale(0.94);
+  }
+
+  68% {
+    opacity: calc(var(--mote-opacity) * 0.9);
+    transform: translate3d(var(--mote-drift-second), var(--mote-rise-second), 0) scale(1.08);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--mote-drift-end), var(--mote-rise-end), 0) scale(0.78);
+  }
+}
+
+@media (max-width: 23.4375rem) {
+  .summer-light-motes__light {
+    --summer-light-peak: 0.48;
+    --summer-light-settle: 0.25;
+
+    inset-block-start: -34%;
+    inset-inline-start: -58%;
+    width: 138%;
+    height: 96%;
+  }
+
+  .summer-light-motes__mote {
+    width: min(var(--mote-size), 0.4rem);
+  }
+
+  .summer-light-motes__mote:nth-of-type(3),
+  .summer-light-motes__mote:nth-of-type(6) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .summer-light-motes {
+    display: none;
+  }
+}

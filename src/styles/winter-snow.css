@@ -1,0 +1,248 @@
+.winter-snow {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.winter-snow__flake {
+  --flake-color: var(--color-accent-soft);
+  --flake-opacity: 0.32;
+  --flake-size: 0.38rem;
+  --flake-drift-first: 0.45rem;
+  --flake-drift-second: -0.25rem;
+  --flake-drift-end: 0.7rem;
+  --flake-fall-distance: 36rem;
+  --flake-turn-first: 3deg;
+  --flake-turn-second: -2deg;
+  --flake-turn-end: 5deg;
+
+  position: absolute;
+  inset-block-start: -1.25rem;
+  inset-inline-start: 5%;
+  width: var(--flake-size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  color: var(--flake-color);
+  background: currentColor;
+  opacity: 0;
+  will-change: opacity, transform;
+  animation: winter-snowfall 5.7s linear 100ms both;
+}
+
+.winter-snow__flake--far {
+  --flake-color: var(--color-accent);
+  --flake-opacity: 0.2;
+  --flake-size: 0.25rem;
+  --flake-fall-distance: 35rem;
+
+  animation-duration: 6.1s;
+}
+
+.winter-snow__flake--near {
+  --flake-color: var(--color-title-gradient-end);
+  --flake-opacity: 0.46;
+  --flake-size: 0.56rem;
+  --flake-fall-distance: 38rem;
+
+  animation-duration: 5.1s;
+}
+
+.winter-snow__flake:nth-child(2) {
+  --flake-drift-first: -0.7rem;
+  --flake-drift-second: -0.2rem;
+  --flake-drift-end: -0.9rem;
+
+  inset-inline-start: 13%;
+  animation-delay: 350ms;
+}
+
+.winter-snow__flake:nth-child(3) {
+  --flake-drift-first: 0.9rem;
+  --flake-drift-second: 0.25rem;
+  --flake-drift-end: 1.2rem;
+
+  inset-inline-start: 22%;
+  animation-delay: 550ms;
+}
+
+.winter-snow__flake:nth-child(4) {
+  --flake-drift-first: -0.35rem;
+  --flake-drift-second: 0.35rem;
+  --flake-drift-end: -0.6rem;
+
+  inset-inline-start: 31%;
+  animation-delay: 250ms;
+}
+
+.winter-snow__flake:nth-child(5) {
+  --flake-size: 0.34rem;
+  --flake-opacity: 0.29;
+  --flake-drift-first: 0.65rem;
+  --flake-drift-second: 0.15rem;
+  --flake-drift-end: 0.85rem;
+
+  inset-inline-start: 40%;
+  animation-delay: 600ms;
+}
+
+.winter-snow__flake:nth-child(6) {
+  --flake-drift-first: -0.55rem;
+  --flake-drift-second: 0.3rem;
+  --flake-drift-end: -0.8rem;
+
+  inset-inline-start: 49%;
+  animation-delay: 150ms;
+}
+
+.winter-snow__flake:nth-child(7) {
+  --flake-drift-first: 0.3rem;
+  --flake-drift-second: -0.45rem;
+  --flake-drift-end: 0.55rem;
+
+  inset-inline-start: 58%;
+  animation-delay: 450ms;
+}
+
+.winter-snow__flake:nth-child(8) {
+  --flake-drift-first: -0.8rem;
+  --flake-drift-second: -0.15rem;
+  --flake-drift-end: -1.1rem;
+
+  inset-inline-start: 67%;
+  animation-delay: 700ms;
+}
+
+.winter-snow__flake:nth-child(9) {
+  --flake-size: 0.5rem;
+  --flake-opacity: 0.41;
+  --flake-drift-first: 0.75rem;
+  --flake-drift-second: -0.2rem;
+  --flake-drift-end: 1rem;
+
+  inset-inline-start: 76%;
+  animation-delay: 300ms;
+}
+
+.winter-snow__flake:nth-child(10) {
+  --flake-drift-first: -0.4rem;
+  --flake-drift-second: 0.3rem;
+  --flake-drift-end: -0.7rem;
+
+  inset-inline-start: 85%;
+  animation-delay: 500ms;
+}
+
+.winter-snow__flake:nth-child(11) {
+  --flake-drift-first: 0.55rem;
+  --flake-drift-second: -0.35rem;
+  --flake-drift-end: 0.75rem;
+
+  inset-inline-start: 94%;
+  animation-delay: 200ms;
+}
+
+.winter-snow__flake:nth-child(12) {
+  --flake-size: 0.42rem;
+  --flake-opacity: 0.34;
+  --flake-drift-first: -0.65rem;
+  --flake-drift-second: 0.2rem;
+  --flake-drift-end: -0.95rem;
+
+  inset-block-start: 8%;
+  inset-inline-start: 17%;
+  animation-delay: 650ms;
+}
+
+.winter-snow__flake:nth-child(13) {
+  --flake-drift-first: 0.4rem;
+  --flake-drift-second: -0.4rem;
+  --flake-drift-end: 0.65rem;
+
+  inset-block-start: 15%;
+  inset-inline-start: 36%;
+  animation-delay: 300ms;
+}
+
+.winter-snow__flake:nth-child(14) {
+  --flake-drift-first: -0.5rem;
+  --flake-drift-second: 0.25rem;
+  --flake-drift-end: -0.75rem;
+
+  inset-block-start: 4%;
+  inset-inline-start: 55%;
+}
+
+.winter-snow__flake:nth-child(15) {
+  --flake-size: 0.62rem;
+  --flake-opacity: 0.44;
+  --flake-drift-first: 0.8rem;
+  --flake-drift-second: 0.1rem;
+  --flake-drift-end: 1.1rem;
+
+  inset-block-start: 18%;
+  inset-inline-start: 74%;
+  animation-delay: 500ms;
+}
+
+.winter-snow__flake:nth-child(16) {
+  --flake-drift-first: -0.45rem;
+  --flake-drift-second: 0.4rem;
+  --flake-drift-end: -0.65rem;
+
+  inset-block-start: 10%;
+  inset-inline-start: 91%;
+  animation-delay: 700ms;
+  animation-duration: 6s;
+}
+
+@keyframes winter-snowfall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -1rem, 0) rotate(0deg);
+  }
+
+  9% {
+    opacity: var(--flake-opacity);
+  }
+
+  34% {
+    transform: translate3d(var(--flake-drift-first), 10rem, 0) rotate(var(--flake-turn-first));
+  }
+
+  67% {
+    transform: translate3d(var(--flake-drift-second), 22rem, 0) rotate(var(--flake-turn-second));
+  }
+
+  89% {
+    opacity: var(--flake-opacity);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--flake-drift-end), var(--flake-fall-distance), 0)
+      rotate(var(--flake-turn-end));
+  }
+}
+
+@media (max-width: 23.4375rem) {
+  .winter-snow__flake {
+    width: min(var(--flake-size), 0.5rem);
+  }
+
+  .winter-snow__flake:nth-child(4),
+  .winter-snow__flake:nth-child(6),
+  .winter-snow__flake:nth-child(8),
+  .winter-snow__flake:nth-child(11),
+  .winter-snow__flake:nth-child(13),
+  .winter-snow__flake:nth-child(15) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .winter-snow {
+    display: none;
+  }
+}

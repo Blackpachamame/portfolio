@@ -1,0 +1,72 @@
+<template data-summer-light-template>
+  <div class="summer-light-motes" aria-hidden="true" data-summer-light-motes>
+    <span class="summer-light-motes__light" data-summer-light-final></span>
+    <span class="summer-light-motes__mote summer-light-motes__mote--far"></span>
+    <span class="summer-light-motes__mote summer-light-motes__mote--mid"></span>
+    <span class="summer-light-motes__mote summer-light-motes__mote--near"></span>
+    <span class="summer-light-motes__mote summer-light-motes__mote--far"></span>
+    <span class="summer-light-motes__mote summer-light-motes__mote--mid"></span>
+    <span class="summer-light-motes__mote summer-light-motes__mote--mid"></span>
+  </div>
+</template>
+
+<script>
+  const hero = document.querySelector('.hero');
+  const seasonSelector = document.querySelector('[data-season-selector]');
+  const summerTemplate = document.querySelector('[data-summer-light-template]');
+
+  if (
+    hero instanceof HTMLElement &&
+    seasonSelector instanceof HTMLSelectElement &&
+    summerTemplate instanceof HTMLTemplateElement
+  ) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let previousSeason = document.documentElement.dataset.season ?? 'default';
+    let activeEffect: HTMLElement | undefined;
+
+    const stopEffect = () => {
+      activeEffect?.remove();
+      activeEffect = undefined;
+    };
+
+    const startEffect = () => {
+      stopEffect();
+
+      if (reducedMotion.matches) return;
+
+      const effect = summerTemplate.content.firstElementChild?.cloneNode(true);
+
+      if (!(effect instanceof HTMLElement)) return;
+
+      const finalLight = effect.querySelector('[data-summer-light-final]');
+
+      if (!(finalLight instanceof HTMLElement)) return;
+
+      activeEffect = effect;
+      finalLight.addEventListener(
+        'animationend',
+        () => {
+          if (activeEffect === effect) stopEffect();
+        },
+        { once: true },
+      );
+      hero.append(effect);
+    };
+
+    seasonSelector.addEventListener('change', () => {
+      const nextSeason = seasonSelector.value;
+
+      if (nextSeason !== 'summer') {
+        stopEffect();
+      } else if (previousSeason !== 'summer') {
+        startEffect();
+      }
+
+      previousSeason = nextSeason;
+    });
+
+    reducedMotion.addEventListener('change', (event) => {
+      if (event.matches) stopEffect();
+    });
+  }
+</script>

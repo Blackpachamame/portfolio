@@ -1,0 +1,81 @@
+<template data-winter-snow-template>
+  <div class="winter-snow" aria-hidden="true" data-winter-snow>
+    <span class="winter-snow__flake winter-snow__flake--far"></span>
+    <span class="winter-snow__flake winter-snow__flake--mid"></span>
+    <span class="winter-snow__flake winter-snow__flake--near"></span>
+    <span class="winter-snow__flake winter-snow__flake--far"></span>
+    <span class="winter-snow__flake winter-snow__flake--mid"></span>
+    <span class="winter-snow__flake winter-snow__flake--mid"></span>
+    <span class="winter-snow__flake winter-snow__flake--far"></span>
+    <span class="winter-snow__flake winter-snow__flake--mid"></span>
+    <span class="winter-snow__flake winter-snow__flake--near"></span>
+    <span class="winter-snow__flake winter-snow__flake--far"></span>
+    <span class="winter-snow__flake winter-snow__flake--mid"></span>
+    <span class="winter-snow__flake winter-snow__flake--mid"></span>
+    <span class="winter-snow__flake winter-snow__flake--far"></span>
+    <span class="winter-snow__flake winter-snow__flake--mid"></span>
+    <span class="winter-snow__flake winter-snow__flake--near"></span>
+    <span class="winter-snow__flake winter-snow__flake--far" data-winter-snow-final></span>
+  </div>
+</template>
+
+<script>
+  const hero = document.querySelector('.hero');
+  const seasonSelector = document.querySelector('[data-season-selector]');
+  const snowTemplate = document.querySelector('[data-winter-snow-template]');
+
+  if (
+    hero instanceof HTMLElement &&
+    seasonSelector instanceof HTMLSelectElement &&
+    snowTemplate instanceof HTMLTemplateElement
+  ) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let previousSeason = document.documentElement.dataset.season ?? 'default';
+    let activeEffect: HTMLElement | undefined;
+
+    const stopEffect = () => {
+      activeEffect?.remove();
+      activeEffect = undefined;
+    };
+
+    const startEffect = () => {
+      stopEffect();
+
+      if (reducedMotion.matches) return;
+
+      const effect = snowTemplate.content.firstElementChild?.cloneNode(true);
+
+      if (!(effect instanceof HTMLElement)) return;
+
+      const finalFlake = effect.querySelector('[data-winter-snow-final]');
+
+      if (!(finalFlake instanceof HTMLElement)) return;
+
+      activeEffect = effect;
+      finalFlake.addEventListener(
+        'animationend',
+        () => {
+          if (activeEffect === effect) stopEffect();
+        },
+        { once: true },
+      );
+      hero.append(effect);
+    };
+
+    seasonSelector.addEventListener('change', () => {
+      const nextSeason = seasonSelector.value;
+
+      if (nextSeason !== 'winter') {
+        stopEffect();
+      } else if (previousSeason !== 'winter') {
+        startEffect();
+      }
+
+      previousSeason = nextSeason;
+    });
+
+    reducedMotion.addEventListener('change', (event) => {
+      if (event.matches) stopEffect();
+    });
+  }
+</script>
