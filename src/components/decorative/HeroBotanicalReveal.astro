@@ -1,23 +1,57 @@
 ---
 import { getImage } from 'astro:assets';
 
+import autumnBranchLeft from '../../assets/seasonal/autumn/branch-left.png';
+import autumnBranchRight from '../../assets/seasonal/autumn/branch-right.png';
 import defaultBranchLeft from '../../assets/seasonal/default/branch-left.png';
 import defaultBranchRight from '../../assets/seasonal/default/branch-right.png';
+import springBranchLeft from '../../assets/seasonal/spring/branch-left.png';
+import springBranchRight from '../../assets/seasonal/spring/branch-right.png';
+import summerBranchLeft from '../../assets/seasonal/summer/branch-left.png';
+import summerBranchRight from '../../assets/seasonal/summer/branch-right.png';
 import winterBranchLeft from '../../assets/seasonal/winter/branch-left.png';
 import winterBranchRight from '../../assets/seasonal/winter/branch-right.png';
 
-const [defaultLeftBranch, defaultRightBranch, winterLeftBranch, winterRightBranch] =
-  await Promise.all([
-    getImage({ src: defaultBranchLeft, width: 960, format: 'webp', quality: 82 }),
-    getImage({ src: defaultBranchRight, width: 960, format: 'webp', quality: 82 }),
-    getImage({ src: winterBranchLeft, width: 960, format: 'webp', quality: 82 }),
-    getImage({ src: winterBranchRight, width: 960, format: 'webp', quality: 82 }),
-  ]);
+const [
+  defaultLeftBranch,
+  defaultRightBranch,
+  autumnLeftBranch,
+  autumnRightBranch,
+  springLeftBranch,
+  springRightBranch,
+  summerLeftBranch,
+  summerRightBranch,
+  winterLeftBranch,
+  winterRightBranch,
+] = await Promise.all([
+  getImage({ src: defaultBranchLeft, width: 960, format: 'webp', quality: 82 }),
+  getImage({ src: defaultBranchRight, width: 960, format: 'webp', quality: 82 }),
+  getImage({ src: autumnBranchLeft, width: 960, format: 'webp', quality: 82 }),
+  getImage({ src: autumnBranchRight, width: 960, format: 'webp', quality: 82 }),
+  getImage({ src: springBranchLeft, width: 960, format: 'webp', quality: 82 }),
+  getImage({ src: springBranchRight, width: 960, format: 'webp', quality: 82 }),
+  getImage({ src: summerBranchLeft, width: 960, format: 'webp', quality: 82 }),
+  getImage({ src: summerBranchRight, width: 960, format: 'webp', quality: 82 }),
+  getImage({ src: winterBranchLeft, width: 960, format: 'webp', quality: 82 }),
+  getImage({ src: winterBranchRight, width: 960, format: 'webp', quality: 82 }),
+]);
 
 const botanicalAssets = {
   default: {
     left: defaultLeftBranch.src,
     right: defaultRightBranch.src,
+  },
+  autumn: {
+    left: autumnLeftBranch.src,
+    right: autumnRightBranch.src,
+  },
+  spring: {
+    left: springLeftBranch.src,
+    right: springRightBranch.src,
+  },
+  summer: {
+    left: summerLeftBranch.src,
+    right: summerRightBranch.src,
   },
   winter: {
     left: winterLeftBranch.src,
@@ -151,8 +185,16 @@ const botanicalAssets = {
     leftBranch instanceof SVGImageElement &&
     rightBranch instanceof SVGImageElement
   ) {
-    const resolveVariant = () =>
-      document.documentElement.dataset.season === 'winter' ? 'winter' : 'default';
+    const resolveVariant = () => {
+      const season = document.documentElement.dataset.season;
+
+      return season === 'autumn' ||
+        season === 'spring' ||
+        season === 'summer' ||
+        season === 'winter'
+        ? season
+        : 'default';
+    };
 
     const applyVariant = (variant) => {
       const assets = botanicalAssets[variant];
