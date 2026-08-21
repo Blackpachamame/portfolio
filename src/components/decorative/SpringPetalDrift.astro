@@ -1,0 +1,75 @@
+<template data-spring-petal-template>
+  <div class="spring-petal-drift" aria-hidden="true" data-spring-petal-drift>
+    <span class="spring-petal-drift__petal"></span>
+    <span class="spring-petal-drift__petal"></span>
+    <span class="spring-petal-drift__petal"></span>
+    <span class="spring-petal-drift__petal"></span>
+    <span class="spring-petal-drift__petal"></span>
+    <span class="spring-petal-drift__petal"></span>
+    <span class="spring-petal-drift__petal"></span>
+    <span class="spring-petal-drift__petal"></span>
+    <span class="spring-petal-drift__petal"></span>
+    <span class="spring-petal-drift__petal" data-spring-petal-final></span>
+  </div>
+</template>
+
+<script>
+  const hero = document.querySelector('.hero');
+  const seasonSelector = document.querySelector('[data-season-selector]');
+  const petalTemplate = document.querySelector('[data-spring-petal-template]');
+
+  if (
+    hero instanceof HTMLElement &&
+    seasonSelector instanceof HTMLSelectElement &&
+    petalTemplate instanceof HTMLTemplateElement
+  ) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let previousSeason = document.documentElement.dataset.season ?? 'default';
+    let activeEffect: HTMLElement | undefined;
+
+    const stopEffect = () => {
+      activeEffect?.remove();
+      activeEffect = undefined;
+    };
+
+    const startEffect = () => {
+      stopEffect();
+
+      if (reducedMotion.matches) return;
+
+      const effect = petalTemplate.content.firstElementChild?.cloneNode(true);
+
+      if (!(effect instanceof HTMLElement)) return;
+
+      const finalPetal = effect.querySelector('[data-spring-petal-final]');
+
+      if (!(finalPetal instanceof HTMLElement)) return;
+
+      activeEffect = effect;
+      finalPetal.addEventListener(
+        'animationend',
+        () => {
+          if (activeEffect === effect) stopEffect();
+        },
+        { once: true },
+      );
+      hero.append(effect);
+    };
+
+    seasonSelector.addEventListener('change', () => {
+      const nextSeason = seasonSelector.value;
+
+      if (nextSeason !== 'spring') {
+        stopEffect();
+      } else if (previousSeason !== 'spring') {
+        startEffect();
+      }
+
+      previousSeason = nextSeason;
+    });
+
+    reducedMotion.addEventListener('change', (event) => {
+      if (event.matches) stopEffect();
+    });
+  }
+</script>

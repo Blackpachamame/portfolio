@@ -1,0 +1,327 @@
+.spring-petal-drift {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.spring-petal-drift__petal {
+  --petal-color: var(--color-title-gradient-end);
+  --petal-opacity: 0.28;
+  --petal-size: 0.52rem;
+  --petal-x-first: 3.4rem;
+  --petal-x-second: 1rem;
+  --petal-x-third: 5.6rem;
+  --petal-x-end: 7.5rem;
+  --petal-y-first: 3.8rem;
+  --petal-y-second: 8rem;
+  --petal-y-third: 13.5rem;
+  --petal-fall-distance: 25rem;
+  --petal-rotation-start: -18deg;
+  --petal-rotation-first: 24deg;
+  --petal-rotation-second: -8deg;
+  --petal-rotation-third: 38deg;
+  --petal-rotation-end: 64deg;
+
+  position: absolute;
+  inset-block-start: -1.5rem;
+  inset-inline-start: 7%;
+  width: var(--petal-size);
+  aspect-ratio: 0.72;
+  border-radius: 72% 34% 68% 28% / 82% 38% 68% 24%;
+  opacity: 0;
+  background: var(--petal-color);
+  transform-origin: 62% 78%;
+  will-change: opacity, transform;
+  animation: spring-petal-drift 4.35s cubic-bezier(0.34, 0.08, 0.58, 0.98) 200ms both;
+}
+
+.spring-petal-drift__petal::after {
+  position: absolute;
+  inset-block-start: 30%;
+  inset-inline-start: 48%;
+  width: 1px;
+  height: 48%;
+  background: var(--color-canvas);
+  content: '';
+  opacity: 0.2;
+  transform: rotate(18deg);
+  transform-origin: center bottom;
+}
+
+.spring-petal-drift__petal:nth-child(2) {
+  --petal-color: var(--color-accent-secondary);
+  --petal-opacity: 0.42;
+  --petal-size: 0.72rem;
+  --petal-x-first: -3.6rem;
+  --petal-x-second: -1.2rem;
+  --petal-x-third: -5.4rem;
+  --petal-x-end: -7rem;
+  --petal-y-first: 4.5rem;
+  --petal-y-second: 9.5rem;
+  --petal-y-third: 15rem;
+  --petal-fall-distance: 28rem;
+  --petal-rotation-start: 26deg;
+  --petal-rotation-first: -16deg;
+  --petal-rotation-second: 20deg;
+  --petal-rotation-third: -32deg;
+  --petal-rotation-end: -72deg;
+
+  inset-inline-start: 19%;
+  animation-delay: 550ms;
+  animation-duration: 4.05s;
+}
+
+.spring-petal-drift__petal:nth-child(3) {
+  --petal-color: var(--color-accent-secondary);
+  --petal-opacity: 0.52;
+  --petal-size: 0.92rem;
+  --petal-x-first: 4.8rem;
+  --petal-x-second: 7.2rem;
+  --petal-x-third: 4.1rem;
+  --petal-x-end: 8.5rem;
+  --petal-y-first: 5.2rem;
+  --petal-y-second: 4.6rem;
+  --petal-y-third: 10.5rem;
+  --petal-fall-distance: 27rem;
+  --petal-rotation-start: -24deg;
+  --petal-rotation-first: 18deg;
+  --petal-rotation-second: 42deg;
+  --petal-rotation-third: 6deg;
+  --petal-rotation-end: 58deg;
+
+  inset-inline-start: 31%;
+  animation-delay: 800ms;
+  animation-duration: 3.75s;
+}
+
+.spring-petal-drift__petal:nth-child(4) {
+  --petal-opacity: 0.24;
+  --petal-size: 0.48rem;
+  --petal-x-first: 5.5rem;
+  --petal-x-second: 9.5rem;
+  --petal-x-third: 7rem;
+  --petal-x-end: 12rem;
+  --petal-y-first: 3.2rem;
+  --petal-y-second: 7rem;
+  --petal-y-third: 12rem;
+  --petal-fall-distance: 23rem;
+  --petal-rotation-start: 14deg;
+  --petal-rotation-first: 46deg;
+  --petal-rotation-second: 12deg;
+  --petal-rotation-third: 52deg;
+  --petal-rotation-end: 78deg;
+
+  inset-block-start: 7%;
+  inset-inline-start: -0.4rem;
+  animation-delay: 250ms;
+  animation-duration: 4.4s;
+}
+
+.spring-petal-drift__petal:nth-child(5) {
+  --petal-color: var(--color-accent-secondary);
+  --petal-opacity: 0.38;
+  --petal-size: 0.68rem;
+  --petal-x-first: -2.8rem;
+  --petal-x-second: 0.8rem;
+  --petal-x-third: -3.8rem;
+  --petal-x-end: -5rem;
+  --petal-y-first: 4rem;
+  --petal-y-second: 8.2rem;
+  --petal-y-third: 14.5rem;
+  --petal-fall-distance: 27rem;
+  --petal-rotation-start: 20deg;
+  --petal-rotation-first: -14deg;
+  --petal-rotation-second: 18deg;
+  --petal-rotation-third: -24deg;
+  --petal-rotation-end: -60deg;
+
+  inset-inline-start: 47%;
+  animation-delay: 100ms;
+  animation-duration: 4.15s;
+}
+
+.spring-petal-drift__petal:nth-child(6) {
+  --petal-color: var(--color-title-gradient-end);
+  --petal-opacity: 0.55;
+  --petal-size: 0.98rem;
+  --petal-x-first: -4.4rem;
+  --petal-x-second: -7rem;
+  --petal-x-third: -3.7rem;
+  --petal-x-end: -8rem;
+  --petal-y-first: 5rem;
+  --petal-y-second: 9rem;
+  --petal-y-third: 15rem;
+  --petal-fall-distance: 29rem;
+  --petal-rotation-start: 32deg;
+  --petal-rotation-first: -12deg;
+  --petal-rotation-second: -38deg;
+  --petal-rotation-third: 4deg;
+  --petal-rotation-end: -52deg;
+
+  inset-inline-start: 60%;
+  animation-delay: 700ms;
+  animation-duration: 3.8s;
+}
+
+.spring-petal-drift__petal:nth-child(7) {
+  --petal-color: var(--color-title-gradient-end);
+  --petal-opacity: 0.27;
+  --petal-size: 0.5rem;
+  --petal-x-first: 2.6rem;
+  --petal-x-second: -0.6rem;
+  --petal-x-third: 3.8rem;
+  --petal-x-end: 5.5rem;
+  --petal-y-first: 3.6rem;
+  --petal-y-second: 7.8rem;
+  --petal-y-third: 13rem;
+  --petal-fall-distance: 24rem;
+  --petal-rotation-start: -28deg;
+  --petal-rotation-first: 10deg;
+  --petal-rotation-second: -22deg;
+  --petal-rotation-third: 30deg;
+  --petal-rotation-end: 54deg;
+
+  inset-inline-start: 73%;
+  animation-delay: 350ms;
+  animation-duration: 4.45s;
+}
+
+.spring-petal-drift__petal:nth-child(8) {
+  --petal-color: var(--color-accent-secondary);
+  --petal-opacity: 0.4;
+  --petal-size: 0.74rem;
+  --petal-x-first: -5rem;
+  --petal-x-second: -9rem;
+  --petal-x-third: -6rem;
+  --petal-x-end: -12rem;
+  --petal-y-first: 4.2rem;
+  --petal-y-second: 3.7rem;
+  --petal-y-third: 10rem;
+  --petal-fall-distance: 24rem;
+  --petal-rotation-start: 18deg;
+  --petal-rotation-first: -24deg;
+  --petal-rotation-second: -46deg;
+  --petal-rotation-third: -8deg;
+  --petal-rotation-end: -66deg;
+
+  inset-block-start: 6%;
+  inset-inline-start: calc(100% - 0.2rem);
+  animation-delay: 600ms;
+  animation-duration: 4.1s;
+}
+
+.spring-petal-drift__petal:nth-child(9) {
+  --petal-color: var(--color-title-gradient-end);
+  --petal-opacity: 0.5;
+  --petal-size: 0.88rem;
+  --petal-x-first: 3.8rem;
+  --petal-x-second: 6.5rem;
+  --petal-x-third: 2.7rem;
+  --petal-x-end: 7rem;
+  --petal-y-first: 4.8rem;
+  --petal-y-second: 9.3rem;
+  --petal-y-third: 14.8rem;
+  --petal-fall-distance: 28rem;
+  --petal-rotation-start: -16deg;
+  --petal-rotation-first: 22deg;
+  --petal-rotation-second: 44deg;
+  --petal-rotation-third: 2deg;
+  --petal-rotation-end: 62deg;
+
+  inset-inline-start: 84%;
+  animation-delay: 900ms;
+  animation-duration: 3.85s;
+}
+
+.spring-petal-drift__petal:nth-child(10) {
+  --petal-color: var(--color-accent-secondary);
+  --petal-opacity: 0.35;
+  --petal-size: 0.64rem;
+  --petal-x-first: -3.2rem;
+  --petal-x-second: -0.4rem;
+  --petal-x-third: -4.8rem;
+  --petal-x-end: -6.5rem;
+  --petal-y-first: 3.9rem;
+  --petal-y-second: 8.5rem;
+  --petal-y-third: 14rem;
+  --petal-fall-distance: 27rem;
+  --petal-rotation-start: 24deg;
+  --petal-rotation-first: -18deg;
+  --petal-rotation-second: 14deg;
+  --petal-rotation-third: -30deg;
+  --petal-rotation-end: -68deg;
+
+  inset-inline-start: 93%;
+  animation-delay: 800ms;
+  animation-duration: 4.1s;
+}
+
+@keyframes spring-petal-drift {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -1rem, 0) rotate(var(--petal-rotation-start)) scaleX(0.72);
+  }
+
+  11% {
+    opacity: var(--petal-opacity);
+  }
+
+  28% {
+    transform: translate3d(var(--petal-x-first), var(--petal-y-first), 0)
+      rotate(var(--petal-rotation-first)) scaleX(1);
+  }
+
+  49% {
+    transform: translate3d(var(--petal-x-second), var(--petal-y-second), 0)
+      rotate(var(--petal-rotation-second)) scaleX(0.62);
+  }
+
+  72% {
+    transform: translate3d(var(--petal-x-third), var(--petal-y-third), 0)
+      rotate(var(--petal-rotation-third)) scaleX(0.94);
+  }
+
+  88% {
+    opacity: var(--petal-opacity);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--petal-x-end), var(--petal-fall-distance), 0)
+      rotate(var(--petal-rotation-end)) scaleX(0.76);
+  }
+}
+
+@media (max-width: 23.4375rem) {
+  .spring-petal-drift__petal {
+    width: min(var(--petal-size), 0.76rem);
+  }
+
+  .spring-petal-drift__petal:nth-child(2),
+  .spring-petal-drift__petal:nth-child(6),
+  .spring-petal-drift__petal:nth-child(9) {
+    display: none;
+  }
+
+  .spring-petal-drift__petal:nth-child(4) {
+    --petal-x-first: 3.5rem;
+    --petal-x-second: 5.5rem;
+    --petal-x-third: 4rem;
+    --petal-x-end: 6.5rem;
+  }
+
+  .spring-petal-drift__petal:nth-child(8) {
+    --petal-x-first: -3.5rem;
+    --petal-x-second: -5.5rem;
+    --petal-x-third: -4rem;
+    --petal-x-end: -6.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spring-petal-drift {
+    display: none;
+  }
+}
