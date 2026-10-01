@@ -66,12 +66,29 @@
   stroke-width: 148;
 }
 
-.botanical-mask__spring {
+.botanical-mask__autumn,
+.botanical-mask__spring,
+.botanical-mask__summer {
   display: none;
+}
+
+.botanical-mask__spring {
   stroke-width: 96;
 }
 
-.hero__art[data-botanical-variant='spring'] .botanical-mask__spring {
+.botanical-mask__tip,
+.botanical-mask__summer {
+  stroke-width: 64;
+}
+
+.botanical-mask__autumn,
+.botanical-mask__summer.botanical-mask__tip {
+  stroke-width: 32;
+}
+
+.hero__art[data-botanical-variant='autumn'] .botanical-mask__autumn,
+.hero__art[data-botanical-variant='spring'] .botanical-mask__spring,
+.hero__art[data-botanical-variant='summer'] .botanical-mask__summer {
   display: inline;
 }
 
