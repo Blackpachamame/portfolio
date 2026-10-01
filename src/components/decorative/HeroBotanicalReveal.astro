@@ -144,6 +144,18 @@ const botanicalAssets = {
           class="botanical-mask__stroke botanical-mask__twig botanical-mask__twig--second"
           pathLength="1"
           d="M 814 112 C 770 48 694 34 608 58 M 710 232 C 634 234 568 286 508 354"></path>
+        <path
+          class="botanical-mask__stroke botanical-mask__branch botanical-mask__branch--first botanical-mask__spring"
+          pathLength="1"
+          d="M 728 112 C 638 130 556 106 472 140 C 412 164 376 184 350 205"></path>
+        <path
+          class="botanical-mask__stroke botanical-mask__twig botanical-mask__twig--first botanical-mask__spring"
+          pathLength="1"
+          d="M 566 126 C 540 110 530 72 494 60"></path>
+        <path
+          class="botanical-mask__stroke botanical-mask__twig botanical-mask__twig--first botanical-mask__spring"
+          pathLength="1"
+          d="M 786 306 C 748 332 722 374 698 414 C 684 442 661 453 640 470"></path>
         <rect class="botanical-mask__coverage" width="960" height="640" fill="white"></rect>
       </mask>
     </defs>
@@ -177,16 +189,19 @@ const botanicalAssets = {
 
 <script is:inline define:vars={{ botanicalAssets }}>
   const botanicalReveal = document.querySelector('[data-botanical-reveal]');
+  const seasonSelector = document.querySelector('[data-season-selector]');
   const leftBranch = botanicalReveal?.querySelector('[data-botanical-image="left"]');
   const rightBranch = botanicalReveal?.querySelector('[data-botanical-image="right"]');
 
   if (
     botanicalReveal instanceof HTMLElement &&
+    seasonSelector instanceof HTMLSelectElement &&
     leftBranch instanceof SVGImageElement &&
     rightBranch instanceof SVGImageElement
   ) {
     const resolveVariant = () => {
-      const season = document.documentElement.dataset.season;
+      // The selector holds intent; data-season holds the appearance already applied.
+      const season = seasonSelector.value;
 
       return season === 'autumn' ||
         season === 'spring' ||
@@ -200,6 +215,8 @@ const botanicalAssets = {
       const assets = botanicalAssets[variant];
       leftBranch.setAttribute('href', assets.left);
       rightBranch.setAttribute('href', assets.right);
+      botanicalReveal.dataset.botanicalVariant = variant;
+      document.documentElement.dataset.season = variant;
     };
 
     const preloadVariant = async (variant) => {
@@ -225,7 +242,7 @@ const botanicalAssets = {
       try {
         await preloadVariant(nextVariant);
       } catch {
-        if (botanicalReveal.classList.contains('hero__art--botanical-ready')) return;
+        return;
       }
 
       if (request !== latestRequest || nextVariant !== resolveVariant()) return;
@@ -246,13 +263,8 @@ const botanicalAssets = {
       botanicalReveal.classList.add('hero__art--botanical-ready');
     };
 
-    const observer = new MutationObserver(() => {
+    seasonSelector.addEventListener('change', () => {
       void loadVariant(resolveVariant());
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['data-season'],
     });
 
     void loadVariant(resolveVariant());

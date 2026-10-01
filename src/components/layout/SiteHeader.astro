@@ -82,7 +82,6 @@ import { headerContent, navigationLinks, socialLinks } from '../../data/site';
         selectedSeason === 'winter'
           ? selectedSeason
           : 'default';
-      document.documentElement.dataset.season = season;
 
       try {
         localStorage.setItem('portfolio-season', season);

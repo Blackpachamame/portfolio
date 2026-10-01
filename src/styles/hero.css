@@ -66,6 +66,15 @@
   stroke-width: 148;
 }
 
+.botanical-mask__spring {
+  display: none;
+  stroke-width: 96;
+}
+
+.hero__art[data-botanical-variant='spring'] .botanical-mask__spring {
+  display: inline;
+}
+
 .botanical-mask__coverage {
   opacity: 1;
 }

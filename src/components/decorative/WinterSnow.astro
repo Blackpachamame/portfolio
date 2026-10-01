@@ -22,18 +22,22 @@
 <script>
   const hero = document.querySelector('.hero');
   const seasonSelector = document.querySelector('[data-season-selector]');
+  const botanicalReveal = document.querySelector('[data-botanical-reveal]');
   const snowTemplate = document.querySelector('[data-winter-snow-template]');
 
   if (
     hero instanceof HTMLElement &&
     seasonSelector instanceof HTMLSelectElement &&
+    botanicalReveal instanceof HTMLElement &&
     snowTemplate instanceof HTMLTemplateElement
   ) {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let previousSeason = document.documentElement.dataset.season ?? 'default';
     let activeEffect: HTMLElement | undefined;
+    let pendingEffect = false;
 
     const stopEffect = () => {
+      pendingEffect = false;
       activeEffect?.remove();
       activeEffect = undefined;
     };
@@ -68,10 +72,32 @@
       if (nextSeason !== 'winter') {
         stopEffect();
       } else if (previousSeason !== 'winter') {
-        startEffect();
+        pendingEffect =
+          !reducedMotion.matches && botanicalReveal.dataset.botanicalVariant !== 'winter';
       }
 
       previousSeason = nextSeason;
+    });
+
+    // This mutation is delivered after the synchronous botanical swap and ready/replay cycle.
+    const botanicalObserver = new MutationObserver(() => {
+      if (
+        !pendingEffect ||
+        reducedMotion.matches ||
+        seasonSelector.value !== 'winter' ||
+        document.documentElement.dataset.season !== 'winter' ||
+        botanicalReveal.dataset.botanicalVariant !== 'winter' ||
+        !botanicalReveal.classList.contains('hero__art--botanical-ready')
+      ) {
+        return;
+      }
+
+      startEffect();
+    });
+
+    botanicalObserver.observe(botanicalReveal, {
+      attributes: true,
+      attributeFilter: ['data-botanical-variant'],
     });
 
     reducedMotion.addEventListener('change', (event) => {
