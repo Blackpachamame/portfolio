@@ -75,8 +75,8 @@ export const contactContent = {
   eyebrow: '05 — Contacto',
   title: '¿Buscás sumar frontend a tu equipo?',
   description:
-    'Estoy disponible para oportunidades frontend junior en equipos de producto, donde pueda aportar en tareas concretas, colaborar con otros perfiles y seguir creciendo con feedback técnico.',
+    'Estoy disponible como Frontend Developer en equipos de producto, aportando en interfaces e integración de flujos junto a diseño y backend, con feedback para seguir creciendo.',
   primaryAction: 'Escribirme por correo',
   availabilityLabel: 'Disponible para',
-  availability: 'Frontend junior · Remoto desde Argentina',
+  availability: 'Frontend Developer · Remoto desde Argentina',
 };

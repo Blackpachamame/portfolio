@@ -4,22 +4,22 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Frontend principal',
     description:
-      'Tecnologías con las que trabajo con mayor frecuencia para implementar interfaces web.',
+      'React y TypeScript como núcleo web; Next.js en productos actuales y Angular en experiencia profesional previa.',
     skills: [
       { name: 'React', featured: true },
       { name: 'TypeScript', featured: true },
       { name: 'JavaScript' },
-      { name: 'Angular' },
-      { name: 'Next.js' },
       { name: 'HTML' },
       { name: 'CSS' },
       { name: 'Tailwind CSS' },
+      { name: 'Next.js' },
+      { name: 'Angular' },
     ],
   },
   {
     title: 'Estado y datos',
     description:
-      'Herramientas utilizadas para manejar estado, sincronizar datos y conectar el frontend con servicios externos.',
+      'Integración con APIs REST, datos del servidor con TanStack Query y estado de cliente según el proyecto.',
     skills: [
       { name: 'APIs REST' },
       { name: 'TanStack Query' },
@@ -31,7 +31,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Experiencia complementaria',
     description:
-      'Tecnologías aplicadas en proyectos específicos, productos propios o trabajos puntuales.',
+      'Este portfolio, aprendizaje mobile, colaboración en la preparación Android y trabajos puntuales con CMS.',
     skills: [
       { name: 'Astro' },
       { name: 'React Native' },
@@ -44,7 +44,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Flujo de trabajo y calidad',
     description:
-      'Herramientas que utilizo para colaborar, mantener consistencia y validar cambios.',
+      'Versionado, pull requests, formato y tests; otras herramientas como apoyo al equipo.',
     skills: [
       { name: 'Git' },
       { name: 'GitHub' },
