@@ -15,8 +15,9 @@ const secondaryProjects = projects.filter((project) => project.level === 'Secund
       </div>
       <h2 id="proyectos-title">Productos donde trabajé sobre problemas reales de frontend.</h2>
       <p class="projects-section__introduction">
-        Dos productos en equipo y dos proyectos complementarios donde participé en interfaces,
-        estado, integración de APIs y experiencia responsive.
+        Dos productos en equipo, una propuesta individual evaluada en un torneo y un proyecto
+        personal mobile: integraciones frontend, estado y datos, entrega de una landing e
+        interacción nativa.
       </p>
     </header>
 
@@ -114,6 +115,17 @@ const secondaryProjects = projects.filter((project) => project.level === 'Secund
                 </header>
 
                 <p class="project-secondary__description">{project.description}</p>
+
+                {project.contributions && project.contributions.length > 0 && (
+                  <div class="project-secondary__contributions">
+                    <p>Aportes seleccionados</p>
+                    <ul>
+                      {project.contributions.map((contribution) => (
+                        <li>{contribution}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 <div class="project-stack">
                   <p>Stack</p>

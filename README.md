@@ -36,7 +36,7 @@ detalles botánicos discretos.
 
 - Perfil
 - Experiencia
-- Proyectos: NesDuel, Mundifigus, ClipFlow y PokéKit
+- Proyectos: NesDuel, Mundifigus, TechToJob y PokéKit
 - Stack técnico
 - Contacto
 
