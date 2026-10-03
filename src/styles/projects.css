@@ -105,9 +105,17 @@
   color: var(--color-text-muted);
 }
 
+.project-feature__meta {
+  flex: 1;
+}
+
 .project-feature__meta span:first-child,
 .project-secondary__meta span:first-child {
   color: var(--color-accent-soft);
+}
+
+.project-feature__period {
+  text-transform: none;
 }
 
 .project-feature__header h3 {

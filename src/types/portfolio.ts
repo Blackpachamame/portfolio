@@ -48,6 +48,7 @@ export interface Project {
   name: string;
   category: string;
   role: string;
+  period?: string;
   level: ProjectLevel;
   image: ImageMetadata;
   imageAlt: string;

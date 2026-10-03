@@ -4,7 +4,7 @@ export const experiences: Experience[] = [
   {
     organization: 'Pangea Infinity',
     role: 'Frontend Web Developer',
-    period: 'Mayo — noviembre de 2025',
+    period: 'may 2025 – nov 2025',
     modality: 'Remota · Jornada parcial',
     type: 'Experiencia en equipo',
     summary:
@@ -21,7 +21,7 @@ export const experiences: Experience[] = [
   {
     organization: 'No Country',
     role: 'Frontend Web Developer',
-    period: 'Mar. — jun. 2024 · Sep. — oct. 2025 · Feb. — mar. 2026',
+    period: 'mar 2024 – jun 2024 · sep 2025 – oct 2025 · feb 2026 – mar 2026',
     modality: 'Remota',
     type: 'Simulación laboral',
     summary:
@@ -37,7 +37,7 @@ export const experiences: Experience[] = [
   {
     organization: 'Puntarena Eventos',
     role: 'WordPress / Frontend Developer',
-    period: 'Enero — febrero de 2026',
+    period: 'ene 2026 – feb 2026',
     modality: 'Remota · Jornada parcial',
     type: 'Proyecto puntual',
     summary:

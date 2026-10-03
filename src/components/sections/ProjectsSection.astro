@@ -34,6 +34,9 @@ const secondaryProjects = projects.filter((project) => project.level === 'Secund
                     <span>{project.category}</span>
                     <span aria-hidden="true">·</span>
                     <span>{project.role}</span>
+                    {project.period && (
+                      <span class="project-feature__period">{project.period}</span>
+                    )}
                   </p>
                 </div>
                 <h3>{project.name}</h3>

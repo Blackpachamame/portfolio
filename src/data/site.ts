@@ -67,7 +67,6 @@ export const profileDetails: ProfileDetail[] = [
   {
     label: 'Forma de trabajo',
     value: 'Colaboración · Git · Pull Requests · Code review',
-    supportingText: 'Coordinación con diseño y backend',
   },
 ];
 
@@ -75,7 +74,7 @@ export const contactContent = {
   eyebrow: '05 — Contacto',
   title: '¿Buscás sumar frontend a tu equipo?',
   description:
-    'Estoy disponible como Frontend Developer en equipos de producto, aportando en interfaces e integración de flujos junto a diseño y backend, con feedback para seguir creciendo.',
+    'Estoy disponible como Frontend Developer en equipos de producto, aportando en interfaces e integración de flujos junto a diseño y backend.',
   primaryAction: 'Escribirme por correo',
   availabilityLabel: 'Disponible para',
   availability: 'Frontend Developer · Remoto desde Argentina',
