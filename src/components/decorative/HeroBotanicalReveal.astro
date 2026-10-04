@@ -231,13 +231,18 @@ const botanicalAssets = {
   const seasonSelector = document.querySelector('[data-season-selector]');
   const leftBranch = botanicalReveal?.querySelector('[data-botanical-image="left"]');
   const rightBranch = botanicalReveal?.querySelector('[data-botanical-image="right"]');
+  const leftReveal = leftBranch?.ownerSVGElement;
 
   if (
     botanicalReveal instanceof HTMLElement &&
     seasonSelector instanceof HTMLSelectElement &&
     leftBranch instanceof SVGImageElement &&
-    rightBranch instanceof SVGImageElement
+    rightBranch instanceof SVGImageElement &&
+    leftReveal instanceof SVGSVGElement
   ) {
+    const leftVisible = window.matchMedia('(min-width: 48rem)');
+    const pendingImages = new Map();
+
     const resolveVariant = () => {
       // The selector holds intent; data-season holds the appearance already applied.
       const season = seasonSelector.value;
@@ -250,24 +255,36 @@ const botanicalAssets = {
         : 'default';
     };
 
-    const applyVariant = (variant) => {
+    const preloadImage = (src) => {
+      const pending = pendingImages.get(src);
+      if (pending) return pending;
+
+      const image = new Image();
+      image.src = src;
+      // Keep the Image alive while the other side is decoding.
+      const decoded = image.decode().then(() => image);
+      pendingImages.set(src, decoded);
+      decoded.then(
+        () => pendingImages.delete(src),
+        () => pendingImages.delete(src),
+      );
+      return decoded;
+    };
+
+    const applyVariant = (variant, includeLeft) => {
       const assets = botanicalAssets[variant];
-      leftBranch.setAttribute('href', assets.left);
+      leftReveal.toggleAttribute('data-botanical-static', !includeLeft);
+
+      if (includeLeft) {
+        leftBranch.setAttribute('href', assets.left);
+      } else {
+        // A mobile commit must not leave the previous variant available to a later resize.
+        leftBranch.removeAttribute('href');
+      }
+
       rightBranch.setAttribute('href', assets.right);
       botanicalReveal.dataset.botanicalVariant = variant;
       document.documentElement.dataset.season = variant;
-    };
-
-    const preloadVariant = async (variant) => {
-      const assets = botanicalAssets[variant];
-
-      await Promise.all(
-        Object.values(assets).map(async (src) => {
-          const image = new Image();
-          image.src = src;
-          await image.decode();
-        }),
-      );
     };
 
     let activeVariant;
@@ -275,16 +292,37 @@ const botanicalAssets = {
 
     const loadVariant = async (nextVariant) => {
       const request = ++latestRequest;
+      const includeLeft = leftVisible.matches;
+      const assets = botanicalAssets[nextVariant];
+      const completingLeft = nextVariant === activeVariant;
 
-      if (nextVariant === activeVariant) return;
+      if (completingLeft && (!includeLeft || leftBranch.getAttribute('href') === assets.left)) {
+        return;
+      }
 
       try {
-        await preloadVariant(nextVariant);
+        await Promise.all(
+          completingLeft
+            ? [preloadImage(assets.left)]
+            : [preloadImage(assets.right), ...(includeLeft ? [preloadImage(assets.left)] : [])],
+        );
       } catch {
         return;
       }
 
-      if (request !== latestRequest || nextVariant !== resolveVariant()) return;
+      if (
+        request !== latestRequest ||
+        nextVariant !== resolveVariant() ||
+        includeLeft !== leftVisible.matches
+      ) {
+        return;
+      }
+
+      if (completingLeft) {
+        // This adds an asset to the applied season, without a season commit or replay.
+        leftBranch.setAttribute('href', assets.left);
+        return;
+      }
 
       const shouldReplay = activeVariant !== undefined;
 
@@ -292,7 +330,7 @@ const botanicalAssets = {
         botanicalReveal.classList.remove('hero__art--botanical-ready');
       }
 
-      applyVariant(nextVariant);
+      applyVariant(nextVariant, includeLeft);
       activeVariant = nextVariant;
 
       if (shouldReplay) {
@@ -306,6 +344,29 @@ const botanicalAssets = {
       void loadVariant(resolveVariant());
     });
 
+    leftReveal.toggleAttribute('data-botanical-static', !leftVisible.matches);
+
+    leftVisible.addEventListener('change', () => {
+      if (!leftVisible.matches) {
+        // Keep an existing href; prevent a later display change from restarting its mask.
+        leftReveal.setAttribute('data-botanical-static', '');
+      }
+
+      void loadVariant(resolveVariant());
+    });
+
     void loadVariant(resolveVariant());
   }
 </script>
+
+<style>
+  .botanical-reveal--left[data-botanical-static] .botanical-mask__stroke {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .botanical-reveal--left[data-botanical-static] .botanical-mask__coverage {
+    animation: none;
+    opacity: 1;
+  }
+</style>
