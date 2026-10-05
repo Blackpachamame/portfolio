@@ -164,6 +164,29 @@
   }
 }
 
+.botanical-mobile__stroke {
+  fill: none;
+  stroke: white;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  stroke-linecap: butt;
+  stroke-linejoin: round;
+}
+.botanical-reveal--right[data-botanical-static] .botanical-mask__stroke {
+  animation: none;
+  stroke-dashoffset: 0;
+}
+.botanical-reveal--right[data-botanical-static] .botanical-mask__coverage {
+  animation: none;
+  opacity: 1;
+}
+@media (width < 48rem) {
+  .botanical-reveal--right .botanical-mask__stroke,
+  .botanical-reveal--right .botanical-mask__coverage {
+    animation: none;
+  }
+}
+
 .hero__inner {
   position: relative;
   z-index: 1;

@@ -58,6 +58,99 @@ const botanicalAssets = {
     right: winterRightBranch.src,
   },
 };
+// Per right raster: [stroke width, draw start, draw duration, trunk-to-tip path].
+// These ribbons include the foliage along each branch; mobile needs no coverage rect.
+const mobileMasks: Record<string, [number, number, number, string][]> = {
+  autumn: [
+    [150, 0, 650, 'M 1000 -25 C 920 50 875 150 880 285 C 880 420 905 525 940 620'],
+    [130, 170, 850, 'M 930 50 C 815 95 745 83 672 103 C 616 133 573 155 520 187 L 459 239'],
+    [
+      112,
+      270,
+      850,
+      'M 895 90 C 814 133 741 157 689 185 C 643 224 620 255 610 279 L 548 332 L 477 378',
+    ],
+    [100, 460, 830, 'M 880 170 C 824 232 792 270 756 307 L 677 367'],
+    [120, 460, 890, 'M 887 357 C 859 408 807 445 747 455 C 706 482 685 519 628 565'],
+    [95, 410, 740, 'M 678 102 C 664 77 644 44 599 10'],
+    [76, 650, 650, 'M 575 145 C 547 141 533 103 482 78'],
+    [78, 700, 650, 'M 554 147 C 516 140 477 145 428 155'],
+    [88, 650, 700, 'M 752 455 C 697 454 662 434 629 367'],
+    [80, 680, 670, 'M 805 427 C 777 397 775 373 797 338'],
+    [36, 750, 500, 'M 625 166 L 588 211'],
+    [82, 590, 760, 'M 653 216 C 603 242 562 257 501 272'],
+  ],
+  spring: [
+    [170, 0, 650, 'M 1000 -25 C 920 50 880 155 867 274 C 866 393 875 480 905 580'],
+    [
+      98,
+      150,
+      900,
+      'M 933 35 C 850 80 761 58 707 85 C 652 117 595 120 540 127 C 489 122 445 149 410 153',
+    ],
+    [126, 340, 760, 'M 716 82 C 673 65 620 41 535 42'],
+    [95, 520, 790, 'M 580 113 C 554 91 533 54 477 26'],
+    [88, 720, 630, 'M 431 149 C 405 123 389 110 369 91'],
+    [83, 680, 670, 'M 418 149 C 374 176 330 217 282 264'],
+    [120, 260, 870, 'M 891 86 C 828 141 739 127 674 175 C 627 207 587 248 550 340'],
+    [110, 520, 830, 'M 642 180 C 586 197 547 227 439 303'],
+    [92, 600, 750, 'M 637 209 C 639 240 643 264 607 293'],
+    [122, 450, 900, 'M 860 209 C 810 262 750 281 694 292 L 605 332'],
+    [112, 510, 840, 'M 845 287 C 799 332 775 356 727 366 C 696 393 662 421 641 479'],
+    [108, 650, 700, 'M 806 411 C 782 473 731 541 680 562 L 618 626'],
+  ],
+  default: [
+    [155, 0, 650, 'M 1000 -25 C 918 47 874 150 876 290 C 883 421 907 506 937 592'],
+    [126, 130, 860, 'M 937 43 C 809 92 741 80 676 101 C 617 137 568 160 510 177 L 480 217'],
+    [112, 250, 880, 'M 898 91 C 815 129 738 155 689 181 C 642 215 626 251 607 278 L 490 373'],
+    [106, 450, 850, 'M 880 172 C 831 222 794 273 754 310 L 710 331'],
+    [126, 460, 890, 'M 883 350 C 857 409 807 441 753 449 C 706 476 675 513 637 548'],
+    [116, 400, 730, 'M 677 101 C 650 75 617 58 559 76'],
+    [86, 650, 650, 'M 581 139 C 550 132 532 107 508 91'],
+    [86, 670, 680, 'M 577 145 C 539 130 498 127 456 141'],
+    [110, 610, 740, 'M 647 209 C 612 226 580 241 535 252'],
+    [90, 690, 660, 'M 756 450 C 707 449 675 424 634 371'],
+    [98, 770, 580, 'M 750 463 C 698 479 650 508 575 499'],
+    [102, 750, 600, 'M 577 243 C 492 268 415 274 312 316'],
+    [82, 850, 500, 'M 562 164 C 515 179 454 181 401 168'],
+    [86, 710, 640, 'M 703 227 C 709 266 685 283 642 297'],
+    [90, 810, 540, 'M 708 315 C 658 336 631 351 594 365'],
+    [50, 850, 500, 'M 560 292 L 464 328'],
+  ],
+  summer: [
+    [185, 0, 650, 'M 1000 -25 C 917 46 877 156 869 280 C 880 421 902 520 945 624'],
+    [138, 130, 850, 'M 932 41 C 827 96 742 78 685 106 C 627 130 558 122 483 169 L 409 177'],
+    [142, 270, 850, 'M 900 89 C 814 128 748 159 687 183 C 644 217 626 253 592 284 L 450 375'],
+    [140, 450, 900, 'M 869 175 C 812 228 778 270 752 313 C 711 348 687 385 645 450'],
+    [150, 450, 900, 'M 883 345 C 846 407 801 440 750 465 L 633 527'],
+    [125, 340, 760, 'M 689 101 C 675 66 648 43 582 12'],
+    [106, 550, 730, 'M 566 125 C 547 106 548 75 540 30'],
+    [110, 650, 700, 'M 566 131 C 515 104 485 110 442 143'],
+    [118, 650, 700, 'M 644 209 C 593 236 561 239 518 266'],
+    [104, 620, 730, 'M 741 288 C 688 304 628 302 573 374'],
+    [100, 750, 600, 'M 634 282 C 597 282 568 306 483 301'],
+    [100, 750, 600, 'M 768 456 C 728 486 689 500 647 529'],
+  ],
+  winter: [
+    [115, 0, 650, 'M 1000 -25 C 921 46 878 154 885 287 C 882 404 899 503 929 580'],
+    [92, 130, 860, 'M 936 44 C 816 90 740 80 679 100 C 619 140 572 156 514 176 L 491 205'],
+    [96, 250, 880, 'M 898 88 C 819 131 740 154 688 180 C 642 213 635 247 610 279 L 518 355'],
+    [88, 450, 850, 'M 882 166 C 824 226 790 273 750 310 L 716 330'],
+    [112, 460, 890, 'M 884 345 C 862 407 809 442 754 455 L 667 512'],
+    [76, 390, 740, 'M 680 101 C 654 75 617 49 574 12'],
+    [74, 620, 730, 'M 579 144 C 550 133 549 100 520 80'],
+    [70, 680, 670, 'M 575 143 C 539 128 502 133 477 143'],
+    [64, 610, 740, 'M 645 206 C 609 231 578 237 548 242'],
+    [80, 690, 660, 'M 753 452 C 704 440 675 414 635 374'],
+    [76, 780, 570, 'M 748 469 C 695 482 657 511 580 503'],
+    [110, 750, 600, 'M 573 252 C 492 271 412 278 309 324'],
+    [76, 850, 500, 'M 560 165 C 514 181 461 185 403 163'],
+    [76, 700, 650, 'M 707 222 C 710 273 681 292 644 307'],
+    [76, 800, 550, 'M 700 313 C 695 350 665 369 606 354'],
+    [52, 850, 500, 'M 570 290 L 458 332'],
+    [38, 850, 500, 'M 670 447 L 582 513'],
+  ],
+};
 ---
 
 <div class="hero__art" aria-hidden="true" data-botanical-reveal>
@@ -197,6 +290,29 @@ const botanicalAssets = {
           d="M 555 323 C 538 343 518 352 496 359"></path>
         <rect class="botanical-mask__coverage" width="960" height="640" fill="white"></rect>
       </mask>
+      {
+        Object.entries(mobileMasks).map(([variant, paths]) => (
+          <mask
+            id={`hero-branch-mask-mobile-${variant}`}
+            x="0"
+            y="0"
+            width="960"
+            height="640"
+            maskUnits="userSpaceOnUse"
+            maskContentUnits="userSpaceOnUse">
+            {paths.map(([width, start, duration, d]) => (
+              <path
+                class="botanical-mobile__stroke"
+                pathLength="1"
+                stroke-width={width}
+                data-start={start}
+                data-duration={duration}
+                d={d}
+              />
+            ))}
+          </mask>
+        ))
+      }
     </defs>
 
     <image
@@ -241,12 +357,16 @@ const botanicalAssets = {
     leftReveal instanceof SVGSVGElement
   ) {
     const leftVisible = window.matchMedia('(min-width: 48rem)');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const pendingImages = new Map();
+    let activeVariant;
+    let latestRequest = 0;
+    let mobileAnimations = [];
+    let mobileExit;
 
     const resolveVariant = () => {
       // The selector holds intent; data-season holds the appearance already applied.
       const season = seasonSelector.value;
-
       return season === 'autumn' ||
         season === 'spring' ||
         season === 'summer' ||
@@ -255,17 +375,86 @@ const botanicalAssets = {
         : 'default';
     };
 
+    const mobilePaths = () => [
+      ...botanicalReveal.querySelectorAll(
+        '#hero-branch-mask-mobile-' + activeVariant + ' .botanical-mobile__stroke',
+      ),
+    ];
+
+    const stopMobileMotion = () => {
+      for (const { path, animation } of mobileAnimations) {
+        path.style.strokeDashoffset = getComputedStyle(path).strokeDashoffset;
+        animation.cancel();
+      }
+      mobileAnimations = [];
+    };
+
+    const finishMobile = (visible) => {
+      stopMobileMotion();
+      for (const path of mobilePaths()) path.style.strokeDashoffset = visible ? '0' : '1';
+      botanicalReveal.dataset.botanicalPhase = visible ? 'static' : 'swap';
+      mobileExit = undefined;
+    };
+
+    const animateMobile = (enter) => {
+      stopMobileMotion();
+      if (reducedMotion.matches) {
+        finishMobile(enter);
+        return Promise.resolve();
+      }
+      botanicalReveal.dataset.botanicalPhase = enter ? 'enter' : 'exit';
+      const target = enter ? '0' : '1';
+      const batch = mobilePaths().map((path) => {
+        const start = Number(path.dataset.start);
+        const duration = Number(path.dataset.duration);
+        const animation = path.animate(
+          [
+            { strokeDashoffset: getComputedStyle(path).strokeDashoffset },
+            { strokeDashoffset: target },
+          ],
+          {
+            duration: enter ? duration : (duration * 380) / 1350,
+            delay: enter ? start : ((1350 - start - duration) * 380) / 1350,
+            easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+            fill: 'both',
+          },
+        );
+        return { path, animation };
+      });
+      mobileAnimations = batch;
+      return Promise.all(batch.map(({ animation }) => animation.finished.catch(() => {}))).then(
+        () => {
+          if (mobileAnimations !== batch) return;
+          for (const { path, animation } of batch) {
+            path.style.strokeDashoffset = target;
+            animation.cancel();
+          }
+          mobileAnimations = [];
+          botanicalReveal.dataset.botanicalPhase = enter ? 'static' : 'swap';
+        },
+      );
+    };
+
+    const useMobileMask = (variant, hidden) => {
+      rightBranch.setAttribute('mask', 'url(#hero-branch-mask-mobile-' + variant + ')');
+      for (const path of botanicalReveal.querySelectorAll(
+        '#hero-branch-mask-mobile-' + variant + ' .botanical-mobile__stroke',
+      ))
+        path.style.strokeDashoffset = hidden ? '1' : '0';
+    };
+
     const preloadImage = (src) => {
       const pending = pendingImages.get(src);
       if (pending) return pending;
-
       const image = new Image();
       image.src = src;
-      // Keep the Image alive while the other side is decoding.
+      // Retain the decoded image through an erase and any breakpoint replan.
       const decoded = image.decode().then(() => image);
       pendingImages.set(src, decoded);
       decoded.then(
-        () => pendingImages.delete(src),
+        () => {
+          if (!mobileExit) pendingImages.delete(src);
+        },
         () => pendingImages.delete(src),
       );
       return decoded;
@@ -274,21 +463,16 @@ const botanicalAssets = {
     const applyVariant = (variant, includeLeft) => {
       const assets = botanicalAssets[variant];
       leftReveal.toggleAttribute('data-botanical-static', !includeLeft);
-
       if (includeLeft) {
         leftBranch.setAttribute('href', assets.left);
       } else {
         // A mobile commit must not leave the previous variant available to a later resize.
         leftBranch.removeAttribute('href');
       }
-
       rightBranch.setAttribute('href', assets.right);
       botanicalReveal.dataset.botanicalVariant = variant;
       document.documentElement.dataset.season = variant;
     };
-
-    let activeVariant;
-    let latestRequest = 0;
 
     const loadVariant = async (nextVariant) => {
       const request = ++latestRequest;
@@ -297,16 +481,31 @@ const botanicalAssets = {
       const completingLeft = nextVariant === activeVariant;
 
       if (completingLeft && (!includeLeft || leftBranch.getAttribute('href') === assets.left)) {
+        // A → B → A restores the applied mask without a commit or an effect replay.
+        if (!includeLeft && (mobileExit || botanicalReveal.dataset.botanicalPhase === 'swap')) {
+          mobileExit = undefined;
+          void animateMobile(true);
+        }
         return;
       }
 
+      const exit =
+        !includeLeft && !completingLeft && activeVariant !== undefined
+          ? (mobileExit ??= animateMobile(false))
+          : Promise.resolve();
+
       try {
-        await Promise.all(
-          completingLeft
+        await Promise.all([
+          ...(completingLeft
             ? [preloadImage(assets.left)]
-            : [preloadImage(assets.right), ...(includeLeft ? [preloadImage(assets.left)] : [])],
-        );
+            : [preloadImage(assets.right), ...(includeLeft ? [preloadImage(assets.left)] : [])]),
+          exit,
+        ]);
       } catch {
+        if (request === latestRequest && !includeLeft && activeVariant !== undefined) {
+          mobileExit = undefined;
+          void animateMobile(true);
+        }
         return;
       }
 
@@ -314,9 +513,8 @@ const botanicalAssets = {
         request !== latestRequest ||
         nextVariant !== resolveVariant() ||
         includeLeft !== leftVisible.matches
-      ) {
+      )
         return;
-      }
 
       if (completingLeft) {
         // This adds an asset to the applied season, without a season commit or replay.
@@ -325,34 +523,52 @@ const botanicalAssets = {
       }
 
       const shouldReplay = activeVariant !== undefined;
-
-      if (shouldReplay) {
-        botanicalReveal.classList.remove('hero__art--botanical-ready');
+      if (includeLeft) {
+        rightBranch.setAttribute('mask', 'url(#hero-branch-mask-right)');
+        rightBranch.ownerSVGElement.removeAttribute('data-botanical-static');
+        if (shouldReplay) botanicalReveal.classList.remove('hero__art--botanical-ready');
+      } else {
+        // Select a completely hidden mask before assigning the decoded raster.
+        stopMobileMotion();
+        useMobileMask(nextVariant, !reducedMotion.matches);
       }
 
       applyVariant(nextVariant, includeLeft);
       activeVariant = nextVariant;
+      pendingImages.delete(assets.right);
+      if (includeLeft) pendingImages.delete(assets.left);
+      mobileExit = undefined;
 
-      if (shouldReplay) {
-        void botanicalReveal.offsetWidth;
-      }
-
+      if (includeLeft && shouldReplay) void botanicalReveal.offsetWidth;
       botanicalReveal.classList.add('hero__art--botanical-ready');
+      if (!includeLeft) void animateMobile(true);
     };
 
     seasonSelector.addEventListener('change', () => {
       void loadVariant(resolveVariant());
     });
-
     leftReveal.toggleAttribute('data-botanical-static', !leftVisible.matches);
 
     leftVisible.addEventListener('change', () => {
-      if (!leftVisible.matches) {
-        // Keep an existing href; prevent a later display change from restarting its mask.
+      finishMobile(true);
+      if (leftVisible.matches) {
+        rightBranch.setAttribute('mask', 'url(#hero-branch-mask-right)');
+        // Crossing the breakpoint exposes the applied branch without replaying its draw.
+        rightBranch.ownerSVGElement.setAttribute('data-botanical-static', '');
+      } else {
         leftReveal.setAttribute('data-botanical-static', '');
+        if (activeVariant !== undefined) useMobileMask(activeVariant, false);
       }
-
       void loadVariant(resolveVariant());
+    });
+
+    reducedMotion.addEventListener('change', () => {
+      if (reducedMotion.matches && !leftVisible.matches) {
+        finishMobile(
+          botanicalReveal.dataset.botanicalPhase !== 'exit' &&
+            botanicalReveal.dataset.botanicalPhase !== 'swap',
+        );
+      }
     });
 
     void loadVariant(resolveVariant());
