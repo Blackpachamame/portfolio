@@ -6,13 +6,21 @@ import summerIcon from '../../assets/icons/icon-summer.webp';
 import winterIcon from '../../assets/icons/icon-winter.webp';
 import { headerContent, navigationLinks, socialLinks } from '../../data/site';
 
-const seasonIcons = {
-  default: defaultIcon.src,
-  autumn: autumnIcon.src,
-  spring: springIcon.src,
-  summer: summerIcon.src,
-  winter: winterIcon.src,
-};
+type SeasonValue = 'default' | 'autumn' | 'spring' | 'summer' | 'winter';
+
+interface SeasonOption {
+  value: SeasonValue;
+  label: string;
+  icon: string;
+}
+
+const seasons: readonly SeasonOption[] = [
+  { value: 'default', label: 'Default', icon: defaultIcon.src },
+  { value: 'autumn', label: 'Otoño', icon: autumnIcon.src },
+  { value: 'spring', label: 'Primavera', icon: springIcon.src },
+  { value: 'summer', label: 'Verano', icon: summerIcon.src },
+  { value: 'winter', label: 'Invierno', icon: winterIcon.src },
+];
 ---
 
 <header class="site-header">
@@ -41,28 +49,69 @@ const seasonIcons = {
       </ul>
     </nav>
 
-    <div
-      class="site-header__season"
-      data-season-control
-      data-season-icons={JSON.stringify(seasonIcons)}
-      hidden>
-      <label class="visually-hidden" for="season-selector">Estación</label>
-      <select class="site-header__season-select" id="season-selector" data-season-selector>
-        <option value="default">Predeterminado</option>
-        <option value="autumn">Otoño</option>
-        <option value="spring">Primavera</option>
-        <option value="summer">Verano</option>
-        <option value="winter">Invierno</option>
+    <div class="site-header__season" data-season-control hidden>
+      <span class="visually-hidden" id="season-label">Estación</span>
+      <!-- Keep the existing value/change contract with the Hero and ambient effects. -->
+      <select id="season-selector" data-season-selector aria-labelledby="season-label" hidden>
+        {
+          seasons.map((season) => (
+            <option value={season.value} data-icon={season.icon}>
+              {season.label}
+            </option>
+          ))
+        }
       </select>
-      <img
-        class="site-header__season-icon"
-        data-season-icon
-        src={seasonIcons.default}
-        width="16"
-        height="16"
-        alt=""
-        aria-hidden="true"
-      />
+      <button
+        class="site-header__season-trigger"
+        id="season-trigger"
+        type="button"
+        role="combobox"
+        aria-labelledby="season-label"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+        aria-controls="season-options"
+        data-season-trigger>
+        <img
+          class="site-header__season-icon"
+          data-season-icon
+          src={defaultIcon.src}
+          width="16"
+          height="16"
+          alt=""
+          aria-hidden="true"
+        />
+        <span data-season-value>{seasons[0].label}</span>
+        <span class="site-header__season-chevron" aria-hidden="true"></span>
+      </button>
+      <ul
+        class="site-header__season-options"
+        id="season-options"
+        role="listbox"
+        aria-labelledby="season-label"
+        data-season-options
+        hidden>
+        {
+          seasons.map((season) => (
+            <li
+              class="site-header__season-option"
+              id={'season-option-' + season.value}
+              role="option"
+              aria-selected={season.value === 'default' ? 'true' : 'false'}
+              data-season-option={season.value}>
+              <img
+                class="site-header__season-icon"
+                src={season.icon}
+                width="16"
+                height="16"
+                alt=""
+                aria-hidden="true"
+              />
+              <span>{season.label}</span>
+              <span class="site-header__season-check" aria-hidden="true" />
+            </li>
+          ))
+        }
+      </ul>
     </div>
 
     <ul class="site-header__social" aria-label="Redes profesionales" role="list">
@@ -85,18 +134,10 @@ const seasonIcons = {
 </header>
 
 <script is:inline>
-  const seasonControl = document.querySelector('[data-season-control]');
-  const seasonSelector = seasonControl?.querySelector('[data-season-selector]');
-  const seasonIcon = seasonControl?.querySelector('[data-season-icon]');
+  // Restore synchronously: the Hero reads this select in its following inline script.
+  const seasonSelector = document.querySelector('[data-season-selector]');
 
-  if (seasonControl instanceof HTMLElement && seasonSelector instanceof HTMLSelectElement) {
-    const seasonIcons = JSON.parse(seasonControl.dataset.seasonIcons ?? '{}');
-    const updateSeasonIcon = () => {
-      if (seasonIcon instanceof HTMLImageElement) {
-        seasonIcon.src = seasonIcons[seasonSelector.value] ?? seasonIcons.default;
-      }
-    };
-
+  if (seasonSelector instanceof HTMLSelectElement) {
     const currentSeason = document.documentElement.dataset.season;
     seasonSelector.value =
       currentSeason === 'autumn' ||
@@ -105,11 +146,8 @@ const seasonIcons = {
       currentSeason === 'winter'
         ? currentSeason
         : 'default';
-    updateSeasonIcon();
-    seasonControl.hidden = false;
 
     seasonSelector.addEventListener('change', () => {
-      updateSeasonIcon();
       const selectedSeason = seasonSelector.value;
       const season =
         selectedSeason === 'autumn' ||
@@ -124,4 +162,178 @@ const seasonIcons = {
       } catch {}
     });
   }
+</script>
+
+<script>
+  function initializeSeasonDropdown() {
+    const control = document.querySelector<HTMLElement>('[data-season-control]');
+    const selector = control?.querySelector<HTMLSelectElement>('[data-season-selector]');
+    const trigger = control?.querySelector<HTMLButtonElement>('[data-season-trigger]');
+    const panel = control?.querySelector<HTMLUListElement>('[data-season-options]');
+    const icon = trigger?.querySelector<HTMLImageElement>('[data-season-icon]');
+    const label = trigger?.querySelector<HTMLElement>('[data-season-value]');
+    if (!control || !selector || !trigger || !panel || !icon || !label) return;
+
+    const options = Array.from(panel.querySelectorAll<HTMLLIElement>('[data-season-option]'));
+    if (!options.length) return;
+    let activeIndex = selector.selectedIndex;
+    let searchText = '';
+    let lastTypedAt = 0;
+
+    const updateSelection = () => {
+      const selected = selector.selectedOptions[0];
+      if (!selected) return;
+      label.textContent = selected.label;
+      if (selected.dataset.icon) icon.src = selected.dataset.icon;
+      options.forEach((option) => {
+        option.setAttribute(
+          'aria-selected',
+          String(option.dataset.seasonOption === selected.value),
+        );
+      });
+    };
+
+    const setActiveOption = (index: number) => {
+      activeIndex = Math.max(0, Math.min(index, options.length - 1));
+      options.forEach((option, optionIndex) => {
+        option.toggleAttribute('data-active', optionIndex === activeIndex);
+      });
+      const option = options[activeIndex];
+      trigger.setAttribute('aria-activedescendant', option.id);
+      option.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+    };
+
+    const openDropdown = (index = selector.selectedIndex) => {
+      searchText = '';
+      trigger.focus({ preventScroll: true });
+      panel.hidden = false;
+      trigger.setAttribute('aria-expanded', 'true');
+      setActiveOption(index);
+    };
+
+    const closeDropdown = () => {
+      panel.hidden = true;
+      trigger.setAttribute('aria-expanded', 'false');
+      trigger.removeAttribute('aria-activedescendant');
+      options.forEach((option) => option.removeAttribute('data-active'));
+      searchText = '';
+    };
+
+    const commitSelection = () => {
+      const value = options[activeIndex]?.dataset.seasonOption;
+      closeDropdown();
+      if (!value || selector.value === value) return;
+      selector.value = value;
+      // A single change keeps persistence, Hero transitions and effects on their existing path.
+      selector.dispatchEvent(new Event('change', { bubbles: true }));
+    };
+
+    const findByTyping = (key: string) => {
+      if (panel.hidden) openDropdown();
+      const now = Date.now();
+      searchText = now - lastTypedAt > 700 ? key : searchText + key;
+      lastTypedAt = now;
+      const query = searchText.toLocaleLowerCase('es');
+      const repeated = [...query].every((character) => character === query[0]);
+      const prefix = repeated ? query[0] : query;
+      const start = prefix.length === 1 ? activeIndex + 1 : activeIndex;
+      for (let step = 0; step < options.length; step += 1) {
+        const index = (start + step) % options.length;
+        if (selector.options[index].label.toLocaleLowerCase('es').startsWith(prefix)) {
+          setActiveOption(index);
+          break;
+        }
+      }
+    };
+
+    trigger.addEventListener('click', () => {
+      if (panel.hidden) openDropdown();
+      else closeDropdown();
+    });
+
+    trigger.addEventListener('keydown', (event: KeyboardEvent) => {
+      if (event.isComposing || event.ctrlKey || event.metaKey) return;
+      switch (event.key) {
+        case 'Enter':
+        case ' ':
+          event.preventDefault();
+          if (!event.repeat) {
+            if (panel.hidden) openDropdown();
+            else commitSelection();
+          }
+          break;
+        case 'ArrowDown':
+          event.preventDefault();
+          if (panel.hidden) openDropdown();
+          else if (!event.altKey) setActiveOption(activeIndex + 1);
+          break;
+        case 'ArrowUp':
+          event.preventDefault();
+          if (panel.hidden) openDropdown(0);
+          else if (event.altKey) commitSelection();
+          else setActiveOption(activeIndex - 1);
+          break;
+        case 'Home':
+        case 'End':
+          event.preventDefault();
+          if (panel.hidden) openDropdown();
+          setActiveOption(event.key === 'Home' ? 0 : options.length - 1);
+          break;
+        case 'Escape':
+          if (!panel.hidden) {
+            event.preventDefault();
+            event.stopPropagation();
+            closeDropdown();
+          }
+          break;
+        case 'Tab':
+          if (!panel.hidden) commitSelection();
+          break;
+        default:
+          if (event.key.length === 1 && !event.altKey) {
+            event.preventDefault();
+            findByTyping(event.key);
+          }
+      }
+    });
+
+    // Keep DOM focus on the combobox; options are reached via aria-activedescendant.
+    panel.addEventListener('mousedown', (event: MouseEvent) => {
+      if (event.button === 0) event.preventDefault();
+    });
+    panel.addEventListener('click', (event: MouseEvent) => {
+      const option =
+        event.target instanceof Element
+          ? event.target.closest<HTMLLIElement>('[data-season-option]')
+          : null;
+      if (!option || !panel.contains(option)) return;
+      activeIndex = options.indexOf(option);
+      commitSelection();
+      trigger.focus({ preventScroll: true });
+    });
+
+    document.addEventListener('pointerdown', (event: PointerEvent) => {
+      if (!panel.hidden && event.target instanceof Node && !control.contains(event.target)) {
+        commitSelection();
+      }
+    });
+    control.addEventListener('focusout', (event: FocusEvent) => {
+      if (
+        !panel.hidden &&
+        !(event.relatedTarget instanceof Node && control.contains(event.relatedTarget))
+      ) {
+        commitSelection();
+      }
+    });
+    window.addEventListener('blur', closeDropdown);
+    selector.addEventListener('change', () => {
+      updateSelection();
+      if (!panel.hidden) setActiveOption(selector.selectedIndex);
+    });
+
+    updateSelection();
+    control.hidden = false;
+  }
+
+  initializeSeasonDropdown();
 </script>
