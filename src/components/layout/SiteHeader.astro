@@ -1,5 +1,18 @@
 ---
+import defaultIcon from '../../assets/icons/icon-default.webp';
+import autumnIcon from '../../assets/icons/icon-autumn.webp';
+import springIcon from '../../assets/icons/icon-spring.webp';
+import summerIcon from '../../assets/icons/icon-summer.webp';
+import winterIcon from '../../assets/icons/icon-winter.webp';
 import { headerContent, navigationLinks, socialLinks } from '../../data/site';
+
+const seasonIcons = {
+  default: defaultIcon.src,
+  autumn: autumnIcon.src,
+  spring: springIcon.src,
+  summer: summerIcon.src,
+  winter: winterIcon.src,
+};
 ---
 
 <header class="site-header">
@@ -28,7 +41,11 @@ import { headerContent, navigationLinks, socialLinks } from '../../data/site';
       </ul>
     </nav>
 
-    <div class="site-header__season" data-season-control hidden>
+    <div
+      class="site-header__season"
+      data-season-control
+      data-season-icons={JSON.stringify(seasonIcons)}
+      hidden>
       <label class="visually-hidden" for="season-selector">Estación</label>
       <select class="site-header__season-select" id="season-selector" data-season-selector>
         <option value="default">Predeterminado</option>
@@ -37,6 +54,15 @@ import { headerContent, navigationLinks, socialLinks } from '../../data/site';
         <option value="summer">Verano</option>
         <option value="winter">Invierno</option>
       </select>
+      <img
+        class="site-header__season-icon"
+        data-season-icon
+        src={seasonIcons.default}
+        width="16"
+        height="16"
+        alt=""
+        aria-hidden="true"
+      />
     </div>
 
     <ul class="site-header__social" aria-label="Redes profesionales" role="list">
@@ -61,8 +87,16 @@ import { headerContent, navigationLinks, socialLinks } from '../../data/site';
 <script is:inline>
   const seasonControl = document.querySelector('[data-season-control]');
   const seasonSelector = seasonControl?.querySelector('[data-season-selector]');
+  const seasonIcon = seasonControl?.querySelector('[data-season-icon]');
 
   if (seasonControl instanceof HTMLElement && seasonSelector instanceof HTMLSelectElement) {
+    const seasonIcons = JSON.parse(seasonControl.dataset.seasonIcons ?? '{}');
+    const updateSeasonIcon = () => {
+      if (seasonIcon instanceof HTMLImageElement) {
+        seasonIcon.src = seasonIcons[seasonSelector.value] ?? seasonIcons.default;
+      }
+    };
+
     const currentSeason = document.documentElement.dataset.season;
     seasonSelector.value =
       currentSeason === 'autumn' ||
@@ -71,9 +105,11 @@ import { headerContent, navigationLinks, socialLinks } from '../../data/site';
       currentSeason === 'winter'
         ? currentSeason
         : 'default';
+    updateSeasonIcon();
     seasonControl.hidden = false;
 
     seasonSelector.addEventListener('change', () => {
+      updateSeasonIcon();
       const selectedSeason = seasonSelector.value;
       const season =
         selectedSeason === 'autumn' ||

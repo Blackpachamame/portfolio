@@ -1,4 +1,6 @@
 .site-header {
+  --season-control-width: clamp(7rem, 33vw, 8.25rem);
+
   position: sticky;
   z-index: 50;
   inset-block-start: 0;
@@ -59,7 +61,7 @@
 .site-header__nav {
   grid-column: 1 / -1;
   grid-row: 2;
-  padding-inline-end: calc(clamp(5.75rem, 28vw, 7rem) + 0.5rem);
+  padding-inline-end: calc(var(--season-control-width) + 0.5rem);
   padding-block-start: 0.2rem;
   border-block-start: 1px solid var(--color-border);
 }
@@ -71,6 +73,7 @@
   grid-row: 2;
   align-items: center;
   justify-content: flex-end;
+  justify-self: end;
   padding-block-start: 0.2rem;
   border-block-start: 1px solid var(--color-border);
 }
@@ -94,9 +97,9 @@
 }
 
 .site-header__season-select {
-  width: clamp(5.75rem, 28vw, 7rem);
+  width: var(--season-control-width);
   min-height: 2.5rem;
-  padding: 0.4rem 1rem 0.4rem 0.35rem;
+  padding: 0.4rem 1rem 0.4rem 1.75rem;
   border: 1px solid var(--color-control-border);
   border-radius: 0.125rem;
   color: var(--color-text-secondary);
@@ -110,6 +113,15 @@
     color 160ms ease,
     border-color 160ms ease,
     background-color 160ms ease;
+}
+
+.site-header__season-icon {
+  position: absolute;
+  inset-inline-start: 0.45rem;
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+  pointer-events: none;
 }
 
 .site-header__season-select:hover {
@@ -185,9 +197,17 @@
   font-size: 0.75em;
 }
 
-@media (max-width: 23.4375rem) {
+@media (max-width: 26.25rem) {
   .site-header__inner {
     column-gap: 0.3rem;
+  }
+
+  .site-header__season-select {
+    padding-inline: 1.5rem 0.75rem;
+  }
+
+  .site-header__season-icon {
+    inset-inline-start: 0.25rem;
   }
 
   .site-header__navigation {
@@ -205,6 +225,17 @@
   }
 }
 
+@media (max-width: 21rem) {
+  .site-header__navigation a {
+    padding-inline: 0.08rem;
+    font-size: 0.62rem;
+  }
+
+  .site-header__navigation a.site-header__contact-link {
+    padding-inline: 0.2rem;
+  }
+}
+
 @media (forced-colors: active) {
   .site-header__logo {
     background-color: CanvasText;
@@ -213,6 +244,11 @@
 
   .site-header__season-select {
     border-color: CanvasText;
+    padding-inline-start: 0.35rem;
+  }
+
+  .site-header__season-icon {
+    display: none;
   }
 }
 
