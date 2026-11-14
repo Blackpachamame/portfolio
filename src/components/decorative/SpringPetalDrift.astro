@@ -1,4 +1,12 @@
-<template data-spring-petal-template>
+---
+interface Props {
+  viewport?: boolean;
+}
+
+const { viewport = false } = Astro.props;
+---
+
+<template data-spring-petal-template data-spring-petal-viewport={viewport || undefined}>
   <div class="spring-petal-drift" aria-hidden="true" data-spring-petal-drift>
     <span class="spring-petal-drift__petal"></span>
     <span class="spring-petal-drift__petal"></span>
@@ -29,9 +37,12 @@
     let previousSeason = document.documentElement.dataset.season ?? 'default';
     let activeEffect: HTMLElement | undefined;
     let pendingEffect = false;
+    let headerObserver: ResizeObserver | undefined;
 
     const stopEffect = () => {
       pendingEffect = false;
+      headerObserver?.disconnect();
+      headerObserver = undefined;
       activeEffect?.remove();
       activeEffect = undefined;
     };
@@ -57,7 +68,29 @@
         },
         { once: true },
       );
-      hero.append(effect);
+      // Intentionally mirrors Autumn's small viewport mount; seasonal lifecycles stay independent.
+      if (petalTemplate.hasAttribute('data-spring-petal-viewport')) {
+        effect.classList.add('spring-petal-drift--viewport');
+        const header = document.querySelector('.site-header');
+
+        if (header instanceof HTMLElement) {
+          const updateInset = () => {
+            if (activeEffect !== effect) return;
+            effect.style.setProperty(
+              '--spring-header-height',
+              `${header.getBoundingClientRect().height}px`,
+            );
+          };
+
+          updateInset();
+          headerObserver = new ResizeObserver(updateInset);
+          headerObserver.observe(header);
+        }
+
+        document.body.append(effect);
+      } else {
+        hero.append(effect);
+      }
     };
 
     seasonSelector.addEventListener('change', () => {

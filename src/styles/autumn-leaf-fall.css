@@ -17,15 +17,6 @@
   height: calc(100dvh - var(--autumn-header-height, 0px));
 }
 
-/* Experimental surface: backgrounds < leaves (0) < content (1) < sticky header (50).
-   Only promote foreground containers while the single viewport effect exists.
-   Contact and footer retain their opaque backgrounds below the leaves. */
-body:has(> .autumn-leaf-fall--viewport)
-  :is(.hero, .landing-section > .container, .site-footer__inner) {
-  position: relative;
-  z-index: 1;
-}
-
 .autumn-leaf-fall__leaf {
   --leaf-color: var(--color-accent-soft);
   --leaf-opacity: 0.28;

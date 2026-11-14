@@ -1,9 +1,20 @@
 .spring-petal-drift {
+  --petal-fall-unit: 1rem;
+
   position: absolute;
   z-index: 0;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
+}
+
+.spring-petal-drift--viewport {
+  --petal-fall-unit: calc((100dvh - var(--spring-header-height, 0px) + 4rem) / 25);
+
+  position: fixed;
+  inset-block-start: var(--spring-header-height, 0px);
+  inset-block-end: auto;
+  height: calc(100dvh - var(--spring-header-height, 0px));
 }
 
 .spring-petal-drift__petal {
@@ -14,10 +25,10 @@
   --petal-x-second: 1rem;
   --petal-x-third: 5.6rem;
   --petal-x-end: 7.5rem;
-  --petal-y-first: 3.8rem;
-  --petal-y-second: 8rem;
-  --petal-y-third: 13.5rem;
-  --petal-fall-distance: 25rem;
+  --petal-y-first: calc(3.8 * var(--petal-fall-unit));
+  --petal-y-second: calc(8 * var(--petal-fall-unit));
+  --petal-y-third: calc(13.5 * var(--petal-fall-unit));
+  --petal-fall-distance: calc(25 * var(--petal-fall-unit));
   --petal-rotation-start: -18deg;
   --petal-rotation-first: 24deg;
   --petal-rotation-second: -8deg;
@@ -58,10 +69,10 @@
   --petal-x-second: -1.2rem;
   --petal-x-third: -5.4rem;
   --petal-x-end: -7rem;
-  --petal-y-first: 4.5rem;
-  --petal-y-second: 9.5rem;
-  --petal-y-third: 15rem;
-  --petal-fall-distance: 28rem;
+  --petal-y-first: calc(4.5 * var(--petal-fall-unit));
+  --petal-y-second: calc(9.5 * var(--petal-fall-unit));
+  --petal-y-third: calc(15 * var(--petal-fall-unit));
+  --petal-fall-distance: calc(28 * var(--petal-fall-unit));
   --petal-rotation-start: 26deg;
   --petal-rotation-first: -16deg;
   --petal-rotation-second: 20deg;
@@ -81,10 +92,10 @@
   --petal-x-second: 7.2rem;
   --petal-x-third: 4.1rem;
   --petal-x-end: 8.5rem;
-  --petal-y-first: 5.2rem;
-  --petal-y-second: 4.6rem;
-  --petal-y-third: 10.5rem;
-  --petal-fall-distance: 27rem;
+  --petal-y-first: calc(5.2 * var(--petal-fall-unit));
+  --petal-y-second: calc(4.6 * var(--petal-fall-unit));
+  --petal-y-third: calc(10.5 * var(--petal-fall-unit));
+  --petal-fall-distance: calc(27 * var(--petal-fall-unit));
   --petal-rotation-start: -24deg;
   --petal-rotation-first: 18deg;
   --petal-rotation-second: 42deg;
@@ -103,10 +114,10 @@
   --petal-x-second: 9.5rem;
   --petal-x-third: 7rem;
   --petal-x-end: 12rem;
-  --petal-y-first: 3.2rem;
-  --petal-y-second: 7rem;
-  --petal-y-third: 12rem;
-  --petal-fall-distance: 23rem;
+  --petal-y-first: calc(3.2 * var(--petal-fall-unit));
+  --petal-y-second: calc(7 * var(--petal-fall-unit));
+  --petal-y-third: calc(12 * var(--petal-fall-unit));
+  --petal-fall-distance: calc(23 * var(--petal-fall-unit));
   --petal-rotation-start: 14deg;
   --petal-rotation-first: 46deg;
   --petal-rotation-second: 12deg;
@@ -127,10 +138,10 @@
   --petal-x-second: 0.8rem;
   --petal-x-third: -3.8rem;
   --petal-x-end: -5rem;
-  --petal-y-first: 4rem;
-  --petal-y-second: 8.2rem;
-  --petal-y-third: 14.5rem;
-  --petal-fall-distance: 27rem;
+  --petal-y-first: calc(4 * var(--petal-fall-unit));
+  --petal-y-second: calc(8.2 * var(--petal-fall-unit));
+  --petal-y-third: calc(14.5 * var(--petal-fall-unit));
+  --petal-fall-distance: calc(27 * var(--petal-fall-unit));
   --petal-rotation-start: 20deg;
   --petal-rotation-first: -14deg;
   --petal-rotation-second: 18deg;
@@ -150,10 +161,10 @@
   --petal-x-second: -7rem;
   --petal-x-third: -3.7rem;
   --petal-x-end: -8rem;
-  --petal-y-first: 5rem;
-  --petal-y-second: 9rem;
-  --petal-y-third: 15rem;
-  --petal-fall-distance: 29rem;
+  --petal-y-first: calc(5 * var(--petal-fall-unit));
+  --petal-y-second: calc(9 * var(--petal-fall-unit));
+  --petal-y-third: calc(15 * var(--petal-fall-unit));
+  --petal-fall-distance: calc(29 * var(--petal-fall-unit));
   --petal-rotation-start: 32deg;
   --petal-rotation-first: -12deg;
   --petal-rotation-second: -38deg;
@@ -173,10 +184,10 @@
   --petal-x-second: -0.6rem;
   --petal-x-third: 3.8rem;
   --petal-x-end: 5.5rem;
-  --petal-y-first: 3.6rem;
-  --petal-y-second: 7.8rem;
-  --petal-y-third: 13rem;
-  --petal-fall-distance: 24rem;
+  --petal-y-first: calc(3.6 * var(--petal-fall-unit));
+  --petal-y-second: calc(7.8 * var(--petal-fall-unit));
+  --petal-y-third: calc(13 * var(--petal-fall-unit));
+  --petal-fall-distance: calc(24 * var(--petal-fall-unit));
   --petal-rotation-start: -28deg;
   --petal-rotation-first: 10deg;
   --petal-rotation-second: -22deg;
@@ -196,10 +207,10 @@
   --petal-x-second: -9rem;
   --petal-x-third: -6rem;
   --petal-x-end: -12rem;
-  --petal-y-first: 4.2rem;
-  --petal-y-second: 3.7rem;
-  --petal-y-third: 10rem;
-  --petal-fall-distance: 24rem;
+  --petal-y-first: calc(4.2 * var(--petal-fall-unit));
+  --petal-y-second: calc(3.7 * var(--petal-fall-unit));
+  --petal-y-third: calc(10 * var(--petal-fall-unit));
+  --petal-fall-distance: calc(24 * var(--petal-fall-unit));
   --petal-rotation-start: 18deg;
   --petal-rotation-first: -24deg;
   --petal-rotation-second: -46deg;
@@ -220,10 +231,10 @@
   --petal-x-second: 6.5rem;
   --petal-x-third: 2.7rem;
   --petal-x-end: 7rem;
-  --petal-y-first: 4.8rem;
-  --petal-y-second: 9.3rem;
-  --petal-y-third: 14.8rem;
-  --petal-fall-distance: 28rem;
+  --petal-y-first: calc(4.8 * var(--petal-fall-unit));
+  --petal-y-second: calc(9.3 * var(--petal-fall-unit));
+  --petal-y-third: calc(14.8 * var(--petal-fall-unit));
+  --petal-fall-distance: calc(28 * var(--petal-fall-unit));
   --petal-rotation-start: -16deg;
   --petal-rotation-first: 22deg;
   --petal-rotation-second: 44deg;
@@ -243,10 +254,10 @@
   --petal-x-second: -0.4rem;
   --petal-x-third: -4.8rem;
   --petal-x-end: -6.5rem;
-  --petal-y-first: 3.9rem;
-  --petal-y-second: 8.5rem;
-  --petal-y-third: 14rem;
-  --petal-fall-distance: 27rem;
+  --petal-y-first: calc(3.9 * var(--petal-fall-unit));
+  --petal-y-second: calc(8.5 * var(--petal-fall-unit));
+  --petal-y-third: calc(14 * var(--petal-fall-unit));
+  --petal-fall-distance: calc(27 * var(--petal-fall-unit));
   --petal-rotation-start: 24deg;
   --petal-rotation-first: -18deg;
   --petal-rotation-second: 14deg;
@@ -261,7 +272,8 @@
 @keyframes spring-petal-drift {
   0% {
     opacity: 0;
-    transform: translate3d(0, -1rem, 0) rotate(var(--petal-rotation-start)) scaleX(0.72);
+    transform: translate3d(0, calc(-1 * var(--petal-fall-unit)), 0)
+      rotate(var(--petal-rotation-start)) scaleX(0.72);
   }
 
   11% {
