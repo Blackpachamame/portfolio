@@ -1,4 +1,12 @@
-<template data-winter-snow-template>
+---
+interface Props {
+  viewport?: boolean;
+}
+
+const { viewport = false } = Astro.props;
+---
+
+<template data-winter-snow-template data-winter-snow-viewport={viewport || undefined}>
   <div class="winter-snow" aria-hidden="true" data-winter-snow>
     <span class="winter-snow__flake winter-snow__flake--far"></span>
     <span class="winter-snow__flake winter-snow__flake--mid"></span>
@@ -35,9 +43,12 @@
     let previousSeason = document.documentElement.dataset.season ?? 'default';
     let activeEffect: HTMLElement | undefined;
     let pendingEffect = false;
+    let headerObserver: ResizeObserver | undefined;
 
     const stopEffect = () => {
       pendingEffect = false;
+      headerObserver?.disconnect();
+      headerObserver = undefined;
       activeEffect?.remove();
       activeEffect = undefined;
     };
@@ -63,7 +74,29 @@
         },
         { once: true },
       );
-      hero.append(effect);
+      // Intentionally mirrors Autumn and Spring's small viewport mount.
+      if (snowTemplate.hasAttribute('data-winter-snow-viewport')) {
+        effect.classList.add('winter-snow--viewport');
+        const header = document.querySelector('.site-header');
+
+        if (header instanceof HTMLElement) {
+          const updateInset = () => {
+            if (activeEffect !== effect) return;
+            effect.style.setProperty(
+              '--winter-header-height',
+              `${header.getBoundingClientRect().height}px`,
+            );
+          };
+
+          updateInset();
+          headerObserver = new ResizeObserver(updateInset);
+          headerObserver.observe(header);
+        }
+
+        document.body.append(effect);
+      } else {
+        hero.append(effect);
+      }
     };
 
     seasonSelector.addEventListener('change', () => {
