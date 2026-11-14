@@ -9,7 +9,7 @@ export const projects: Project[] = [
     name: 'NesDuel',
     category: 'Producto propio',
     role: 'Frontend Developer',
-    period: 'jun 2026 – jul 2026',
+    period: 'jun 2026 – nov 2026',
     level: 'Destacado',
     image: nesDuelPreview,
     imageAlt: 'Pantalla principal de NesDuel con navegación y acceso a partidas.',
@@ -76,6 +76,10 @@ export const projects: Project[] = [
       'Vercel',
     ],
     primaryLink: { label: 'Ver TechToJob', href: 'https://techtojob.vercel.app/' },
+    secondaryLink: {
+      label: 'Ver código',
+      href: 'https://github.com/Blackpachamame/landing-techtojob',
+    },
   },
   {
     name: 'PokéKit',

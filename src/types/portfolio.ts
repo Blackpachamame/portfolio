@@ -56,6 +56,7 @@ export interface Project {
   contributions?: string[];
   technologies: string[];
   primaryLink: ExternalLink;
+  secondaryLink?: ExternalLink;
 }
 
 export interface Skill {

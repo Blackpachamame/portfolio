@@ -4,7 +4,7 @@ export const siteInfo: SiteInfo = {
   name: 'Marcos Andrés Travaglini',
   role: 'Frontend Developer',
   location: 'Neuquén, Argentina',
-  email: 'marcos.travaglini@est.fi.uncoma.edu.ar',
+  email: 'marcos.andres.travaglini@gmail.com',
   title: 'Marcos Travaglini | Frontend Developer',
   description:
     'Portfolio de Marcos Travaglini, Frontend Developer enfocado en React, TypeScript, interfaces responsive y APIs REST.',

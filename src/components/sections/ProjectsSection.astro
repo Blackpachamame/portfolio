@@ -139,15 +139,28 @@ const secondaryProjects = projects.filter((project) => project.level === 'Secund
                   </ul>
                 </div>
 
-                <a
-                  class="project-link"
-                  href={project.primaryLink.href}
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  {project.primaryLink.label}
-                  <span aria-hidden="true"> ↗</span>
-                  <span class="project-link__new-tab">(abre en una pestaña nueva)</span>
-                </a>
+                <div class="project-secondary__links">
+                  <a
+                    class="project-link"
+                    href={project.primaryLink.href}
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    {project.primaryLink.label}
+                    <span aria-hidden="true"> ↗</span>
+                    <span class="project-link__new-tab">(abre en una pestaña nueva)</span>
+                  </a>
+                  {project.secondaryLink && (
+                    <a
+                      class="project-link"
+                      href={project.secondaryLink.href}
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      {project.secondaryLink.label}
+                      <span aria-hidden="true"> ↗</span>
+                      <span class="project-link__new-tab">(abre en una pestaña nueva)</span>
+                    </a>
+                  )}
+                </div>
               </div>
             </article>
           ))
