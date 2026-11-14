@@ -1,4 +1,12 @@
-<template data-autumn-leaf-template>
+---
+interface Props {
+  viewport?: boolean;
+}
+
+const { viewport = false } = Astro.props;
+---
+
+<template data-autumn-leaf-template data-autumn-leaf-viewport={viewport || undefined}>
   <div class="autumn-leaf-fall" aria-hidden="true" data-autumn-leaf-fall>
     <span class="autumn-leaf-fall__leaf"></span>
     <span class="autumn-leaf-fall__leaf"></span>
@@ -29,9 +37,12 @@
     let previousSeason = document.documentElement.dataset.season ?? 'default';
     let activeEffect: HTMLElement | undefined;
     let pendingEffect = false;
+    let headerObserver: ResizeObserver | undefined;
 
     const stopEffect = () => {
       pendingEffect = false;
+      headerObserver?.disconnect();
+      headerObserver = undefined;
       activeEffect?.remove();
       activeEffect = undefined;
     };
@@ -57,7 +68,28 @@
         },
         { once: true },
       );
-      hero.append(effect);
+      if (leafTemplate.hasAttribute('data-autumn-leaf-viewport')) {
+        effect.classList.add('autumn-leaf-fall--viewport');
+        const header = document.querySelector('.site-header');
+
+        if (header instanceof HTMLElement) {
+          const updateInset = () => {
+            if (activeEffect !== effect) return;
+            effect.style.setProperty(
+              '--autumn-header-height',
+              `${header.getBoundingClientRect().height}px`,
+            );
+          };
+
+          updateInset();
+          headerObserver = new ResizeObserver(updateInset);
+          headerObserver.observe(header);
+        }
+
+        document.body.append(effect);
+      } else {
+        hero.append(effect);
+      }
     };
 
     seasonSelector.addEventListener('change', () => {

@@ -1,9 +1,29 @@
 .autumn-leaf-fall {
+  --leaf-fall-unit: 1rem;
+
   position: absolute;
   z-index: 0;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
+}
+
+.autumn-leaf-fall--viewport {
+  --leaf-fall-unit: calc((100dvh - var(--autumn-header-height, 0px) + 4rem) / 31);
+
+  position: fixed;
+  inset-block-start: var(--autumn-header-height, 0px);
+  inset-block-end: auto;
+  height: calc(100dvh - var(--autumn-header-height, 0px));
+}
+
+/* Experimental surface: backgrounds < leaves (0) < content (1) < sticky header (50).
+   Only promote foreground containers while the single viewport effect exists.
+   Contact and footer retain their opaque backgrounds below the leaves. */
+body:has(> .autumn-leaf-fall--viewport)
+  :is(.hero, .landing-section > .container, .site-footer__inner) {
+  position: relative;
+  z-index: 1;
 }
 
 .autumn-leaf-fall__leaf {
@@ -13,7 +33,7 @@
   --leaf-sway: 1.8rem;
   --leaf-counter-sway: -0.9rem;
   --leaf-drift: 2.2rem;
-  --leaf-fall-distance: 31rem;
+  --leaf-fall-distance: calc(31 * var(--leaf-fall-unit));
   --leaf-rotation-start: -28deg;
   --leaf-rotation-first: 42deg;
   --leaf-rotation-second: 136deg;
@@ -52,7 +72,7 @@
   --leaf-sway: -2.1rem;
   --leaf-counter-sway: 1.4rem;
   --leaf-drift: -0.8rem;
-  --leaf-fall-distance: 34rem;
+  --leaf-fall-distance: calc(34 * var(--leaf-fall-unit));
   --leaf-rotation-start: 32deg;
   --leaf-rotation-first: -46deg;
   --leaf-rotation-second: -138deg;
@@ -70,7 +90,7 @@
   --leaf-sway: 2.8rem;
   --leaf-counter-sway: -1.6rem;
   --leaf-drift: 3.4rem;
-  --leaf-fall-distance: 36rem;
+  --leaf-fall-distance: calc(36 * var(--leaf-fall-unit));
   --leaf-rotation-start: -16deg;
   --leaf-rotation-first: 68deg;
   --leaf-rotation-second: 176deg;
@@ -87,7 +107,7 @@
   --leaf-sway: 3.5rem;
   --leaf-counter-sway: 1.2rem;
   --leaf-drift: 7rem;
-  --leaf-fall-distance: 26rem;
+  --leaf-fall-distance: calc(26 * var(--leaf-fall-unit));
   --leaf-rotation-start: 24deg;
   --leaf-rotation-first: 82deg;
   --leaf-rotation-second: 154deg;
@@ -106,7 +126,7 @@
   --leaf-sway: -1.8rem;
   --leaf-counter-sway: 1.7rem;
   --leaf-drift: -2.6rem;
-  --leaf-fall-distance: 33rem;
+  --leaf-fall-distance: calc(33 * var(--leaf-fall-unit));
   --leaf-rotation-start: 12deg;
   --leaf-rotation-first: -64deg;
   --leaf-rotation-second: -172deg;
@@ -124,7 +144,7 @@
   --leaf-sway: -2.7rem;
   --leaf-counter-sway: 1.1rem;
   --leaf-drift: -4rem;
-  --leaf-fall-distance: 37rem;
+  --leaf-fall-distance: calc(37 * var(--leaf-fall-unit));
   --leaf-rotation-start: 38deg;
   --leaf-rotation-first: -52deg;
   --leaf-rotation-second: -164deg;
@@ -142,7 +162,7 @@
   --leaf-sway: 1.1rem;
   --leaf-counter-sway: -2rem;
   --leaf-drift: 1.8rem;
-  --leaf-fall-distance: 32rem;
+  --leaf-fall-distance: calc(32 * var(--leaf-fall-unit));
   --leaf-rotation-start: -42deg;
   --leaf-rotation-first: 28deg;
   --leaf-rotation-second: 122deg;
@@ -160,7 +180,7 @@
   --leaf-sway: -3.8rem;
   --leaf-counter-sway: -1.4rem;
   --leaf-drift: -8rem;
-  --leaf-fall-distance: 28rem;
+  --leaf-fall-distance: calc(28 * var(--leaf-fall-unit));
   --leaf-rotation-start: 18deg;
   --leaf-rotation-first: -74deg;
   --leaf-rotation-second: -186deg;
@@ -178,7 +198,7 @@
   --leaf-sway: 2.5rem;
   --leaf-counter-sway: -1.8rem;
   --leaf-drift: 2.2rem;
-  --leaf-fall-distance: 36rem;
+  --leaf-fall-distance: calc(36 * var(--leaf-fall-unit));
   --leaf-rotation-start: -8deg;
   --leaf-rotation-first: 78deg;
   --leaf-rotation-second: 192deg;
@@ -196,7 +216,7 @@
   --leaf-sway: -1.6rem;
   --leaf-counter-sway: 1.5rem;
   --leaf-drift: -2.8rem;
-  --leaf-fall-distance: 34rem;
+  --leaf-fall-distance: calc(34 * var(--leaf-fall-unit));
   --leaf-rotation-start: 28deg;
   --leaf-rotation-first: -58deg;
   --leaf-rotation-second: -152deg;
@@ -218,11 +238,13 @@
   }
 
   30% {
-    transform: translate3d(var(--leaf-sway), 9rem, 0) rotate(var(--leaf-rotation-first));
+    transform: translate3d(var(--leaf-sway), calc(9 * var(--leaf-fall-unit)), 0)
+      rotate(var(--leaf-rotation-first));
   }
 
   61% {
-    transform: translate3d(var(--leaf-counter-sway), 20rem, 0) rotate(var(--leaf-rotation-second));
+    transform: translate3d(var(--leaf-counter-sway), calc(20 * var(--leaf-fall-unit)), 0)
+      rotate(var(--leaf-rotation-second));
   }
 
   86% {
