@@ -1,0 +1,7 @@
+root = true
+
+[*.{astro,ts,mts,cts,js,mjs,cjs,css}]
+end_of_line = lf
+
+[.{gitattributes,editorconfig}]
+end_of_line = lf
