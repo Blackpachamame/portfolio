@@ -89,6 +89,8 @@ const seasons: readonly SeasonOption[] = [
         role="listbox"
         aria-labelledby="season-label"
         data-season-options
+        aria-hidden="true"
+        inert
         hidden>
         {
           seasons.map((season) => (
@@ -179,6 +181,9 @@ const seasons: readonly SeasonOption[] = [
     let activeIndex = selector.selectedIndex;
     let searchText = '';
     let lastTypedAt = 0;
+    let visibilityVersion = 0;
+
+    const isOpen = () => trigger.getAttribute('aria-expanded') === 'true';
 
     const updateSelection = () => {
       const selected = selector.selectedOptions[0];
@@ -204,19 +209,38 @@ const seasons: readonly SeasonOption[] = [
     };
 
     const openDropdown = (index = selector.selectedIndex) => {
+      visibilityVersion += 1;
       searchText = '';
       trigger.focus({ preventScroll: true });
+      const wasHidden = panel.hidden;
       panel.hidden = false;
+      // Establish the closed style before transitioning out of display:none.
+      if (wasHidden) panel.getBoundingClientRect();
+      panel.inert = false;
+      panel.setAttribute('aria-hidden', 'false');
       trigger.setAttribute('aria-expanded', 'true');
       setActiveOption(index);
     };
 
     const closeDropdown = () => {
-      panel.hidden = true;
+      if (!isOpen()) return;
+      const version = ++visibilityVersion;
       trigger.setAttribute('aria-expanded', 'false');
       trigger.removeAttribute('aria-activedescendant');
+      panel.inert = true;
+      panel.setAttribute('aria-hidden', 'true');
       options.forEach((option) => option.removeAttribute('data-active'));
       searchText = '';
+
+      const transitions = panel.getAnimations();
+      if (!transitions.length) {
+        panel.hidden = true;
+        return;
+      }
+      // Canceled transitions also settle; a reopened panel invalidates this completion.
+      void Promise.allSettled(transitions.map((transition) => transition.finished)).then(() => {
+        if (version === visibilityVersion && !isOpen()) panel.hidden = true;
+      });
     };
 
     const commitSelection = () => {
@@ -229,7 +253,7 @@ const seasons: readonly SeasonOption[] = [
     };
 
     const findByTyping = (key: string) => {
-      if (panel.hidden) openDropdown();
+      if (!isOpen()) openDropdown();
       const now = Date.now();
       searchText = now - lastTypedAt > 700 ? key : searchText + key;
       lastTypedAt = now;
@@ -247,7 +271,7 @@ const seasons: readonly SeasonOption[] = [
     };
 
     trigger.addEventListener('click', () => {
-      if (panel.hidden) openDropdown();
+      if (!isOpen()) openDropdown();
       else closeDropdown();
     });
 
@@ -258,36 +282,36 @@ const seasons: readonly SeasonOption[] = [
         case ' ':
           event.preventDefault();
           if (!event.repeat) {
-            if (panel.hidden) openDropdown();
+            if (!isOpen()) openDropdown();
             else commitSelection();
           }
           break;
         case 'ArrowDown':
           event.preventDefault();
-          if (panel.hidden) openDropdown();
+          if (!isOpen()) openDropdown();
           else if (!event.altKey) setActiveOption(activeIndex + 1);
           break;
         case 'ArrowUp':
           event.preventDefault();
-          if (panel.hidden) openDropdown(0);
+          if (!isOpen()) openDropdown(0);
           else if (event.altKey) commitSelection();
           else setActiveOption(activeIndex - 1);
           break;
         case 'Home':
         case 'End':
           event.preventDefault();
-          if (panel.hidden) openDropdown();
+          if (!isOpen()) openDropdown();
           setActiveOption(event.key === 'Home' ? 0 : options.length - 1);
           break;
         case 'Escape':
-          if (!panel.hidden) {
+          if (isOpen()) {
             event.preventDefault();
             event.stopPropagation();
             closeDropdown();
           }
           break;
         case 'Tab':
-          if (!panel.hidden) commitSelection();
+          if (isOpen()) commitSelection();
           break;
         default:
           if (event.key.length === 1 && !event.altKey) {
@@ -302,6 +326,7 @@ const seasons: readonly SeasonOption[] = [
       if (event.button === 0) event.preventDefault();
     });
     panel.addEventListener('click', (event: MouseEvent) => {
+      if (!isOpen()) return;
       const option =
         event.target instanceof Element
           ? event.target.closest<HTMLLIElement>('[data-season-option]')
@@ -313,13 +338,13 @@ const seasons: readonly SeasonOption[] = [
     });
 
     document.addEventListener('pointerdown', (event: PointerEvent) => {
-      if (!panel.hidden && event.target instanceof Node && !control.contains(event.target)) {
+      if (isOpen() && event.target instanceof Node && !control.contains(event.target)) {
         commitSelection();
       }
     });
     control.addEventListener('focusout', (event: FocusEvent) => {
       if (
-        !panel.hidden &&
+        isOpen() &&
         !(event.relatedTarget instanceof Node && control.contains(event.relatedTarget))
       ) {
         commitSelection();
@@ -328,7 +353,7 @@ const seasons: readonly SeasonOption[] = [
     window.addEventListener('blur', closeDropdown);
     selector.addEventListener('change', () => {
       updateSelection();
-      if (!panel.hidden) setActiveOption(selector.selectedIndex);
+      if (isOpen()) setActiveOption(selector.selectedIndex);
     });
 
     updateSelection();
