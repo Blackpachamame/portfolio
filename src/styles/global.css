@@ -15,7 +15,12 @@
 
 /* Viewport effects share one stack: backgrounds < particles (0) < content (1) < header (50).
    Promote foreground containers only while a viewport effect exists; keep opaque backgrounds. */
-body:has(> .autumn-leaf-fall--viewport, > .spring-petal-drift--viewport, > .winter-snow--viewport)
+body:has(
+    > .autumn-leaf-fall--viewport,
+    > .spring-petal-drift--viewport,
+    > .winter-snow--viewport,
+    > .summer-light-motes--viewport
+  )
   :is(.hero, .landing-section > .container, .site-footer__inner) {
   position: relative;
   z-index: 1;

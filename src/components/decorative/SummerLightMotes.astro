@@ -1,12 +1,30 @@
-<template data-summer-light-template>
+---
+interface Props {
+  motesViewport?: boolean;
+  ambientLightViewport?: boolean;
+}
+
+const { motesViewport = false, ambientLightViewport = false } = Astro.props;
+---
+
+<template
+  data-summer-light-template
+  data-summer-motes-viewport={motesViewport || undefined}
+  data-summer-ambient-viewport={ambientLightViewport || undefined}>
   <div class="summer-light-motes" aria-hidden="true" data-summer-light-motes>
     <span class="summer-light-motes__light" data-summer-light-final></span>
-    <span class="summer-light-motes__mote summer-light-motes__mote--far"></span>
-    <span class="summer-light-motes__mote summer-light-motes__mote--mid"></span>
-    <span class="summer-light-motes__mote summer-light-motes__mote--near"></span>
-    <span class="summer-light-motes__mote summer-light-motes__mote--far"></span>
-    <span class="summer-light-motes__mote summer-light-motes__mote--mid"></span>
-    <span class="summer-light-motes__mote summer-light-motes__mote--mid"></span>
+    <span class="summer-light-motes__mote summer-light-motes__mote--far" data-summer-mote="1"
+    ></span>
+    <span class="summer-light-motes__mote summer-light-motes__mote--mid" data-summer-mote="2"
+    ></span>
+    <span class="summer-light-motes__mote summer-light-motes__mote--near" data-summer-mote="3"
+    ></span>
+    <span class="summer-light-motes__mote summer-light-motes__mote--far" data-summer-mote="4"
+    ></span>
+    <span class="summer-light-motes__mote summer-light-motes__mote--mid" data-summer-mote="5"
+    ></span>
+    <span class="summer-light-motes__mote summer-light-motes__mote--mid" data-summer-mote="6"
+    ></span>
   </div>
 </template>
 
@@ -25,10 +43,19 @@
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let previousSeason = document.documentElement.dataset.season ?? 'default';
     let activeEffect: HTMLElement | undefined;
+    let viewportMotes: HTMLElement | undefined;
+    let viewportAmbient: HTMLElement | undefined;
+    let headerObserver: ResizeObserver | undefined;
     let pendingEffect = false;
 
     const stopEffect = () => {
       pendingEffect = false;
+      headerObserver?.disconnect();
+      headerObserver = undefined;
+      viewportAmbient?.remove();
+      viewportAmbient = undefined;
+      viewportMotes?.remove();
+      viewportMotes = undefined;
       activeEffect?.remove();
       activeEffect = undefined;
     };
@@ -47,14 +74,77 @@
       if (!(finalLight instanceof HTMLElement)) return;
 
       activeEffect = effect;
-      finalLight.addEventListener(
-        'animationend',
-        () => {
-          if (activeEffect === effect) stopEffect();
-        },
-        { once: true },
-      );
+      const useViewport = summerTemplate.hasAttribute('data-summer-motes-viewport');
+
+      if (useViewport) {
+        const surface = document.createElement('div');
+        surface.className = 'summer-light-motes summer-light-motes--viewport';
+        surface.setAttribute('aria-hidden', 'true');
+        surface.setAttribute('data-summer-motes', '');
+        effect.querySelectorAll('[data-summer-mote]').forEach((mote) => surface.append(mote));
+        viewportMotes = surface;
+
+        if (summerTemplate.hasAttribute('data-summer-ambient-viewport')) {
+          const clip = document.createElement('div');
+          clip.className = 'summer-light-motes summer-light-motes--ambient-clip';
+          clip.setAttribute('aria-hidden', 'true');
+          clip.setAttribute('data-summer-ambient', '');
+
+          const ambientSurface = document.createElement('div');
+          ambientSurface.className = 'summer-light-motes summer-light-motes--viewport';
+          const ambientLight = document.createElement('span');
+          ambientLight.className = 'summer-light-motes__light summer-light-motes__light--ambient';
+          ambientSurface.append(ambientLight);
+          clip.append(ambientSurface);
+          viewportAmbient = clip;
+        }
+
+        const header = document.querySelector('.site-header');
+        if (header instanceof HTMLElement) {
+          const updateInset = () => {
+            if (activeEffect !== effect) return;
+            const headerHeight = `${header.getBoundingClientRect().height}px`;
+            surface.style.setProperty('--summer-header-height', headerHeight);
+            if (viewportAmbient) {
+              viewportAmbient.style.setProperty('--summer-header-height', headerHeight);
+              // A document-space clip excludes the Hero while its child stays viewport-fixed.
+              // Scrolling moves the clip naturally, without tracking scroll or replaying light.
+              viewportAmbient.style.setProperty(
+                '--summer-hero-end',
+                `${hero.getBoundingClientRect().bottom + window.scrollY}px`,
+              );
+              viewportAmbient.style.setProperty(
+                '--summer-document-height',
+                `${document.body.getBoundingClientRect().height}px`,
+              );
+            }
+          };
+
+          updateInset();
+          headerObserver = new ResizeObserver(updateInset);
+          headerObserver.observe(header);
+          if (viewportAmbient) {
+            headerObserver.observe(hero);
+            headerObserver.observe(document.body);
+          }
+        }
+      }
+
       hero.append(effect);
+      if (viewportAmbient) document.body.append(viewportAmbient);
+      if (viewportMotes) document.body.append(viewportMotes);
+
+      // Viewport variants complete all surfaces (4.92s lights, 4.94s last mote).
+      // Without the option, retain the original light-driven completion.
+      const animations = useViewport
+        ? [effect, viewportMotes, viewportAmbient].flatMap(
+            (surface) => surface?.getAnimations({ subtree: true }) ?? [],
+          )
+        : finalLight.getAnimations();
+
+      void Promise.allSettled(animations.map((animation) => animation.finished)).then(() => {
+        if (activeEffect === effect) stopEffect();
+      });
     };
 
     seasonSelector.addEventListener('change', () => {
