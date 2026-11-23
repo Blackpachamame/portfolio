@@ -1,5 +1,6 @@
 ---
 import socialPreview from '../assets/preview-portfolio.png';
+import { seasonCalendar, treeMedia } from '../data/seasons';
 import { siteInfo } from '../data/site';
 import '../styles/global.css';
 
@@ -15,24 +16,29 @@ const socialPreviewAlt = 'Portfolio de Marcos Travaglini, Frontend Developer';
 ---
 
 <!doctype html>
-<html lang="es" data-season="default">
+<html lang="es" data-season="spring" data-season-mode="auto">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script is:inline>
-      try {
-        const savedSeason = localStorage.getItem('portfolio-season');
+    <script is:inline define:vars={{ seasonCalendar, treeMedia }}>
+      const root = document.documentElement;
+      window.getPortfolioAutomaticSeason = () => {
+        const month = new Intl.DateTimeFormat('en-US', {
+          month: 'numeric',
+          timeZone: 'America/Argentina/Buenos_Aires',
+        }).format(new Date());
+        return seasonCalendar[Number(month) - 1];
+      };
 
-        if (
-          savedSeason === 'default' ||
-          savedSeason === 'autumn' ||
-          savedSeason === 'spring' ||
-          savedSeason === 'summer' ||
-          savedSeason === 'winter'
-        ) {
-          document.documentElement.dataset.season = savedSeason;
-        }
+      let savedSeason;
+      try {
+        savedSeason = localStorage.getItem('portfolio-season');
       } catch {}
+
+      const mode = seasonCalendar.includes(savedSeason) ? savedSeason : 'auto';
+      root.dataset.seasonMode = mode;
+      root.dataset.season = mode === 'auto' ? window.getPortfolioAutomaticSeason() : mode;
+      root.toggleAttribute('data-tree-layout', matchMedia(treeMedia).matches);
     </script>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />

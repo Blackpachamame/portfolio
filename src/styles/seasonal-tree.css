@@ -1,0 +1,229 @@
+.seasonal-tree,
+.hero__role {
+  display: none;
+}
+
+html[data-tree-layout] {
+  scroll-padding-block-start: 3.5rem;
+}
+
+html[data-tree-layout] .landing-section {
+  scroll-margin-block-start: 0;
+}
+
+html[data-tree-layout] .site-header {
+  position: fixed;
+  inset-inline: 0;
+}
+
+html[data-tree-layout] .site-header[data-at-hero] {
+  border-color: transparent;
+  background: transparent;
+  pointer-events: none;
+}
+
+html[data-tree-layout] .site-header[data-at-hero] .site-header__inner {
+  position: relative;
+}
+
+html[data-tree-layout]
+  .site-header[data-at-hero]
+  :is(.site-header__brand, .site-header__nav, .site-header__social) {
+  visibility: hidden;
+}
+
+html[data-tree-layout] .site-header[data-at-hero] .site-header__season {
+  position: absolute;
+  inset-block-start: 0.75rem;
+  inset-inline-end: 0;
+  pointer-events: auto;
+}
+
+html[data-tree-layout] .site-header[data-at-hero] .site-header__season-trigger {
+  min-block-size: 2.75rem;
+  padding-inline: 0.85rem;
+  border-color: var(--color-control-border);
+  border-radius: 999px;
+  background: var(--color-canvas);
+  font-size: 0.78rem;
+}
+
+html[data-tree-layout] body .hero:has(.seasonal-tree) {
+  --tree-edge-gap: 0.625rem;
+  --tree-cv-height: 2.75rem;
+  --tree-scroll-height: 1.5rem;
+  --tree-action-space: clamp(3rem, 9svh, 4rem);
+  --tree-width: min(94vw, 141svh, calc((100svh - var(--tree-action-space)) * 1.5));
+  --tree-top: max(var(--tree-edge-gap), calc((100svh - var(--tree-width) / 1.5 - 3.5rem) / 2));
+
+  padding: 0;
+  border: 0;
+  isolation: auto;
+  z-index: auto;
+}
+
+html[data-tree-layout] .hero :is(.hero__art, .hero__introduction, .hero__actions, .hero__summary) {
+  display: none;
+}
+
+html[data-tree-layout] .hero__inner {
+  position: absolute;
+  z-index: 2;
+  inset-block-start: clamp(1.25rem, 3.6svh, 2.5rem);
+  inset-inline: 0;
+  pointer-events: none;
+}
+
+html[data-tree-layout] .hero__main {
+  width: fit-content;
+  margin: 0;
+  text-align: start;
+  pointer-events: auto;
+}
+
+html[data-tree-layout] .hero h1 {
+  margin: 0;
+}
+
+html[data-tree-layout] .hero h1 span {
+  padding: 0;
+  color: var(--color-text);
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  font-size: clamp(1.5rem, 2.35vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+}
+
+html[data-tree-layout] .hero__role {
+  display: block;
+  margin: 0.65rem 0 0;
+  color: var(--color-accent-soft);
+  font-size: clamp(0.8rem, 1.1vw, 1rem);
+  font-weight: 600;
+}
+
+html[data-tree-layout] .seasonal-tree {
+  display: flex;
+  min-block-size: 100svh;
+  flex-direction: column;
+  align-items: center;
+  padding-block-start: var(--tree-top);
+}
+
+.seasonal-tree__scenes,
+.seasonal-tree__scene {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+}
+
+.seasonal-tree__scene {
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  padding-block-start: var(--tree-top);
+  background: var(--color-canvas);
+}
+
+.seasonal-tree__scene img,
+.seasonal-tree__stage {
+  width: var(--tree-width);
+  height: auto;
+  aspect-ratio: 3 / 2;
+}
+
+.seasonal-tree__stage,
+.seasonal-tree__actions {
+  position: relative;
+  z-index: 1;
+}
+
+.seasonal-tree__stage svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.seasonal-tree__link {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.seasonal-tree__leader {
+  fill: none;
+  stroke: var(--color-text-secondary);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.seasonal-tree__link text {
+  fill: var(--color-text);
+  font-size: 27px;
+  font-weight: 700;
+  paint-order: stroke;
+  stroke: var(--color-canvas);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+.seasonal-tree__hit-area,
+.seasonal-tree__label-target {
+  fill: transparent;
+}
+
+.seasonal-tree__point {
+  fill: var(--color-canvas);
+  stroke: var(--color-text);
+  stroke-width: 2.5px;
+}
+
+.seasonal-tree__core {
+  fill: var(--color-accent-soft);
+}
+
+.seasonal-tree__link:is(:hover, :focus-visible) .seasonal-tree__leader {
+  stroke: var(--color-accent-soft);
+  stroke-width: 2px;
+}
+
+.seasonal-tree__link:is(:hover, :focus-visible) .seasonal-tree__point {
+  r: 15px;
+}
+
+.seasonal-tree__link:focus-visible .seasonal-tree__label-target {
+  fill: var(--color-surface);
+  stroke: var(--color-text);
+  stroke-width: 2px;
+  vector-effect: non-scaling-stroke;
+}
+
+.seasonal-tree__actions {
+  display: grid;
+  justify-items: center;
+  /* Share the space below the artwork with the controls in shorter viewports. */
+  margin-block-start: calc(
+    var(--tree-action-space) - var(--tree-cv-height) - var(--tree-scroll-height) - 2 *
+      var(--tree-edge-gap)
+  );
+}
+
+.seasonal-tree__cv {
+  min-width: 10rem;
+  min-height: var(--tree-cv-height);
+  padding-block: 0.5rem;
+  border-radius: 999px;
+  color: var(--color-text);
+  background: var(--color-canvas);
+}
+
+.seasonal-tree__scroll {
+  display: grid;
+  width: 2.75rem;
+  height: var(--tree-scroll-height);
+  place-items: center;
+  color: var(--color-accent-soft);
+}

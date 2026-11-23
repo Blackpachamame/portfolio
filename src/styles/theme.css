@@ -21,7 +21,8 @@
   --section-space: clamp(4.5rem, 10vw, 8rem);
 }
 
-html[data-season='autumn'] {
+html[data-season='autumn'],
+[data-tree-scene='autumn'] {
   --color-canvas: #151114;
   --color-surface: #1d171a;
   --color-surface-raised: #261e22;
@@ -38,7 +39,8 @@ html[data-season='autumn'] {
   --color-environment-base: #191216;
 }
 
-html[data-season='spring'] {
+html[data-season='spring'],
+[data-tree-scene='spring'] {
   --color-canvas: #0f1517;
   --color-surface: #151e20;
   --color-surface-raised: #1c2829;
@@ -56,7 +58,8 @@ html[data-season='spring'] {
   --color-environment-base: #11191a;
 }
 
-html[data-season='summer'] {
+html[data-season='summer'],
+[data-tree-scene='summer'] {
   --color-canvas: #0a1626;
   --color-surface: #111f30;
   --color-surface-raised: #192b3e;
@@ -74,7 +77,8 @@ html[data-season='summer'] {
   --color-environment-base: #0d1a29;
 }
 
-html[data-season='winter'] {
+html[data-season='winter'],
+[data-tree-scene='winter'] {
   --color-canvas: #0d1318;
   --color-surface: #131b22;
   --color-surface-raised: #1a242d;

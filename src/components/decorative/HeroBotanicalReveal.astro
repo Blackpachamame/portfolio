@@ -11,6 +11,7 @@ import summerBranchLeft from '../../assets/seasonal/summer/branch-left.png';
 import summerBranchRight from '../../assets/seasonal/summer/branch-right.png';
 import winterBranchLeft from '../../assets/seasonal/winter/branch-left.png';
 import winterBranchRight from '../../assets/seasonal/winter/branch-right.png';
+import { treeMedia } from '../../data/seasons';
 
 const [
   defaultLeftBranch,
@@ -342,12 +343,13 @@ const mobileMasks: Record<string, [number, number, number, string][]> = {
   </noscript>
 </div>
 
-<script is:inline define:vars={{ botanicalAssets }}>
+<script is:inline define:vars={{ botanicalAssets, treeMedia }}>
   const botanicalReveal = document.querySelector('[data-botanical-reveal]');
   const seasonSelector = document.querySelector('[data-season-selector]');
   const leftBranch = botanicalReveal?.querySelector('[data-botanical-image="left"]');
   const rightBranch = botanicalReveal?.querySelector('[data-botanical-image="right"]');
   const leftReveal = leftBranch?.ownerSVGElement;
+  const treeScenes = document.querySelector('[data-tree-scenes]');
 
   if (
     botanicalReveal instanceof HTMLElement &&
@@ -358,11 +360,17 @@ const mobileMasks: Record<string, [number, number, number, string][]> = {
   ) {
     const leftVisible = window.matchMedia('(min-width: 48rem)');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const treeVisible = window.matchMedia(treeMedia);
+    const treeAssets = treeScenes ? JSON.parse(treeScenes.dataset.treeScenes) : null;
+    const root = document.documentElement;
     const pendingImages = new Map();
     let activeVariant;
     let latestRequest = 0;
     let mobileAnimations = [];
     let mobileExit;
+    let treeScene;
+    let treeAnimation;
+    let treeFade = Promise.resolve();
 
     const resolveVariant = () => {
       // The selector holds intent; data-season holds the appearance already applied.
@@ -372,7 +380,7 @@ const mobileMasks: Record<string, [number, number, number, string][]> = {
         season === 'summer' ||
         season === 'winter'
         ? season
-        : 'default';
+        : root.dataset.season;
     };
 
     const mobilePaths = () => [
@@ -474,8 +482,75 @@ const mobileMasks: Record<string, [number, number, number, string][]> = {
       document.documentElement.dataset.season = variant;
     };
 
+    const commitTree = (variant) => {
+      root.dataset.season = variant;
+      botanicalReveal.classList.add('hero__art--botanical-ready');
+      // Ambient effects observe the same applied-season signal on both layouts.
+      botanicalReveal.dataset.botanicalVariant = variant;
+    };
+
+    const loadTree = async (variant, request) => {
+      const isCurrent = () => request === latestRequest && treeVisible.matches;
+      const image = new Image(1536, 1024);
+      image.alt = '';
+      image.src = treeAssets[variant];
+
+      try {
+        await image.decode();
+      } catch {
+        await treeFade;
+        if (!isCurrent()) return;
+        if (treeScene) commitTree(treeScene.dataset.treeScene);
+        else {
+          root.removeAttribute('data-tree-layout');
+          void loadVariant(variant);
+        }
+        return;
+      }
+
+      await treeFade;
+      if (!isCurrent()) return;
+      if (treeScene?.dataset.treeScene === variant) {
+        commitTree(variant);
+        return;
+      }
+
+      const next = document.createElement('div');
+      next.className = 'seasonal-tree__scene';
+      next.dataset.treeScene = variant;
+      next.append(image);
+      treeScenes.append(next);
+
+      if (treeScene && !reducedMotion.matches) {
+        const animation = next.animate([{ opacity: 0 }, { opacity: 1 }], {
+          duration: 700,
+          easing: 'ease-in-out',
+        });
+        treeAnimation = animation;
+        // Keep the opaque base until this reveal ends. Later requests may decode in parallel.
+        treeFade = animation.finished
+          .catch(() => {})
+          .then(() => {
+            if (treeAnimation !== animation) return;
+            treeAnimation = undefined;
+            treeScene.remove();
+            treeScene = next;
+          });
+        await treeFade;
+      } else {
+        treeScene?.remove();
+        treeScene = next;
+      }
+
+      if (isCurrent()) commitTree(variant);
+    };
+
     const loadVariant = async (nextVariant) => {
       const request = ++latestRequest;
+      if (treeAssets && treeVisible.matches && root.hasAttribute('data-tree-layout')) {
+        await loadTree(nextVariant, request);
+        return;
+      }
       const includeLeft = leftVisible.matches;
       const assets = botanicalAssets[nextVariant];
       const completingLeft = nextVariant === activeVariant;
@@ -549,7 +624,25 @@ const mobileMasks: Record<string, [number, number, number, string][]> = {
     });
     leftReveal.toggleAttribute('data-botanical-static', !leftVisible.matches);
 
+    treeVisible.addEventListener('change', () => {
+      latestRequest += 1;
+      const interrupted = treeAnimation;
+      treeAnimation = undefined;
+      interrupted?.cancel();
+      treeScene = undefined;
+      treeScenes?.replaceChildren();
+      root.toggleAttribute('data-tree-layout', treeVisible.matches);
+      if (treeVisible.matches) {
+        finishMobile(true);
+        leftBranch.removeAttribute('href');
+        rightBranch.removeAttribute('href');
+        activeVariant = undefined;
+      }
+      void loadVariant(resolveVariant());
+    });
+
     leftVisible.addEventListener('change', () => {
+      if (root.hasAttribute('data-tree-layout') || treeVisible.matches) return;
       finishMobile(true);
       if (leftVisible.matches) {
         rightBranch.setAttribute('mask', 'url(#hero-branch-mask-right)');
@@ -563,6 +656,7 @@ const mobileMasks: Record<string, [number, number, number, string][]> = {
     });
 
     reducedMotion.addEventListener('change', () => {
+      if (reducedMotion.matches) treeAnimation?.finish();
       if (reducedMotion.matches && !leftVisible.matches) {
         finishMobile(
           botanicalReveal.dataset.botanicalPhase !== 'exit' &&

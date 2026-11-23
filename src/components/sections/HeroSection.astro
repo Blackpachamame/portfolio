@@ -1,13 +1,15 @@
 ---
-import { heroContent } from '../../data/site';
+import { heroContent, siteInfo } from '../../data/site';
 import AutumnLeafFall from '../decorative/AutumnLeafFall.astro';
 import HeroBotanicalReveal from '../decorative/HeroBotanicalReveal.astro';
+import SeasonalTree from '../decorative/SeasonalTree.astro';
 import SpringPetalDrift from '../decorative/SpringPetalDrift.astro';
 import SummerLightMotes from '../decorative/SummerLightMotes.astro';
 import WinterSnow from '../decorative/WinterSnow.astro';
 ---
 
 <section id="inicio" class="hero" aria-labelledby="hero-title">
+  <SeasonalTree />
   <HeroBotanicalReveal />
   <AutumnLeafFall viewport />
   <SpringPetalDrift viewport />
@@ -17,8 +19,9 @@ import WinterSnow from '../decorative/WinterSnow.astro';
   <div class="hero__inner container">
     <div class="hero__main">
       <h1 id="hero-title">
-        {heroContent.titleLines.map((line) => <span>{line}</span>)}
+        {heroContent.titleLines.map((line) => <span>{line} </span>)}
       </h1>
+      <p class="hero__role">{siteInfo.role}</p>
       <p class="hero__introduction">{heroContent.introduction}</p>
       <div class="hero__actions" role="group" aria-label="Acciones principales">
         <a class="button-link" href="#proyectos">Ver proyectos</a>

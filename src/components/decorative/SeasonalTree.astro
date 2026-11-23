@@ -1,0 +1,69 @@
+---
+import spring from '../../assets/seasonal/tree/primavera.webp?url';
+import summer from '../../assets/seasonal/tree/verano.webp?url';
+import autumn from '../../assets/seasonal/tree/otono.webp?url';
+import winter from '../../assets/seasonal/tree/invierno.webp?url';
+
+const trees = { spring, summer, autumn, winter };
+const targetSize = 90;
+const profileLabelInset = 20;
+
+const points = [
+  { id: 'perfil', label: 'Perfil', x: 494, y: 333, labelX: 170, labelY: 212, bend: 392 },
+  { id: 'experiencia', label: 'Experiencia', x: 498, y: 519, labelX: 82, labelY: 408, bend: 350 },
+  { id: 'proyectos', label: 'Proyectos', x: 1278, y: 312, labelX: 1312, labelY: 192, bend: 1370 },
+  { id: 'stack', label: 'Stack', x: 1155, y: 520, labelX: 1312, labelY: 402, bend: 1295 },
+  { id: 'contacto', label: 'Contacto', x: 1186, y: 679, labelX: 1312, labelY: 551, bend: 1314 },
+] as const;
+---
+
+<div class="seasonal-tree">
+  <div class="seasonal-tree__scenes" data-tree-scenes={JSON.stringify(trees)} aria-hidden="true">
+  </div>
+
+  <nav class="seasonal-tree__stage" aria-label="Secciones del portfolio">
+    <svg viewBox="0 0 1536 1024" width="1536" height="1024">
+      {
+        points.map(({ id, label, x, y, labelX, labelY, bend }) => (
+          <a href={`#${id}`} aria-label={label} class="seasonal-tree__link">
+            <path
+              class="seasonal-tree__leader"
+              d={`M ${x} ${y} L ${bend} ${labelY + 19} H ${labelX + (x < 768 ? 20 : 194)}`}
+            />
+            <rect
+              class="seasonal-tree__label-target"
+              x={labelX}
+              y={labelY - targetSize / 2 + (id === 'perfil' ? profileLabelInset : 0)}
+              width="216"
+              height={targetSize}
+              rx="9"
+            />
+            <text x={labelX + 15} y={labelY} dominant-baseline="central">
+              {label}
+            </text>
+            <rect
+              class="seasonal-tree__hit-area"
+              x={x - targetSize / 2}
+              y={y - targetSize / 2}
+              width={targetSize}
+              height={targetSize}
+            />
+            <circle class="seasonal-tree__point" cx={x} cy={y} r="11" />
+            <circle class="seasonal-tree__core" cx={x} cy={y} r="3.8" />
+          </a>
+        ))
+      }
+    </svg>
+  </nav>
+
+  <div class="seasonal-tree__actions">
+    <a class="button-link seasonal-tree__cv" href="/cv/Marcos-Travaglini-CV.pdf" download>
+      Descargar CV
+    </a>
+    <a class="seasonal-tree__scroll" href="#perfil" aria-label="Ir a Perfil">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"></path>
+      </svg>
+    </a>
+  </div>
+</div>

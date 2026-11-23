@@ -4,26 +4,27 @@ import autumnIcon from '../../assets/icons/icon-autumn.webp';
 import springIcon from '../../assets/icons/icon-spring.webp';
 import summerIcon from '../../assets/icons/icon-summer.webp';
 import winterIcon from '../../assets/icons/icon-winter.webp';
+import type { Season } from '../../data/seasons';
 import { headerContent, navigationLinks, socialLinks } from '../../data/site';
 
-type SeasonValue = 'default' | 'autumn' | 'spring' | 'summer' | 'winter';
+type SeasonMode = 'auto' | Season;
 
 interface SeasonOption {
-  value: SeasonValue;
+  value: SeasonMode;
   label: string;
   icon: string;
 }
 
 const seasons: readonly SeasonOption[] = [
-  { value: 'default', label: 'Default', icon: defaultIcon.src },
-  { value: 'autumn', label: 'Otoño', icon: autumnIcon.src },
+  { value: 'auto', label: 'Automático', icon: defaultIcon.src },
   { value: 'spring', label: 'Primavera', icon: springIcon.src },
   { value: 'summer', label: 'Verano', icon: summerIcon.src },
+  { value: 'autumn', label: 'Otoño', icon: autumnIcon.src },
   { value: 'winter', label: 'Invierno', icon: winterIcon.src },
 ];
 ---
 
-<header class="site-header">
+<header class="site-header" data-at-hero>
   <div class="site-header__inner container">
     <a class="site-header__brand" href="#inicio">
       <span class="site-header__logo" aria-hidden="true"></span>
@@ -54,11 +55,9 @@ const seasons: readonly SeasonOption[] = [
       <!-- Keep the existing value/change contract with the Hero and ambient effects. -->
       <select id="season-selector" data-season-selector aria-labelledby="season-label" hidden>
         {
-          seasons.map((season) => (
-            <option value={season.value} data-icon={season.icon}>
-              {season.label}
-            </option>
-          ))
+          seasons
+            .filter((season) => season.value !== 'auto')
+            .map((season) => <option value={season.value}>{season.label}</option>)
         }
       </select>
       <button
@@ -98,8 +97,10 @@ const seasons: readonly SeasonOption[] = [
               class="site-header__season-option"
               id={'season-option-' + season.value}
               role="option"
-              aria-selected={season.value === 'default' ? 'true' : 'false'}
-              data-season-option={season.value}>
+              aria-selected={season.value === 'auto' ? 'true' : 'false'}
+              data-season-option={season.value}
+              data-icon={season.icon}
+              data-label={season.label}>
               <img
                 class="site-header__season-icon"
                 src={season.icon}
@@ -140,33 +141,19 @@ const seasons: readonly SeasonOption[] = [
   const seasonSelector = document.querySelector('[data-season-selector]');
 
   if (seasonSelector instanceof HTMLSelectElement) {
-    const currentSeason = document.documentElement.dataset.season;
-    seasonSelector.value =
-      currentSeason === 'autumn' ||
-      currentSeason === 'spring' ||
-      currentSeason === 'summer' ||
-      currentSeason === 'winter'
-        ? currentSeason
-        : 'default';
-
-    seasonSelector.addEventListener('change', () => {
-      const selectedSeason = seasonSelector.value;
-      const season =
-        selectedSeason === 'autumn' ||
-        selectedSeason === 'spring' ||
-        selectedSeason === 'summer' ||
-        selectedSeason === 'winter'
-          ? selectedSeason
-          : 'default';
-
-      try {
-        localStorage.setItem('portfolio-season', season);
-      } catch {}
-    });
+    seasonSelector.value = document.documentElement.dataset.season;
   }
 </script>
 
 <script>
+  import type { Season } from '../../data/seasons';
+
+  declare global {
+    interface Window {
+      getPortfolioAutomaticSeason: () => Season;
+    }
+  }
+
   function initializeSeasonDropdown() {
     const control = document.querySelector<HTMLElement>('[data-season-control]');
     const selector = control?.querySelector<HTMLSelectElement>('[data-season-selector]');
@@ -178,7 +165,13 @@ const seasons: readonly SeasonOption[] = [
 
     const options = Array.from(panel.querySelectorAll<HTMLLIElement>('[data-season-option]'));
     if (!options.length) return;
-    let activeIndex = selector.selectedIndex;
+    const root = document.documentElement;
+    const selectedIndex = () =>
+      Math.max(
+        0,
+        options.findIndex((option) => option.dataset.seasonOption === root.dataset.seasonMode),
+      );
+    let activeIndex = selectedIndex();
     let searchText = '';
     let lastTypedAt = 0;
     let visibilityVersion = 0;
@@ -186,15 +179,11 @@ const seasons: readonly SeasonOption[] = [
     const isOpen = () => trigger.getAttribute('aria-expanded') === 'true';
 
     const updateSelection = () => {
-      const selected = selector.selectedOptions[0];
-      if (!selected) return;
-      label.textContent = selected.label;
+      const selected = options[selectedIndex()];
+      label.textContent = selected.dataset.label ?? '';
       if (selected.dataset.icon) icon.src = selected.dataset.icon;
       options.forEach((option) => {
-        option.setAttribute(
-          'aria-selected',
-          String(option.dataset.seasonOption === selected.value),
-        );
+        option.setAttribute('aria-selected', String(option === selected));
       });
     };
 
@@ -208,7 +197,7 @@ const seasons: readonly SeasonOption[] = [
       option.scrollIntoView({ block: 'nearest', behavior: 'instant' });
     };
 
-    const openDropdown = (index = selector.selectedIndex) => {
+    const openDropdown = (index = selectedIndex()) => {
       visibilityVersion += 1;
       searchText = '';
       trigger.focus({ preventScroll: true });
@@ -246,10 +235,18 @@ const seasons: readonly SeasonOption[] = [
     const commitSelection = () => {
       const value = options[activeIndex]?.dataset.seasonOption;
       closeDropdown();
-      if (!value || selector.value === value) return;
-      selector.value = value;
-      // A single change keeps persistence, Hero transitions and effects on their existing path.
-      selector.dispatchEvent(new Event('change', { bubbles: true }));
+      if (!value) return;
+      root.dataset.seasonMode = value;
+      try {
+        localStorage.setItem('portfolio-season', value);
+      } catch {}
+      updateSelection();
+      const season = value === 'auto' ? window.getPortfolioAutomaticSeason() : value;
+      if (selector.value !== season || root.dataset.season !== season) {
+        // Renderers and effects receive the resolved season, including in Automatic mode.
+        selector.value = season;
+        selector.dispatchEvent(new Event('change', { bubbles: true }));
+      }
     };
 
     const findByTyping = (key: string) => {
@@ -263,7 +260,7 @@ const seasons: readonly SeasonOption[] = [
       const start = prefix.length === 1 ? activeIndex + 1 : activeIndex;
       for (let step = 0; step < options.length; step += 1) {
         const index = (start + step) % options.length;
-        if (selector.options[index].label.toLocaleLowerCase('es').startsWith(prefix)) {
+        if (options[index].dataset.label?.toLocaleLowerCase('es').startsWith(prefix)) {
           setActiveOption(index);
           break;
         }
@@ -351,14 +348,18 @@ const seasons: readonly SeasonOption[] = [
       }
     });
     window.addEventListener('blur', closeDropdown);
-    selector.addEventListener('change', () => {
-      updateSelection();
-      if (isOpen()) setActiveOption(selector.selectedIndex);
-    });
-
     updateSelection();
     control.hidden = false;
   }
 
   initializeSeasonDropdown();
+
+  const hero = document.querySelector('.hero');
+  const header = document.querySelector('.site-header');
+  if (hero && header) {
+    new IntersectionObserver(
+      ([entry]) => header.toggleAttribute('data-at-hero', entry.isIntersecting),
+      { rootMargin: '-64px 0px 0px' },
+    ).observe(hero);
+  }
 </script>
