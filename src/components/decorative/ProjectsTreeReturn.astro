@@ -1,0 +1,29 @@
+---
+import { getImage } from 'astro:assets';
+import autumn from '../../assets/seasonal/autumn/branch-left.png';
+import spring from '../../assets/seasonal/spring/branch-left.png';
+import summer from '../../assets/seasonal/summer/branch-left.png';
+import winter from '../../assets/seasonal/winter/branch-left.png';
+
+const branches = { spring, summer, autumn, winter };
+const branchStyles = Object.fromEntries(
+  await Promise.all(
+    Object.entries(branches).map(async ([season, src]) => {
+      const image = await getImage({ src, width: 960, format: 'webp', quality: 82 });
+      return [`--projects-branch-${season}`, `url("${image.src}")`];
+    }),
+  ),
+);
+---
+
+<div class="projects-tree-return" style={branchStyles}>
+  <span class="projects-tree-return__art" aria-hidden="true"></span>
+  <a
+    href="#inicio"
+    class="projects-tree-return__link"
+    data-projects-tree-return
+    aria-label="Volver al árbol">
+    <span class="projects-tree-return__point" aria-hidden="true">−</span>
+    <span class="projects-tree-return__label" aria-hidden="true">Volver al árbol</span>
+  </a>
+</div>

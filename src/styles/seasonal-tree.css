@@ -185,7 +185,7 @@ html[data-tree-layout] .seasonal-tree {
   fill: var(--color-accent-soft);
 }
 
-.seasonal-tree__link:is(:hover, :focus-visible) .seasonal-tree__leader {
+.seasonal-tree__link:is(:hover, :focus-visible, [data-tree-selected]) .seasonal-tree__leader {
   stroke: var(--color-accent-soft);
   stroke-width: 2px;
 }
@@ -226,4 +226,18 @@ html[data-tree-layout] .seasonal-tree {
   height: var(--tree-scroll-height);
   place-items: center;
   color: var(--color-accent-soft);
+}
+
+[data-tree-selected] .seasonal-tree__point {
+  stroke: var(--color-accent-soft);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.tree-projects-overlay {
+  position: fixed;
+  z-index: 110;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
 }

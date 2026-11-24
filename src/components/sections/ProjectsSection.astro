@@ -1,19 +1,23 @@
 ---
 import { Image } from 'astro:assets';
 import { projects } from '../../data/projects';
+import ProjectsTreeReturn from '../decorative/ProjectsTreeReturn.astro';
 
 const featuredProjects = projects.filter((project) => project.level === 'Destacado');
 const secondaryProjects = projects.filter((project) => project.level === 'Secundario');
 ---
 
 <section id="proyectos" class="projects-section landing-section" aria-labelledby="proyectos-title">
+  <ProjectsTreeReturn />
   <div class="projects-section__inner container">
     <header class="projects-section__heading">
       <div class="projects-section__index">
         <p>03 — Proyectos</p>
         <span aria-hidden="true"></span>
       </div>
-      <h2 id="proyectos-title">Productos donde trabajé sobre problemas reales de frontend.</h2>
+      <h2 id="proyectos-title" tabindex="-1">
+        Productos donde trabajé sobre problemas reales de frontend.
+      </h2>
       <p class="projects-section__introduction">
         Dos productos en equipo, una propuesta individual evaluada en un torneo y un proyecto
         personal mobile: integraciones frontend, estado y datos, entrega de una landing e
