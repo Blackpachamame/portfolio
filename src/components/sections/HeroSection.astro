@@ -1,38 +1,129 @@
 ---
 import { heroContent, siteInfo } from '../../data/site';
-import AutumnLeafFall from '../decorative/AutumnLeafFall.astro';
-import HeroBotanicalReveal from '../decorative/HeroBotanicalReveal.astro';
-import SeasonalTree from '../decorative/SeasonalTree.astro';
-import SpringPetalDrift from '../decorative/SpringPetalDrift.astro';
-import SummerLightMotes from '../decorative/SummerLightMotes.astro';
-import WinterSnow from '../decorative/WinterSnow.astro';
+import {
+  watercolorAnchors,
+  watercolorCanvas,
+  watercolorSeasons,
+  watercolorTree,
+} from '../../data/watercolor';
+import '../../styles/watercolor-hero.css';
+
+const { width, height } = watercolorCanvas;
+const scenes = [
+  ...Object.entries(watercolorSeasons),
+  ['fallback', watercolorSeasons.spring],
+] as const;
 ---
 
-<section id="inicio" class="hero" aria-labelledby="hero-title">
-  <SeasonalTree />
-  <HeroBotanicalReveal />
-  <AutumnLeafFall viewport />
-  <SpringPetalDrift viewport />
-  <SummerLightMotes motesViewport ambientLightViewport />
-  <WinterSnow viewport />
+<section id="inicio" class="hero watercolor-hero" aria-labelledby="hero-title" data-watercolor-hero>
+  <div class="container watercolor-hero__identity">
+    <h1 id="hero-title" class="watercolor-hero__title">{heroContent.displayName}</h1>
+    <p class="watercolor-hero__role">{siteInfo.role}</p>
+  </div>
 
-  <div class="hero__inner container">
-    <div class="hero__main">
-      <h1 id="hero-title">
-        {heroContent.titleLines.map((line) => <span>{line} </span>)}
-      </h1>
-      <p class="hero__role">{siteInfo.role}</p>
-      <p class="hero__introduction">{heroContent.introduction}</p>
-      <div class="hero__actions" role="group" aria-label="Acciones principales">
-        <a class="button-link" href="#proyectos">Ver proyectos</a>
-        <a class="button-link button-link--secondary" href="#experiencia">Ver experiencia</a>
-      </div>
+  <div class="watercolor-hero__stage" data-watercolor-stage>
+    <div class="watercolor-hero__art" aria-hidden="true">
+      <img
+        class="watercolor-hero__layer"
+        data-watercolor-tree
+        data-layer="tree"
+        src={watercolorTree}
+        {width}
+        {height}
+        alt=""
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div data-watercolor-live></div>
+      {
+        scenes.map(([name, layers]) => {
+          const Scene = name === 'fallback' ? 'noscript' : 'template';
+          return (
+            <Scene data-watercolor-season={name === 'fallback' ? undefined : name}>
+              {layers.map(({ id, src, x, y, scale }) => (
+                <img
+                  class="watercolor-hero__layer"
+                  data-layer={id}
+                  src={src || undefined}
+                  hidden={!src}
+                  data-x={x}
+                  data-y={y}
+                  data-scale={scale}
+                  {width}
+                  {height}
+                  alt=""
+                  decoding="async"
+                  style={{
+                    '--layer-x': (x / width) * 100 + '%',
+                    '--layer-y': (y / height) * 100 + '%',
+                    '--layer-right': (x / width + scale) * 100 + '%',
+                    '--layer-bottom': (y / height + scale) * 100 + '%',
+                    '--layer-scale': scale * 100 + '%',
+                  }}
+                />
+              ))}
+            </Scene>
+          );
+        })
+      }
     </div>
 
-    <aside class="hero__summary" aria-label="Resumen profesional">
-      <ul class="hero__highlights" aria-label="Información destacada" role="list">
+    <nav class="watercolor-hero__anchors" aria-label="Secciones del portfolio">
+      {
+        watercolorAnchors.map(({ id, label, x, y }) => (
+          <a
+            class="watercolor-hero__anchor"
+            data-side={x < width / 2 ? 'left' : 'right'}
+            href={'#' + id}
+            style={{ left: (x / width) * 100 + '%', top: (y / height) * 100 + '%' }}>
+            <span>{label}</span>
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+
+  <p class="visually-hidden" role="status" data-watercolor-status></p>
+
+  <div class="container watercolor-hero__footer">
+    <div>
+      <p class="watercolor-hero__intro">{heroContent.introduction}</p>
+      <ul class="watercolor-hero__highlights" aria-label="Información destacada" role="list">
         {heroContent.highlights.map((highlight) => <li>{highlight}</li>)}
       </ul>
-    </aside>
+    </div>
+    <a class="watercolor-hero__cv" href="/cv/Marcos-Travaglini-CV.pdf" download>Descargar CV</a>
   </div>
 </section>
+
+<script is:inline>
+  {
+    const hero = document.querySelector('[data-watercolor-hero]');
+    const art = hero?.querySelector('[data-watercolor-live]');
+    const tree = hero?.querySelector('[data-watercolor-tree]');
+    const initial = window.portfolioSeasonInitial?.season ?? 'spring';
+
+    if (tree instanceof HTMLImageElement) {
+      const hideTree = () => {
+        tree.hidden = true;
+      };
+      tree.addEventListener('error', hideTree, { once: true });
+      if (tree.complete && !tree.naturalWidth) hideTree();
+    }
+
+    if (hero && art) {
+      const template = [...hero.querySelectorAll('template[data-watercolor-season]')].find(
+        (node) => node.dataset.watercolorSeason === initial,
+      );
+      if (template) {
+        const scene = document.importNode(template.content, true);
+        for (const image of scene.querySelectorAll('img')) {
+          image.addEventListener('error', () => {
+            image.hidden = true;
+          });
+        }
+        art.replaceChildren(scene);
+      }
+    }
+  }
+</script>

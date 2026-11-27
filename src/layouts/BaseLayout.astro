@@ -1,6 +1,6 @@
 ---
 import socialPreview from '../assets/preview-portfolio.png';
-import { seasonCalendar, treeMedia } from '../data/seasons';
+import { seasonCalendar, seasonStorageKey } from '../data/seasons';
 import { siteInfo } from '../data/site';
 import '../styles/global.css';
 
@@ -20,7 +20,7 @@ const socialPreviewAlt = 'Portfolio de Marcos Travaglini, Frontend Developer';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script is:inline define:vars={{ seasonCalendar, treeMedia }}>
+    <script is:inline define:vars={{ seasonCalendar, seasonStorageKey }}>
       const root = document.documentElement;
       window.getPortfolioAutomaticSeason = () => {
         const month = new Intl.DateTimeFormat('en-US', {
@@ -32,13 +32,21 @@ const socialPreviewAlt = 'Portfolio de Marcos Travaglini, Frontend Developer';
 
       let savedSeason;
       try {
-        savedSeason = localStorage.getItem('portfolio-season');
+        savedSeason = localStorage.getItem(seasonStorageKey);
       } catch {}
 
       const mode = seasonCalendar.includes(savedSeason) ? savedSeason : 'auto';
+      const season = mode === 'auto' ? window.getPortfolioAutomaticSeason() : mode;
+      window.portfolioSeasonInitial = { mode, season };
       root.dataset.seasonMode = mode;
-      root.dataset.season = mode === 'auto' ? window.getPortfolioAutomaticSeason() : mode;
-      root.toggleAttribute('data-tree-layout', matchMedia(treeMedia).matches);
+      root.dataset.season = season;
+      if (
+        typeof window.CSS?.registerProperty === 'function' &&
+        CSS.supports('color', 'color-mix(in oklab, black, white)') &&
+        CSS.supports('selector(&)')
+      ) {
+        root.setAttribute('data-season-color-interpolation', '');
+      }
     </script>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />

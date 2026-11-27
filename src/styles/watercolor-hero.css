@@ -1,0 +1,208 @@
+/* The header keeps its existing descriptor once the Hero is out of view. */
+.site-header[data-at-hero] .site-header__identity > :last-child {
+  display: none;
+}
+/* Paper belongs to this section. The header and the rest of the page keep their dark theme. */
+.hero.watercolor-hero {
+  --paper: #fcf6f1;
+  --paper-ink: #293731;
+  --paper-accent: #315648;
+  background: var(--paper);
+  color: var(--paper-ink);
+  display: grid;
+  justify-items: center;
+  row-gap: 0.35rem;
+  padding-block: clamp(1.5rem, 3.5svh, 3rem) clamp(1.5rem, 4svh, 3rem);
+}
+
+.watercolor-hero .watercolor-hero__title {
+  margin: 0;
+  color: var(--paper-ink);
+  font-size: clamp(1.65rem, 4vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1.08;
+}
+
+.watercolor-hero__role {
+  margin: 0.35rem 0 0;
+  color: var(--paper-accent);
+  font-size: clamp(0.75rem, 1.55vw, 0.9rem);
+  font-weight: 700;
+}
+
+.watercolor-hero__stage {
+  position: relative;
+  isolation: isolate;
+  width: min(88vw, max(17rem, calc((100svh - 15.5rem) * 1.5)), 78rem);
+  aspect-ratio: 3 / 2;
+}
+
+.watercolor-hero__art,
+.watercolor-hero__anchors {
+  position: absolute;
+  inset: 0;
+}
+
+.watercolor-hero__art {
+  pointer-events: none;
+}
+
+.watercolor-hero__layer {
+  --layer-x: 0%;
+  --layer-y: 0%;
+  --layer-scale: 100%;
+  position: absolute;
+  display: block;
+  top: var(--layer-y);
+  left: var(--layer-x);
+  width: var(--layer-scale);
+  height: auto;
+  max-width: none;
+}
+
+.watercolor-hero__layer[hidden],
+.watercolor-hero__art canvas[hidden] {
+  display: none;
+}
+
+@supports (left: round(nearest, 0%, 1px)) {
+  .watercolor-hero__layer:not([data-layer='tree']) {
+    --layer-left-edge: round(nearest, var(--layer-x), 1px);
+    --layer-top-edge: round(nearest, var(--layer-y), 1px);
+    left: var(--layer-left-edge);
+    top: var(--layer-top-edge);
+    width: calc(round(nearest, var(--layer-right), 1px) - var(--layer-left-edge));
+    height: calc(round(nearest, var(--layer-bottom), 1px) - var(--layer-top-edge));
+  }
+}
+
+.watercolor-hero__art canvas {
+  display: block;
+  max-width: none;
+}
+
+.watercolor-hero__layer[data-layer='landscape'],
+.watercolor-hero__art [data-season-layer='landscape'] {
+  z-index: 0;
+}
+.watercolor-hero__layer[data-layer='ground'],
+.watercolor-hero__art [data-season-layer='ground'] {
+  z-index: 1;
+}
+.watercolor-hero__layer[data-layer='tree'] {
+  z-index: 2;
+}
+.watercolor-hero__layer[data-layer='foliage'],
+.watercolor-hero__art [data-season-layer='foliage'] {
+  z-index: 3;
+}
+.watercolor-hero__anchors {
+  z-index: 4;
+}
+
+.watercolor-hero__anchor {
+  position: absolute;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  color: var(--paper-ink);
+}
+
+.watercolor-hero__anchor::before {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--paper-accent);
+  border-radius: 50%;
+  background: #fffdf9;
+  box-shadow: 0 0 0 2px var(--paper);
+  content: '';
+}
+
+.watercolor-hero__anchor span {
+  position: absolute;
+  inset-inline-start: calc(100% - 6px);
+  border: 1px solid #c9d1c6;
+  border-radius: 0.25rem;
+  padding: 0.1rem 0.38rem;
+  background: var(--paper);
+  color: var(--paper-ink);
+  font-size: clamp(0.67rem, 1.1vw, 0.82rem);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.watercolor-hero__anchor:hover span,
+.watercolor-hero__anchor:focus-visible span {
+  border-color: var(--paper-accent);
+}
+
+.watercolor-hero :is(.watercolor-hero__anchor, .watercolor-hero__cv):focus-visible {
+  outline-color: var(--paper-accent);
+}
+
+.watercolor-hero__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+}
+
+.watercolor-hero__intro {
+  max-width: 64ch;
+  margin: 0;
+  font-size: 0.86rem;
+}
+
+.watercolor-hero__highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.9rem;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--paper-accent);
+  font-size: 0.73rem;
+}
+
+.watercolor-hero__cv {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  border: 1px solid var(--paper-accent);
+  border-radius: 0.25rem;
+  padding-inline: 0.85rem;
+  background: var(--paper-accent);
+  color: #fffdf9;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.watercolor-hero__cv:hover {
+  background: var(--paper);
+  color: var(--paper-accent);
+}
+
+@media (min-width: 44rem) {
+  .watercolor-hero__anchor[data-side='left'] span {
+    inset-inline: auto calc(100% - 6px);
+  }
+}
+
+@media (max-width: 43.99rem) {
+  .watercolor-hero__stage {
+    width: min(calc(100% - 2rem), 36rem);
+  }
+
+  .watercolor-hero__anchor {
+    width: 30px;
+    height: 30px;
+  }
+
+  .watercolor-hero__anchor span {
+    inset-inline-start: calc(100% - 4px);
+  }
+}

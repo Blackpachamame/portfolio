@@ -1,4 +1,16 @@
 export type Season = 'spring' | 'summer' | 'autumn' | 'winter';
+export type SeasonMode = 'auto' | Season;
+export const seasonName: Record<Season, string> = {
+  spring: 'Primavera',
+  summer: 'Verano',
+  autumn: 'Otoño',
+  winter: 'Invierno',
+};
+export const seasonStorageKey = 'portfolio-season';
+
+export function isSeasonMode(value: unknown): value is SeasonMode {
+  return value === 'auto' || (typeof value === 'string' && Object.hasOwn(seasonName, value));
+}
 
 export const seasonCalendar = [
   'summer',

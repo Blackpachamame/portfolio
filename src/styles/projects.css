@@ -95,6 +95,14 @@ html[data-tree-layout] .projects-tree-return {
   max-width: 58rem;
 }
 
+.projects-section__return {
+  display: inline-block;
+  margin-block-end: 0.75rem;
+  color: var(--color-accent-soft);
+  font-size: 0.78rem;
+  text-decoration-line: underline;
+}
+
 .projects-section__index {
   display: flex;
   align-items: center;
@@ -283,7 +291,7 @@ html[data-tree-layout] .projects-tree-return {
 
 .project-stack li:not(:last-child)::after {
   color: var(--color-border);
-  content: '·';
+  content: 'Â·';
 }
 
 .project-link {

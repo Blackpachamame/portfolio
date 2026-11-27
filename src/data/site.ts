@@ -35,6 +35,7 @@ export const headerContent = {
 };
 
 export const heroContent = {
+  displayName: 'Marcos Travaglini',
   titleLines: ['Marcos Andrés', 'Travaglini'],
   introduction:
     'Desarrollo interfaces web claras, responsivas y mantenibles con React y TypeScript, colaborando con equipos en productos reales.',

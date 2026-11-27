@@ -1,3 +1,93 @@
+@property --color-canvas {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #11121b;
+}
+
+@property --color-surface {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #171824;
+}
+
+@property --color-surface-raised {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #1e1f2d;
+}
+
+@property --color-border {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #2d2f43;
+}
+
+@property --color-control-border {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #656689;
+}
+
+@property --color-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f3f2f7;
+}
+
+@property --color-text-secondary {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #c5c4d8;
+}
+
+@property --color-text-muted {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #8c8da4;
+}
+
+@property --color-accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #9796f0;
+}
+
+@property --color-accent-soft {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #b8b6f5;
+}
+
+@property --color-accent-secondary {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #b191ad;
+}
+
+@property --color-title-gradient-start {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #9796f0;
+}
+
+@property --color-title-gradient-end {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #fbc7d4;
+}
+
+@property --color-environment-tint {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(78, 89, 192, 0.2);
+}
+
+@property --color-environment-base {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #12131f;
+}
+
 :root {
   color-scheme: dark;
   --color-canvas: #11121b;
@@ -94,4 +184,127 @@ html[data-season='winter'],
   --color-title-gradient-end: #aab2c5;
   --color-environment-tint: rgba(48, 85, 92, 0.18);
   --color-environment-base: #0f121d;
+}
+
+html {
+  transition-property: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-season-color-interpolation] {
+    --season-color-duration: 350ms;
+    --season-color-easing: ease-in-out;
+    transition-property:
+      --color-canvas, --color-surface, --color-surface-raised, --color-border,
+      --color-control-border, --color-text, --color-text-secondary, --color-text-muted,
+      --color-accent, --color-accent-soft, --color-accent-secondary, --color-title-gradient-start,
+      --color-title-gradient-end, --color-environment-tint, --color-environment-base;
+    transition-duration: var(--season-color-duration);
+    transition-timing-function: var(--season-color-easing);
+  }
+}
+
+/* Animate existing link interactions independently of the palette they consume. */
+@property --link-hover-progress {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+html[data-season-color-interpolation] {
+  & :is(a, a:hover):not(:where(.watercolor-hero__anchor, .watercolor-hero__cv)) {
+    --link-text-color: color-mix(
+      in oklab,
+      var(--link-resting-color, var(--color-text-secondary)),
+      var(--link-hover-color, var(--color-text)) var(--link-hover-progress)
+    );
+    color: var(--link-text-color);
+  }
+
+  & a:not(:where(.watercolor-hero__anchor, .watercolor-hero__cv)) {
+    transition-property: --link-hover-progress;
+  }
+
+  & a:hover {
+    --link-hover-progress: 100%;
+  }
+
+  &
+    :is(
+      .site-header__brand,
+      .project-link,
+      .projects-tree-return__link,
+      .contact-details__email,
+      .contact-details__links a
+    ) {
+    --link-resting-color: var(--color-text);
+  }
+
+  &
+    :is(
+      .site-header__navigation a,
+      .site-header__social a,
+      .project-link,
+      .contact-details__links a
+    ) {
+    --link-hover-color: var(--color-accent-soft);
+  }
+
+  & .projects-section__return {
+    --link-resting-color: var(--color-accent-soft);
+  }
+
+  & .skip-link {
+    --link-resting-color: var(--color-canvas);
+  }
+
+  & .skip-link:focus-visible {
+    color: var(--color-canvas);
+  }
+
+  & .site-header__navigation a.site-header__contact-link {
+    --link-resting-color: var(--color-text);
+    color: var(--link-text-color);
+    border-color: color-mix(
+      in oklab,
+      var(--color-border),
+      var(--color-accent) var(--link-hover-progress)
+    );
+    background: color-mix(in oklab, transparent, var(--color-surface) var(--link-hover-progress));
+  }
+
+  & .project-link:is(a, a:hover) {
+    border-block-end-color: color-mix(
+      in oklab,
+      var(--color-border),
+      var(--color-accent-soft) var(--link-hover-progress)
+    );
+  }
+
+  & .button-link:is(a, a:hover) {
+    transition-property: transform, --link-hover-progress;
+    color: var(--color-canvas);
+    border-color: color-mix(
+      in oklab,
+      var(--color-accent),
+      var(--color-text) var(--link-hover-progress)
+    );
+    background: color-mix(
+      in oklab,
+      var(--color-accent-soft),
+      var(--color-text) var(--link-hover-progress)
+    );
+  }
+
+  & .button-link--secondary:is(a, a:hover) {
+    --link-resting-color: var(--color-text);
+    --link-hover-color: var(--color-accent-soft);
+    color: var(--link-text-color);
+    border-color: color-mix(
+      in oklab,
+      var(--color-border),
+      var(--color-accent) var(--link-hover-progress)
+    );
+    background: color-mix(in oklab, transparent, var(--color-surface) var(--link-hover-progress));
+  }
 }

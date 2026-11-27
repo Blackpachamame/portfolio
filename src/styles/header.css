@@ -200,6 +200,12 @@
   outline-offset: -2px;
 }
 
+.site-header__season-option[aria-disabled='true'] {
+  color: var(--color-text-muted);
+  background: transparent;
+  cursor: not-allowed;
+}
+
 .site-header__season-check {
   width: 0.25rem;
   height: 0.5rem;
